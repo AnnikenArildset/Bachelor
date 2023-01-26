@@ -1,0 +1,21 @@
+\documentclass[tikz, margin=5mm]{standalone}
+\usepackage{pgfgantt}
+\title{Gantt Charts with the pgfgantt Package}
+\begin{document}
+
+\begin{ganttchart}[
+   vgrid={*{20}{gray, dashed}},
+   bar label node/.append style={
+     align=left,
+     text width=width("Aim 2. Software verificationx")}
+   ]{1}{24}
+\gantttitle{1}{1} \gantttitle{2}{1} \gantttitle{Week 3}{6} \gantttitle{Week 4}{6}\\
+\ganttbar[bar/.append style={fill=red}]{Aim 1. Migration}{1}{6} \\
+\ganttmilestone[name=Milestone]{Deliver Project plan}{5} \\
+\ganttbar[bar/.append style={fill=blue}]{Aim 2. Software verification}{6}{12} \\
+\ganttbar{Aim 3. Hardware portability}{12}{18} \\
+\ganttbar{Aim 4. Documentation}{8}{24}
+
+\end{ganttchart}
+
+\end{document}

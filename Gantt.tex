@@ -1,0 +1,32 @@
+\documentclass[tikz, margin=5mm]{standalone}
+\usepackage{pgfgantt}
+
+
+\begin{document}
+\definecolor{planned}{RGB}{173,220,241}
+\definecolor{complete}{RGB}{44,115,152}
+
+
+
+\begin{ganttchart}
+    [vgrid={*{20}{gray, dashed}},
+    hgrid,
+    bar label node/.append style={
+    align=left,
+    text width=width("Deliver Project Plan")}
+    ]{1}{20}
+\gantttitle{Project Planning}{20}\\
+\gantttitle{2}{1} \gantttitle{3}{1} \gantttitle{4}{1} \gantttitle{5}{1} \gantttitle{6}{1} \gantttitle{7}{1} \gantttitle{8}{1} \gantttitle{9}{1} \gantttitle{10}{1} \gantttitle{11}{1} \gantttitle{12}{1} \gantttitle{13}{1} \gantttitle{14}{1} \gantttitle{15}{1} \gantttitle{16}{1} \gantttitle{17}{1} \gantttitle{18}{1} \gantttitle{19}{1} \gantttitle{20}{1} \gantttitle{21}{1}\\
+\ganttbar[bar/.append style={fill=complete}]{Establish contact with supervisor}{1}{1} \\
+\ganttbar[bar/.append style={fill=complete}]{Working on the Project Plan}{1}{2} \ganttbar[bar/.append style={fill=planned}]{}{2}{4}\\
+\ganttbar[bar/.append style={fill=complete}]{Create the Kanban board}{1}{1} \\
+\ganttmilestone[name=Milestone]{Deliver Project plan}{5} \\
+\ganttbar[bar/.append style={fill=planned}]{Research tools}{5}{7} \\
+\ganttbar[bar/.append style={fill=planned}]{Familiarize ourselves with AWS}{5}{7} \\
+\ganttbar[bar/.append style={fill=planned}]{Create testing environment}{7}{9}\\
+\ganttbar[bar/.append style={fill=planned}]{Testing tools}{9}{12}\\
+\ganttbar[bar/.append style={fill=planned}]{Rapport testing of tools}{9}{14}
+
+\end{ganttchart}
+
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, norsk]{babel}
+\usepackage[square, numbers]{natbib}
+
+\title{How to add bibliography}
+\author{Me myself and I}
+\date{January 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Something about oil. Yes oil money, drill that ocean! \cite{barsky2004oil}
+
+\section{Hvordan finne de perfekte kilder ved bruk av Google Scholar}
+Hvis mulig, bruk Google Scholar! Søk opp en artikkel derfra. Før du går inn på selve artikkelen, er det en bitteliten knapp med figur ar to apostofer og teksten "Referanse". Trykk på denne.  Da vil en liten boks komme opp, trykk på knappen "BibTeX". Her vil den bli perfekt oppført, så bare kopier dette inn i bibliotek-fila. 
+\\~\\
+Hvis man ikke finner artikkelen med Google Scholar, fiks det selv :(
+\newpage
+\bibliographystyle{apalike}
+\bibliography{EksempelKildeFil}
+
+
+\end{document}
