@@ -8,39 +8,49 @@
 \begin{document}
 
 % Inserting title page
-%\import{./Sections/}{FrontPage}
+\import{./Sections/}{FrontPage}
 
 % Defining front matter settings (Norsk: innstillinger for forord m.m.)
 \frontmatter
+%\import{./BachelorThesis/}{Abstract}
+%\import{./BachelorThesis/}{Preface}
 
-% Inserting table of contents
-%\newpage
-%\tableofcontents
-%\newpage
-% Inserting list of figures & list of tables
-%\listoffigures
-%\listoftables
 
-% Defining main matter settings (Norsk: innstillinger for hoveddelen av teksten)
 \mainmatter
 
+% Inserting table of contents
+\newpage
+\tableofcontents
+\newpage
+% Inserting list of figures & list of tables
+\listoffigures
+\listoftables
+
+
+\printglossary[type=\acronymtype]
+\printglossary
+\newpage
+
+% Defining main matter settings (Norsk: innstillinger for hoveddelen av teksten)
+
 % Introduction explaining this LaTeX-template
-%\import{./Sections/}{Introduction}
+\import{./BachelorThesis/}{Introduction}
+\import{./BachelorThesis/}{Theory}
+\import{./BachelorThesis/}{Tools}
+\import{./BachelorThesis/}{AnalysisForTools}
+\import{./BachelorThesis/}{Testing}
+\import{./BachelorThesis/}{Discussion}
+\import{./BachelorThesis/}{Conclusion}
 
-% Example section added from an external tex-file, here located in ./Sections/
-%\import{./Sections/}{Example_section}
-
-% Example section added directly into the main-file
-%\section{Conclusion}
-%\textit{But the fact that some geniuses were laughed at does not imply that all who are laughed at are geniuses. They laughed at Columbus, they laughed at Fulton, they laughed at the Wright Brothers. But they also laughed at Bozo the Clown} -  \textcite{sagan_1993}.
 
 % Printing bibliography
-%\newpage
-%\printbibliography[heading = bibintoc, title = Bibliography]    % 'bibintoc' inserts our bibliography into the table of contents
+\newpage
+\printbibliography[heading = bibintoc, title = Bibliography]    
+% 'bibintoc' inserts our bibliography into the table of contents
 
 % Inserting appendix with separate settings
 %\addappendix
-\import{./Sections/}{Project plan.tex}
+%\import{./Sections/}{Project plan.tex}
 
 
 
