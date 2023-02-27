@@ -1,65 +1,61 @@
 % Author - Jon Arnt Kårstad, NTNU IMT
-\documentclass{article}
+\documentclass{report}
 
 % Importing document settings from our file "packages.sty"
 \usepackage{setup}
 
 % Beginning of document
 \begin{document}
-
-% Inserting title page
 \import{./Sections/}{FrontPage}
+% Inserting title page
+
 
 % Defining front matter settings (Norsk: innstillinger for forord m.m.)
 \frontmatter
-%\import{./BachelorThesis/}{Abstract}
-%\import{./BachelorThesis/}{Preface}
-
-
-\mainmatter
-
-% Inserting table of contents
-\newpage
+\input{BachelorThesis/0a-Abstract.tex}
+\input{BachelorThesis/0b-Sammendrag.tex}
 \tableofcontents
-\newpage
-% Inserting list of figures & list of tables
+
 \listoffigures
 \listoftables
-
+%\lstlistoflistings
 
 \printglossary[type=\acronymtype]
 \printglossary
 \newpage
 
+
+\mainmatter
+
 % Defining main matter settings (Norsk: innstillinger for hoveddelen av teksten)
 
 % Introduction explaining this LaTeX-template
-\import{./BachelorThesis/}{Introduction}
+\input{BachelorThesis/1-Introduction}
 \newpage
-\import{./BachelorThesis/}{Theory}
+\input{BachelorThesis/2-Theory}
 \newpage
-\import{./BachelorThesis/}{Tools}
+\input{BachelorThesis/3-Tools}
 \newpage
-\import{./BachelorThesis/}{AnalysisForTools}
+\input{BachelorThesis/4-AnalysisForTools}
 \newpage
-\import{./BachelorThesis/}{Testing}
+\input{BachelorThesis/5-Testing}
 \newpage
-\import{./BachelorThesis/}{Discussion}
+\input{BachelorThesis/6-Discussion}
 \newpage
-\import{./BachelorThesis/}{Conclusion}
+\input{BachelorThesis/7-Conclusion}
+\newpage
+
 
 
 % Printing bibliography
-\newpage
-\printbibliography[heading = bibintoc, title = Bibliography]    
+%\chapter*{\bibname}
+\printbibliography[heading = bibintoc, title = Bibliography]   
+
 % 'bibintoc' inserts our bibliography into the table of contents
 
 % Inserting appendix with separate settings
-%\addappendix
-%\import{./Sections/}{Project plan.tex}
-
-
-
+\appendix
+\input{Appendix/Project plan}
 
 % End of document
 \end{document}

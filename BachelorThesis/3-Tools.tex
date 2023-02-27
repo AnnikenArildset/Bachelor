@@ -1,0 +1,66 @@
+\chapter{Tools for testing}
+
+\section{Introduction}
+We This chapter presents a description of the tools that have been determined for use in this thesis. It will provide a description of each tool and its features, outlining their strengths and weaknesses which was discovered during the testing.  
+%\subsection{Astra}
+%Astra's pentest suite offers a seamless solution for SMEs to maintain continuous security. It blends automated vulnerability scanning, utilizing over 3000 tests, with manual pentest conducted by security experts. This platform provides authenticated scanning, integration with CI/CD, risk scoring, collaboration features, a resolution center, and verifiable pentest results. Small and medium businesses, lacking a dedicated security team, can benefit from Astra's user-friendly security tools and easily enhance their application's security with minimal technical requirements. Begin by utilizing the automated DAST scanner for an initial security report on your web applications.\cite{astra}
+%\subsubsection{Why We Chose Astra}
+
+%\subsection{Mend}
+%Mend makes securing developer creations effortless. It eliminates the hassle of application security, enabling development teams to produce secure, high-quality code at a faster pace. As the market leader in securing open source usage in software development, Mend SCA detects, reports, prioritizes, automatically fixes, and prevents open source risks. Mend SAST provides custom code vulnerability detection and prioritization, allowing developers to quickly identify the most pressing software risks in their proprietary code. Additionally, MEND Supply Chain Defender safeguards businesses against supply chain attacks by detecting and blocking harmful open source packages before they can infect your codebase with malicious activity.\cite{mend}
+%\subsubsection{Why We Chose Mend}
+
+
+\section{Snyk}
+Snyk is a comprehensive developer security platform that secures code, dependencies, containers, and infrastructure as code. It provides thorough scans of your code and alerts you to any vulnerabilities. Beyond just checking your code, Snyk also examines installed dependencies, Docker containers, infrastructure as code, and more. This platform supports a wide range of programming languages and includes plugins compatible with various IDEs.\cite{snyk}
+\subsection{Why We Chose Snyk}
+
+\section{Github Security Tools}
+
+\subsection{Dependabot}
+Dependabot is an in-built Github tool that helps developers keep their project dependencies up-to-date. A dependency can be considered a piece of code or software that the project that's being worked on needs and relies on. For example, the project might use a library or package that someone else has written, then this library/package can be considered a dependency of the project. 
+
+Dependencies can be updated over time as new versions are released. Therefore, it is crucial that developers keep the dependencies up to date to ensure that the project stays secure. However, keeping track of all updates that come and manually run these updates can frustrate developers since it can be rather time-consuming and error-prone.This is were Dependabot comes in. Dependabot automates the process of checking for new versions of your dependencies and creates pull request to update them, that can be reviewed and merged of the update is necessary. 
+Dependabot can also automatically resolve any conflict that may arise when updanting dependencies and can even open up separate pull requests for separate dependency updates.  \cite{GithubDependabot2}
+
+Dependabot uses "Github Advisory Database" to check for vulneral data. This database covers a loft of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd} and more. \cite{GithubDependabot1}
+\subsection{Code Scanner}
+Github's code scanner is a in-built tool that allows the user to analyze the code that lies in the Github repository to find vulnerabilities and errors in the code. Any problems that may be identified by the code scanner will be displayed in Github. This feature helps identifying existing issues, but also prevents new ones from being introduced. 
+
+Users can schedule code scanning on specific days and times or set it to trigger after specific events, such as a push to the repository. Any issues found during the scanning process are displayed as alerts within the repository, allowing the developers to triage and prioritize the necessary fixes. Once a user fixes the code that triggered the alert, Github automatically closes it. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
+\cite{GithubCodeScanning}
+
+
+\subsection{Security Scanner}
+Github's Security scanner is an in-built tool that analyzes the code on all branches to see if there are any secrets within the code. This is the case for archived repositories as well. To authenticate with an external service, developers may require a token or a private key, which can be issued by a service provider. However, if these secrets gets added to the repository, anyone with read access can use these to their advantage and get access to the external service. Therefore it is highly recommended that such secrets is stored outside the repository. However, secret scanning is created to alert on such secrets when detected. Developers can get the
+security scanner in two forms: 
+\begin{itemize}
+    \item \textbf{Security Scanning alerts for users}
+Github's security scanning for Users is intended for orgnaizations that have licended Github Advanced Security and provides the ability to enable and configure scannig for private and internal repositories. This feature allows users to define their own cutom pattern-matching rules to identify secrets in code and will report any mathes in the security tab of the reposituroy for review by the organization. 
+
+Overall, security scanning for users allows organizations to define their own custom rules and enables scanning for private and internal repositories.
+
+\item \textbf{Security Scanning alerts for partners}
+This feature can be enabled for teams that use the Github Enterprise Cloud and have a license for the Github Advanced Security. This means that, to access this form the repositories has to be owned by an organization that have license to Github Advanced Security. It is not available for repositories that are owned by individuals. 
+
+When Secret Scanning for users is activated, Github will search for secrets used be various of service providers. If any supported secrets are detected, a secret scanning alert will be generated by GitHub Enterprise Cloud.
+Github's security Scanning for partners is intended for  third-party service providers who have partnered with Github to provide pre-defined pattern-matching for identifying secrets in code. This feature is available for all public repositories and will report any matches of these predefined patterns directly to the relevant partner for their review and action. 
+
+Overall, security scanning for partners focus on providing predefined pattern-matching rules to third-party service providers. 
+\cite{GithubSecretScanning}
+\end{itemize}
+
+\section{Amazon Web Services Tools}
+\subsection{AWS Lamda}
+\acrshort{aws} Lamda is considered a serverless compute server and is created for developers to be able to run code in the cloud without having the need to set up any servers. It is an on-demand service, which means that developers only pay for what they use. Lamda can be integrated with many different services in the \acrshort{aws} cloud, which means that developers can build rather complex backends and pipelines. 
+
+\acrshort{aws} Lamda is what is called an "event-driven" service, which means that it executes code as a response to different events created. Such events can be a lot of things, it can for example be events that have been generated from other \acrshort{aws} services like \acrshort{aws} based data processing pipelines or HTTP endpoints. 
+
+Lamda supports a large amount of different programming languages, such as python, javascript and ruby etc. However it also allows developers to create custom runtimes for languages that are noe necessarily supported. \cite{AWSLamda}
+
+\subsection{AWS CodePipeline}
+In short \acrshort{aws} codepipeline is a \textit{fully managed continious delivery service that helps you automate your release pipeline. It allows users to build, test, and delpoy code into a test production environment[...]}
+\cite{AWSCodePipeline}
+
+CodePipeline automates the pipeline, which means that the build, test and deploy phases are all automated and CodePipeline runs these when it detects changes in the repository. So when a developer pushes changes to the repository, it detectes this and then starts the process by building these changes and if there are any tests that are configured it runs these. \cite{AWSCodePipeline1}
+\subsection{AWS }
