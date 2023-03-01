@@ -58,9 +58,47 @@ Overall, security scanning for partners focus on providing predefined pattern-ma
 
 Lamda supports a large amount of different programming languages, such as python, javascript and ruby etc. However it also allows developers to create custom runtimes for languages that are noe necessarily supported. \cite{AWSLamda}
 
+
+
 \subsection{AWS CodePipeline}
 In short \acrshort{aws} codepipeline is a \textit{fully managed continious delivery service that helps you automate your release pipeline. It allows users to build, test, and delpoy code into a test production environment[...]}
 \cite{AWSCodePipeline}
 
 CodePipeline automates the pipeline, which means that the build, test and deploy phases are all automated and CodePipeline runs these when it detects changes in the repository. So when a developer pushes changes to the repository, it detectes this and then starts the process by building these changes and if there are any tests that are configured it runs these. \cite{AWSCodePipeline1}
-\subsection{AWS }
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/CodePipeline.png}
+    \caption{A picture explaining the AWS CodePipeline process}\cite{AWSCodePipeline2}
+    \label{fig:my_label}
+\end{figure}
+
+\subsection{AWS CodeBuild }
+AWS CodeBuild can be described as a\textit{fully managed continuous integration service that compiles source code, runs tests, and produces ready-to-deploy software packages.} 
+\cite{AWSCodeBuild}
+What AWS CodeBUild does is that it downloads the source code provided to it into a build environment and then uses a \Gls{buildspec}.\cite{AWSCodeBuild1}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/CodeBuild.png}
+    \caption{A picture explaining the AWS CodeBuild process}\cite{AWSCodeBuild}
+    \label{fig:my_label}
+\end{figure}
+\newpage
+\subsection{AWS CodeCommit}
+
+\acrshort{aws} CodeCommit can be described as \textit{AWS CodeCommit is a secure, highly scalable, fully managed source control service that hosts private Git repositories.}
+\cite{AWSCodeCommit1}
+CodeCommit makes it easier for developers to collaborate on the code and focuses on eliminating the need to operate the source control in the system or scaling the infrastructure. AWS CodeCommit can be necessary for developers who have the need for a secure, reliable and scalabale source control system, were code can be stored. \cite{AWSCodeCommit}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/CodeCommit.png}
+    \caption{A picture explaining the AWS CodeCommit process}\cite{AWSCodeCommit1}
+    \label{fig:my_label}
+\end{figure}
+
+\subsection{AWS CodeDelpoy}
+\acrshort{aws} CodeDeploy can be described as \textit{AWS CodeDeploy is a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lamda and more[...]}\cite{AWSCodeDeploy}
+\acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
+
+\subsection{AWS S3 Bucket}
+
+

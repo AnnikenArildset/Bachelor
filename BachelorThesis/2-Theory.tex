@@ -31,7 +31,7 @@ Software testing is a very broad area, and each test varies from according to it
 
 Unit testing is where small components of the code, called units, is tested. These types of tests is executed early in the SDLC, and is often done by the developers instead of testers. This is because the developers has comprehensive understanding of the code and because unit testing can help identifying bugs early, which is time-saving for the rest of the process. The purpose of these tests is to see if the code is behaving as expected by running tests on all possible components in an isolated test environment separated from other components. Integration testing looks at how the components who have already been tested in isolation perform, and confirms whether they operate as anticipated when integrated into a larger system communicating across various components. Integration testing includes both White box testing and Black box testing techniques.\cite{unitvsintergration}
 
-Security testing on the other hand, wants to break the software to uncover vulnerabilities. The testing aims to identifying all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attackers point of view. These kinds of test can be done manually or be done by software tools, called automated security testing tools. The goals of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing and black box testing testing are some examples of security testing methods, which will be elaborated on in chapter 2.4.\cite{whysectest}
+Security testing on the other hand, wants to break the software to uncover vulnerabilities. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attackers point of view. These kinds of test can be done manually or be done by software tools, called automated security testing tools. The goals of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing and black box testing testing are some examples of security testing methods, which will be elaborated on in chapter 2.4.\cite{whysectest}
 
 
 \section{Box testing}
@@ -42,9 +42,11 @@ There are several types of black box testing, one being functional testing. This
 
 \subsection{White Box Testing}
 White box testing focuses on the application from within. In such tests, the source code and infrastructure will be looked at. The testing consist of covering paths, statements and branches, among other things. A white box tester looks for security holes by testing the code, and therefore requires to have knowledge of programming and IT. The tester looks through the code to find weaknesses such as infinite loops or data flow issues. White box testing is easier to automate than black box testing, and is often what is done for \acrlong{sast}. Despite this, it can be quite complex, and a large application with a large quantity of code can take days to test. \cite{whitebox}
+\newpage
 
 \section{Application Security Testing}
-Må ha intro på dette
+Intro
+
 \subsection{SAST}
 \acrlong{sast} is a type of software security testing tool that analysis source code of an application to identify different potentially security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application actually is deployed. \cite{sast}
 
@@ -53,8 +55,14 @@ Må ha intro på dette
 One of the advantages with \acrshort{sast} is that it gives detailed information about the source of the vulnerability, which gives the developer a better understanding on have to fix the issue. 
 
 There are of course some limitations to \acrshort{sast} tools as well. For example, it can only detect vulnerabilities that are present in the source code. This means that it cannot detect vulnerabilities that results from the interaction between different components of an application.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/SAST.png}
+    \caption{Where to perform SAST in SDLC}
+    \label{fig:my_label}
+\end{figure}
 
-
+\newpage
 \subsection{DAST}
 Compared to \acrlong{sast}, \acrlong{dast} is also a type of software security testing tool. However, what \acrshort{dast} does is that it evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast} which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this include the interaction of different components and the runtime environment. 
 
@@ -63,6 +71,15 @@ Compared to \acrlong{sast}, \acrlong{dast} is also a type of software security t
 An advantage with \acrshort{dast} is that it can identify security issues that is not detectable through \acrshort{sast}, this can for example be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that gets triggered, for example when the application is under heavy load or when are specific inputs received.
 
 However, there are of course some limitations with \acrshort{dast} as well, one being that it can only detect vulnerabilities that are present in the deployed version of the application and cannot give in-depth description on vulnerabilities that lie in the source code.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/DAST.png}
+    \caption{Where to perform DAST in SDLC}
+    \label{fig:my_label}
+\end{figure}
+
+\newpage
 
 \subsection{SCA}
 \acrlong{sca} is compared to the two others also a type of software security testing tool. What \acrshort{sca} does is that it analyzes the dependencies of a software application to identify and manage potential security risks. The main objective of the \acrshort{sca} is to identify third-party components that may contain security vulnerabilities. \cite{sca}
@@ -73,8 +90,14 @@ An advantage with \acrshort{sca} is that it can quickly identify risks that may 
 
 However, it is important to remember that \acrshort{sca} does not always have access to updated information, and may give some false-positives about vulnerabilities that doesn't necessary exist anymore. 
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/SCA.png}
+    \caption{Where to perform SCA in SDLC}
+    \label{fig:my_label}
+\end{figure}
 
-
+\newpage
 \section{The Significance of Software Security Testing}
 Security testing plays a critical role in the \acrlong{sdlc}, as it is employed to identify potential security vulnerabilities in the system and prevent real-world attacks. It is a process where the security of the system is evaluated and identifies the system's possible security weaknesses and risks of vulnerability.\cite{whysectest}
 
@@ -86,8 +109,19 @@ As mentioned in sections 2.3, there are various types of testing that should be 
 %Hvor ofte finner man sårbarheter utifra tester 
 \subsection{False Positives and Negatives in Software}
 %hva er det og hvordan kan man unngå det kanskje?
-\section{Vulnerability Estimators}
-
+\section{Vulnerability Risk Rating}
+Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, CWE and OWASP Risk Rating Methodology. 
 \subsection{Common Vulnerability Scoring System (CVSS)}
+\acrlong{cvss}, know as \acrshort{cvss}, is \textit{an Security Content Automation Protocol (SCAP) specification for communicating the characteristics of vulnerabilities and measuring their relative severity}\cite{nistCVSS}. The system is used to give vulnerabilities a numeric score based on it´s severity. The scores can be translated into low, medium, high and critical to assist organizations evaluate and rank their vulnerabilities. CVSS is currently at version 3.1. \cite{CVSS}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[scale=0.3]{Images/CVSS.png}
+    \caption{CVSS v3 Ratings \cite{cvssrating}}
+    \label{fig:my_label}
+\end{figure}
+
+
 \subsection{Common Vulnerabilities and Exposures (CVE)}
+
 \subsection{Common Weakness Enumeration (CWE)}
+\subsection{OWASP Risk Rating Methodology}
