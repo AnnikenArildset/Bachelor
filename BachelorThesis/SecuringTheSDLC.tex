@@ -14,3 +14,32 @@ In this phase, it is important to consider security requirements and features of
 \subsubsection{Testing}
 \subsubsection{Deployment}
 \subsubsection{Maintenance}
+
+ett viktig punkt er at man kan lage en pipline som kan testte for alt mulig å sørge for at den bruker de beste verktøyen som finnes men dette hjelper lit hvis pipline seg selv er ofentlig eller at folk kan gå in mellom de forskjelige stegen å gjøre endring på filen. Det er et par praktiske ting man kan gjøre for å ungå dette man kan krypter filen som sendens mellom lagringsenhetne (s3 buket) idette tilfelle sån at folk ikke kan aksesr de. Du kan også signer filen i s3 buketen sån at du kan verfiser at de den samme filen når du plukker de opp i neste stege av piline sån at du oppretholder integriten til koden gjennom pipline. Ulempen med systemet aws tilater hær er at de akspeter kun filler opp til 4kb hvis de er støre så aksepter de kun meta data filen for signer. dette er ikke nødveningsvis det største problemt fordi endre man koden endres meta datan!
+
+Det er også punkte om adgans kontrol hvor hvem kan faktisk modefie setinge for pipline som er en viktig bit av dette fordelen der er at aws har en som heter iam for ad kontrol så du kan besteme hvem som har tilgang til pipline og kan gjøre kode denigner.
+
+ulempen er første gang man byger om koden som setter opp piline er siker. Da må man nesten stole på løke 1 og 2 som setter opp dette. du kan bruke de inebygde skane i gitt og popprtole 4 eys og lols
+
+Dette er sebs notater ;)
+
+aws akses management
+
+signe artifacts
+
+hvorfor sikre piline i seg selv
+
+bør kjøre sikerhets skan på koden som skal bygge piline så godt det lar seg gjøre 
+eventuelt sende igjenom etter at du har bygg piline
+
+Vi burde ha med litt om sikerhet for piplines 
+for skjelige delen og hvordan ting blir lagret i artefakts
+Yes, AWS (Amazon Web Services) provides a service called AWS Artifact, which allows users to access and download AWS compliance reports and security documents. These documents are signed by AWS and can be used as evidence of compliance with various regulatory requirements.
+
+In addition, AWS also provides a number of services that can help you sign and verify artifacts within your own infrastructure. For example, AWS Key Management Service (KMS) can be used to create and manage cryptographic keys that can be used to sign artifacts, while AWS CloudHSM provides hardware security modules that can be used to store and manage cryptographic keys.
+
+Furthermore, AWS CodePipeline, which is a continuous delivery service, allows you to sign your application artifacts with AWS Code Signing, which provides a way to ensure that the code has not been tampered with or altered in any way during transit or storage. AWS Code Signing can be used with a variety of programming languages and platforms, including Java, Python, and .NET.
+
+Overall, AWS provides a range of tools and services to help you sign and verify artifacts, which can be useful for ensuring the authenticity and integrity of your applications and data.
+
+https://aws.amazon.com/blogs/security/digital-signing-asymmetric-keys-aws-kms/
