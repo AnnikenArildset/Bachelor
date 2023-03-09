@@ -1,1 +1,15 @@
 \section{Security in the pipeline}
+Security in the pipeline is the process of implementing different measures and controls to protect the code that is being sent through the pipeline from various security threats. The pipeline commonly consists of multiple phases like code development, testing, and deployment, all of which may be susceptible to various security threats, like unauthorized access, data breaches, malware, and denial-of-service attacks. Security in the pipeline is crucial to secure the integrity and confidentiality of software applications and data.
+
+\subsection{Code Scanning}
+%du tester koden som skal bli deployet, alstå det som ligger inni pipelinen. Sjekkes for sårbarheter etc
+Code scanning is security measure where you analyze the code with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. During this step, you can perform a SAST scan using specialized tools that are designed to scan through code. 
+\\~\\
+GitHub has an integrated code scanner called CodeQL. When using this code scanner, it extracts all source code into a relational database made for CodeQL, which is analyzed by  running queries against it to identify vulnerabilities and insecure patterns. The user can either take advantage of the large quantity of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code. 
+ 
+\subsection{SCA}
+
+\subsection{Secret Scanning}
+\subsection{DAST vs SAST}
+\subsubsection{Why DAST isn't enough}
+Overskriften må byttes her

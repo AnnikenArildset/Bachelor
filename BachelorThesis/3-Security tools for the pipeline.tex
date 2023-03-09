@@ -26,13 +26,13 @@ Dependabot can also automatically resolve any conflict that may arise when updan
 Dependabot uses "Github Advisory Database" to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd} and more. \cite{GithubDependabot1}
 
 \subsection{Code Scanner}
-Github's code scanner is an in-built tool that allows the users to analyze the code that lies in the Github repository to find vulnerabilities and errors in the code. Any problems that may be identified by the code scanner will be displayed in Github. This feature helps identifying existing issues, but also prevents new ones from being introduced. 
+Github's code scanner uses an in-built tool called codeQL that allows the users to analyze the code that lies in the Github repository to find vulnerabilities and errors in the code. The results of these anlayzes are shown as code scanning alerts in Github.This feature helps identifying existing issues, but also prevents new ones from being introduced. \cite{CodeQL}
 
-Code scanning can be scheduled so that it runs on days that users set. It also makes it possible to trigger the Code scanning to scan. Such triggers can be when changes has been done in the repository. 
+CodeQL can be scheduled so that it runs on days that users set. It also makes it possible to trigger the CodeQL to run. Such triggers can be when changes have been done in the repository. 
  Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different fixes easily between members in the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
 \cite{GithubCodeScanning}
-\\
-\colorbox{yellow}{Ha med på en måte at som code scanner kan vi burke CodeQL}
+
+
 
 
 \subsection{Secret Scanner}
@@ -72,7 +72,7 @@ CodePipeline automates the pipeline, which means that the build, test and deploy
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodePipeline.png}
-    \caption{A picture explaining the AWS CodePipeline process}\cite{AWSCodePipeline2}
+    \caption{A picture explaining the AWS CodePipeline process}Adapted from: \cite{AWSCodePipeline2}
     \label{fig:my_label}
 \end{figure}
 
@@ -95,15 +95,25 @@ CodeCommit makes it easier for developers to collaborate on the code and focuses
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodeCommit.png}
-    \caption{AWS CodeCommit process}\cite{AWSCodeCommit1}
+    \caption{AWS CodeCommit process} Adapted from: \cite{AWSCodeCommit1}
     \label{fig:my_label}
 \end{figure}
 
+\newpage
 \subsection{AWS CodeDeploy}
 \acrshort{aws} CodeDeploy is defined as "\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lamda and more[...]}"\cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
 
 CodeDeploy can deploy code that runs on a server and is store in for example github repositories or in a \acrshort{aws} S3 Bucket. With CodeDeploy, developers does not have to do any changes in the code already existing to use CodeDeploy. \cite{CodeDeploy1}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1\columnwidth]{Images/AWSCodeDeploy.png}
+    \caption{AWS CodeCommit process} Adapted from: \cite{CodeDeploy1}
+    \label{fig:my_label}
+\end{figure}
+
+\newpage
 
 \subsection{AWS S3 Bucket}
 \acrshort{aws} S3 is a simple storage service which is known to be a cloud-based objective storage service. The S3 bucket is designed to provide users with scalable, durable and highly available storage which can be used to store different types of data. Such data can be documents, photos and so on. 
