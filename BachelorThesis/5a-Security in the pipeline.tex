@@ -8,10 +8,13 @@ Code scanning is security measure where you analyze the code with the help of a 
 GitHub has an integrated code scanner called CodeQL. When using this code scanner, it extracts all source code into a relational database made for CodeQL, which is analyzed by running queries against it to identify vulnerabilities and insecure patterns. The user can either take advantage of the large quantity of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code. 
  \cite{codeql}
 \subsection{Scan Dependencies and Open Source Libraries}
-All dependencies, open source libraries and third party artefacts that has been utilized should be validated. This can be done by checking their checksum against a reliable, good source and validating any cryptographic signatures. If any third party software was implemented in the application it's important to conduct an SCA scan using suitable tools to identify whether any vulnerable open-source software was used. \cite{bestpracticeSupplyChain}
+All dependencies, open source libraries and third party artefacts that has been utilized should be validated. This can be done by checking their checksum against a reliable, good source and validating any cryptographic signatures. If any third party software was implemented in the application it's important to conduct an \acrshort{sca} scan using suitable tools to identify whether any vulnerable open-source software was used. \cite{bestpracticeSupplyChain}
 
 \subsection{Secret Scanning}
 To prevent or identify accidental exposure of "secrets", like access tokens, SSH keys, or other credentials, one should execute a secret scanning on a Git repository. Secret scanning tools, such as GitHub's secret scanning, can be used to find these vulnerabilities, and alert developers to potential security risks. \cite{GithubSecretScanning}
+
+\colorbox{yellow}{Check up on: scans for patterns known, so might need to be partner or something with github,}\\
+\colorbox{yellow}{they need to know your token patterns to detect secrets}
 
 \subsection{Dynamic testing}
 In software best practices, it is recommended to run multiple tests and scans to identify bugs and errors - where one of these tests is \acrlong{dast} (\acrshort{dast}).\cite{bestpracticeSupplyChain} This sort of scan tries to penetrate the application, attempting to identify vulnerabilities and weaknesses in it. One can implement a tool specialized for DAST scans, such as XX, which can identify security risks like cross-site scripting, SQL injection or path traversal.\cite{dynamictesting}
