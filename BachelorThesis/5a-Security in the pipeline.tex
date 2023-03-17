@@ -13,10 +13,8 @@ All dependencies, open source libraries and third party artefacts that has been 
 \subsection{Secret Scanning}
 To prevent or identify accidental exposure of "secrets", like access tokens, SSH keys, or other credentials, one should execute a secret scanning on a Git repository. Secret scanning tools, such as GitHub's secret scanning, can be used to find these vulnerabilities, and alert developers to potential security risks. \cite{GithubSecretScanning}
 
-\colorbox{yellow}{Check up on: scans for patterns known, so might need to be partner or something with github,}\\
-\colorbox{yellow}{they need to know your token patterns to detect secrets}
 
-\subsection{Dynamic testing}
+\subsection{Dynamic scanning}
 In software best practices, it is recommended to run multiple tests and scans to identify bugs and errors - where one of these tests is \acrlong{dast} (\acrshort{dast}).\cite{bestpracticeSupplyChain} This sort of scan tries to penetrate the application, attempting to identify vulnerabilities and weaknesses in it. One can implement a tool specialized for DAST scans, such as XX, which can identify security risks like cross-site scripting, SQL injection or path traversal.\cite{dynamictesting}
 
 
