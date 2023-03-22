@@ -2,5 +2,11 @@
 \section{Introduction}
 This is another test \cite{nbimattacks}
 
-\section{Which branch protections do we use}
+\section{Chosen branch protection rules}
+When deciding which branch protection rules to implement, it is important that securing the branch does not drastically affect the work flow. There are several possible protection rules to enable, described in \ref{branchprotection}. Though, enabling all of the rules at once may do more harm than good, as every pull request and commit must go through several steps which will make the work flow less efficient. Therefore, selecting only the most useful rules will benefit the development. 
+\\~\\
+The "Four Eyes Principle" is a mechanism where activities, in this case pull requests, needs approval from two individuals.  This principle is implemented by enabling "Require a pull request before merging", and require two approvals before merging. By enabling this rule, the risk of unwanted code being merged into the basecode is lower, without disrupting the work of all developers since only two need to look through the code. \cite{foureyes}
+\\~\\
+Another implemented branch rule, is requiring signed commits. Signed commits requires some pre-configurations, but once that is done, all the developers have to do is enter a passphrase, and the commit is verified. By implementing required signed commits, it ensures the integrity of the code while the work flow undisturbed.
 
+\section{Chosen SAST tool}

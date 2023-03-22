@@ -1,17 +1,18 @@
 \section{Security of the pipeline}
-Security of the pipeline in short terms are the security measures that are taken into consideration when securing the pipeline itself. This includes not only securing the pipeline istelf, but also the infrastrucutre, components, network that are used to process the code that goes through the pipeline. Securing of the pipeline ensures that the code is not tampered through during the process of going through the pipeline. 
+Security of the pipeline in short terms are the security measures that are taken into consideration when securing the pipeline itself. This includes not only securing the pipeline itself, but also the infrastructure, components, network that are used to process the code that goes through the pipeline. Securing of the pipeline ensures that the code is not tampered through during the process of going through the pipeline. 
 
 
 \subsection{Branch Protection}
-Branch protection is a feature of Github, that enforeces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain stability and security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main codebase. Below are the different branch protection features that can be enabled in Github.
+\label{branchprotection}
+Branch protection is a feature of GitHub, that enforces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain stability and security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main codebase. Below are the different branch protection features that can be enabled in GitHub. \cite{ProtectedBranches}
 \\
 \subsubsection{Require a pull request before merging}
-Administrators of the repository can add rules to the repository which restricts pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow users with written permissions to do the approving as well as users considered to be code owners. \cite{ProtectedBranches}
+Administrators of the repository can add rules to the repository which restricts pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow users with written permissions to do the approving as well as users considered to be code owners. 
 
 It is under this type of protection the "four eyes" principal is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes, this principal is a controlling mechanism that increases the security measures. 
 \\
 \subsubsection{Require status checks to pass before merging}
-When users work together in the same repository, it is important to maintain high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that needs to be fulfilled before the code is merged. These criteria's are called "status checks", and such checks can run automatically on the code before its merged. Status checks can for example be that the code is checked for style violations or different tests can also be run. \cite{ProtectedBranches}
+When users work together in the same repository, it is important to maintain high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that needs to be fulfilled before the code is merged. These criteria's are called "status checks", and such checks can run automatically on the code before its merged. Status checks can for example be that the code is checked for style violations or different tests can also be run. 
 \newpage
 \subsubsection{Require conversation resolution before merging}
 Working together with other team members in the same Github repository can quickly become chaotic, therefore it is important to have clear communication and collaboration. A way to secure this is to enable "require conversation resolution before merging". This allows all discussions to be properly resolved before any merging happens. This is a setting that if there are any discussions regarding a pull request, these discussions need to be resolved before its merged. This means that any issues, discussions or comments needs to be resolved for the merge to be successful. 
@@ -22,13 +23,13 @@ To be able to have secured signed commits, all commits pushed to the repository 
 Such restrictions minimizes the risk of unauthorized users to do changes in the repository, since there are only trusted users that sign with \acrshort{gpg} keys that are allowed to do changes. 
 
 \subsubsection{Require linear history}
-When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that has been done and minimizes the chances of mistakes. 
+When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that have been done and minimizes the chances of mistakes. 
 
 This means that when enforcing such measure, it restricts the possibility for users to merge their own changes with the main branch. This means that all changes needs to be put on top of the main branch, so that all changes can easily be traced back to main branch without making a mess of different branches. 
 \newpage
 
 \subsubsection{Require deployments to succeed before merging}
-Require deployments to succeed before merging is another feature in Github, that allows the users to enforce that different required checks that has been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch. This feature will ensure that the code that's been merged to the main branch is in a stable state and meets all the criteria necessary for a proper deployment. This will in some degree prevent issues or bugs in the production environment. 
+Require deployments to succeed before merging is another feature in GitHub, that allows the users to enforce that different required checks that has been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch. This feature will ensure that the code that's been merged to the main branch is in a stable state and meets all the criteria necessary for a proper deployment. This will in some degree prevent issues or bugs in the production environment. 
 
 \subsubsection{Lock branch}
 Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. There are only users with admin access to the repository that can unlock the branch or make any changes to it. 
@@ -38,7 +39,7 @@ This feature in short, prevents users in a repository from bypassing required ch
 \newpage
 
 \subsection{Access Control}
-Access control involves implementing measures to regulate the individuals who are allowed to access certain resources like GitHub, as well as determining the appropriate level of access for each individual. When applying these measures you should follow the "least privilege" principle. According to NIST, this is \textit{"the principle that a security architecture should be designed so that each entity is granted the minimum system resources and authorizations that the entity needs to perform its function"}\cite{leastprivilege}. In Github, access is controlled by permission - which is the capability to execute a particular task. Employees can also be assigned to roles. A role is a type of permission that you can grant to an employee or a team. \cite{accesscontroll}
+Access control involves implementing measures to regulate the individuals who are allowed to access certain resources like GitHub, as well as determining the appropriate level of access for each individual. When applying these measures, one should follow the "least privilege" principle. According to NIST, this is \textit{"the principle that a security architecture should be designed so that each entity is granted the minimum system resources and authorizations that the entity needs to perform its function"}\cite{leastprivilege}. In Github, access is controlled by permission - which is the capability to execute a particular task. Employees can also be assigned to roles. A role is a type of permission that you can grant to an employee or a team. \cite{accesscontroll}
 \\
 \\
 A security measure that works like access control is \acrlong{mfa} (\acrshort{mfa}). It involves requiring users to provide additional information during the login process, not just password. Along with the password, the user must make use of a hardware token or a code sent to their phone. 

@@ -1,24 +1,50 @@
 \chapter{Deployment}
 \section{Introduction}
 \section{Code used in the pipeline}
-For testing the group decided on using OWASPs Juice Shop, which is a deliberately vulnerable web application that is designed to help developers and others to learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and to exploit them and increase the understanding of web application security. \cite{owaspJuiceShop}
-The code in the OWASP Jucie Shop is open source code that lies on Github and is written in TypeScript, which uses a Node.js server and Angular for frontend. \cite{owaspJuiceShopCode}
+For testing the group decided on using OWASPs Juice Shop, which is a deliberately vulnerable web application that is designed to help developers and others to learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and to exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
+The code in the OWASP Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular for front-end. \cite{owaspJuiceShopCode}
 The code contains of different vulnerabilities, including SQL injections, cross-site scripting and many others. 
 Overall, OWASP Juice Shop encourages users to improve their skills and it allows for customization and adaption for specific needs from the users. 
 
 
 \section{Security when coding}
-Here we can write something about security while coding, maybe get CodeQL to work so we can test that idk???
+Here we can write something about security while coding, maybe get CodeQL to work so we can test that idk??? Maybe out of scope
 
 \section{Security when pushing to GitHub}
 
 \subsection{Access control}
 Something about access control
 
+\subsection{Branch protection}
+Can easily be enabled in GitHub. 
+
+\subsection{Signed commits}
+Generate a SSH or a GPG key. Connect it to your GitHub account. Let the wanted repository know you want to use a given key for signing, and sign off on every commit. This secures the authentication of the commiter. 
+
 \section{Security when in Git}
+Code scans, dependabot and secret scanner needs to be enabled. Dependabot only needs to be enabled, and does not require any configuration. 
 
 \subsection{Configuring CodeQL}
-When configuring CodeQL in a GitHib repository, one can either use a default setup or configure it themselves. 
+When configuring CodeQL in a GitHub repository, one can either use a default setup or configure it themselves. 
 
+\subsection{Dependabot}
+
+\subsection{Secret Scanning}
+
+
+\section{AWS}
+\subsection{Terraform}
+Terraform is a tool for automating resource configurations. In this case, Terraform is used to configure the AWS CodePipeline. \\
+Write about automation, idempotent etc.. \\
+In the code: specifies git repo, write build commands, apply it \\
+Include code snippets?
+
+\subsection{Signed Artifacts}
+
+
+\subsection{OWASP Zap}
+
+
+\subsection{Penetration testing}
 
 \section{Security after deployment}

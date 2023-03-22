@@ -33,7 +33,7 @@ Dependabot can also automatically resolve any conflict that may arise when updat
 Dependabot uses "Github Advisory Database" to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd} and more. \cite{GithubDependabot1}
 
 \subsection{Code Scanner}
-Github's code scanner uses an in-built tool called codeQL that allows the users to analyze the code that lies in the Github repository to find vulnerabilities and errors in the code. The results of these anlayzes are shown as code scanning alerts in Github.This feature helps identifying existing issues, but also prevents new ones from being introduced. \cite{CodeQL}
+Github's code scanner uses an in-built tool called CodeQL that allows the users to analyze the code that is in the Github repository to find vulnerabilities and errors in the code. The results of these analyzes are shown as code scanning alerts in Github.This feature helps identifying existing issues, but also prevents new ones from being introduced. \cite{CodeQL}
 
 CodeQL can be scheduled so that it runs on days that users set. It also makes it possible to trigger the CodeQL to run. Such triggers can be when changes have been done in the repository. 
  Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different fixes easily between members in the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
@@ -43,16 +43,16 @@ CodeQL can be scheduled so that it runs on days that users set. It also makes it
 
 
 \subsection{Secret Scanner}
-Github's Secret scanner is an in-built tool that analyzes the code on all branches to see if there are any secrets within the code. Such secrets can be tokens or private keys. This is the case for archived repositories as well. To authenticate with an external service, developers may require a token or a private key, which can be issued by a service provider. However, if these secrets gets added to the repository, anyone with read access can use these to their advantage and get access to the external service. Therefore it is highly recommended that such secrets are stored outside the repository. However, secret scanning is created to alert on such secrets when detected. Developers can get the
+GitHub's Secret scanner is an in-built tool that analyzes the code on all branches to see if there are any secrets within the code. Such secrets can be tokens or private keys. This is the case for archived repositories as well. To authenticate with an external service, developers may require a token or a private key, which can be issued by a service provider. However, if these secrets gets added to the repository, anyone with read access can use these to their advantage and get access to the external service. Therefore it is highly recommended that such secrets are stored outside the repository. However, secret scanning is created to alert on such secrets when detected. Developers can get the
 security scanner in two forms: 
 \begin{itemize}
     \item \textbf{Secret Scanning alerts for users}
-Github's security scanning for users is intended for organizations that have licensed Github Advanced Security and provides the ability to enable and configure scanning for private and internal repositories. This feature allows users to define their own custom pattern-matching rules to identify secrets in code and will report any matches in the security tab of the repository for review by the organization. 
+Github's security scanning for users is intended for organizations that have licensed Github Advanced Security and it provides the ability to enable and configure scanning for private and internal repositories. This feature allows users to define their own custom pattern-matching rules to identify secrets in code and will report any matches in the security tab of the repository for review by the organization. 
 
 Overall, security scanning for users allows organizations to define their own custom rules and enables scanning for private and internal repositories.
 
 \item \textbf{Secret Scanning alerts for partners}
-This feature can be enabled for teams that use the Github Enterprise Cloud and have a license for the Github Advanced Security. This means that, to access this form the repositories has to be owned by an organization that have license to Github Advanced Security. It is not available for repositories that are owned by individuals. 
+This feature can be enabled for teams that use the Github Enterprise Cloud and have a license for the Github Advanced Security. This means that, to access this form the repositories have to be owned by an organization that have license to Github Advanced Security. It is not available for repositories that are owned by individuals. 
 
 When Secret Scanning for users is activated, Github will search for secrets used be various of service providers. If any supported secrets are detected, a secret scanning alert will be generated by GitHub Enterprise Cloud.
 Github's Secret scanning for partners is intended for  third-party service providers who have partnered with Github to provide pre-defined pattern-matching for identifying secrets in code. This feature is available for all public repositories and will report any matches of these predefined patterns directly to the relevant partner for their review and action. 
@@ -72,14 +72,14 @@ Lambda supports a large amount of different programming languages, such as Pytho
 
 
 \subsection{AWS CodePipeline}
-In short \acrshort{aws} CodePipeline is a "\textit{[...]fully managed continuous delivery service that helps you automate your release pipeline. It allows users to build, test, and deploy code into a test production environment[...]}"
+In short \acrshort{aws} CodePipeline is a "\textit{...fully managed continuous delivery service that helps you automate your release pipeline. It allows users to build, test, and deploy code into a test production environment...}"
 \cite{AWSCodePipeline}
 
-CodePipeline automates the pipeline, which means that the build, test and deploy phases are all automated and CodePipeline runs these when it detects changes in the repository. So when a developer pushes changes to the repository, it detectes this and then starts the process by building these changes and if there are any tests that are configured it runs these. \cite{AWSCodePipeline1}
+CodePipeline automates the pipeline, which means that the build, test and deploy phases are all automated and CodePipeline runs these when it detects changes in the repository. When a developer pushes changes to the repository, it detects this and then starts the process by building these changes and if there are any tests that are configured it runs these. \cite{AWSCodePipeline1}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodePipeline.png}
-    \caption{A picture explaining the AWS CodePipeline process}Adapted from: \cite{AWSCodePipeline2}
+    \caption{AWS CodePipeline process}Adapted from: \cite{AWSCodePipeline2}
     \label{fig:my_label}
 \end{figure}
 
@@ -90,7 +90,7 @@ What AWS CodeBuild does is that it downloads the source code provided to it into
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodeBuild.png}
-    \caption{A picture explaining the AWS CodeBuild process}\cite{AWSCodeBuild}
+    \caption{AWS CodeBuild process}\cite{AWSCodeBuild}
     \label{fig:my_label}
 \end{figure}
 \newpage
@@ -111,7 +111,7 @@ CodeCommit makes it easier for developers to collaborate on the code and focuses
 \acrshort{aws} CodeDeploy is defined as "\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lamda and more[...]}"\cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
 
-CodeDeploy can deploy code that runs on a server and is store in for example github repositories or in a \acrshort{aws} S3 Bucket. With CodeDeploy, developers does not have to do any changes in the code already existing to use CodeDeploy. \cite{CodeDeploy1}
+CodeDeploy can deploy code that runs on a server and is store in for example GitHub repositories or in a \acrshort{aws} S3 Bucket. With CodeDeploy, developers does not have to do any changes in the code already existing to use CodeDeploy. \cite{CodeDeploy1}
 
 \begin{figure}[htp]
     \centering
