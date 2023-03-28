@@ -26,6 +26,11 @@ In the deployment phase, the process of releasing the software into the environm
 \subsection{Maintenance} 
 In this phase the software has been deployed and is now being monitored to ensure that it is functioning as it was designed to do. Any refactoring and upgrades are done if needed. Monitoring the software can be done in different ways depending on how the maintenance phase has been sat up. The most common ways of monitoring however is usually through real-time reporting or ad-hoc reporting systems, which is automatically generated within the software that was created and then sent to the company that created it.\cite{MaintenanceSDLC} 
 
+
+%Should we have a better transition between the paragraphs
+
+
+
 \section{Functional Testing vs Security Testing}
 Software testing is a very broad area, and each test varies from according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions. Functional testing is emphasising on the software's behaviour and that the software is working as expected. The functional test cases are based on the requirements of the software which were specified by the stakeholder. There are several functional testing methodologies that can be conducted, such as unit testing and integration testing. White box testing and black box testing are some examples of security testing methods. This topic will be described more in section \ref{boxtesting}. 
 \cite{difftesting} 
@@ -45,7 +50,9 @@ White box testing focuses on the application from within. In such tests, the sou
 \newpage
 
 \section{Application Security Testing}
-Intro
+Application Security Testing can be described as "\textit{process of making applications more resistant to security threats, by identifying security weaknesses and vulnerabilities in source code.}\cite{AST}
+
+Below are some of the different securtity tools that can be used to make applications more resistant to security threats, and which the group will use in securing the \acrshort{sdlc}.
 
 \subsection{SAST}
 \acrlong{sast} is a type of software security testing tool that analysis source code of an application to identify different potentially security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application actually is deployed. \cite{sast}
@@ -54,7 +61,7 @@ Intro
 
 One of the advantages with \acrshort{sast} is that it gives detailed information about the source of the vulnerability, which gives the developer a better understanding on how to fix the issue. 
 
-There are some limitations to \acrshort{sast} tools as well. For example, it can only detect vulnerabilities that are present in the source code. This means that it cannot detect vulnerabilities that results from the interaction between different components of an application.
+There are however, some limitations to \acrshort{sast} tools. For example, it can only detect vulnerabilities that are present in the source code. This means that it cannot detect vulnerabilities that results from the interaction between different components of an application.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/SAST.png}
@@ -66,7 +73,7 @@ There are some limitations to \acrshort{sast} tools as well. For example, it can
 \subsection{DAST}
 Compared to \acrshort{sast}, \acrlong{dast} is also a type of software security testing tool. However, what \acrshort{dast} does is that it evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast} which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this include the interaction of different components and the runtime environment. 
 
-\acrshort{dast} simulates real-world attacks, which it does by sending malicious requests and inputs to the application it is testing and then monitoring the responses. In the end, the tool generates a report that includes the different vulnerabilities that was identified, including a more in-depth decription as well as a remedation on how to fix the issue. \cite{dast}
+\acrshort{dast} simulates real-world attacks, which is done by sending malicious requests and inputs to the application it is testing and then monitoring the responses. In the end, the tool generates a report that includes the different vulnerabilities that was identified, including a more in-depth decription as well as a remedation on how to fix the issue. \cite{dast}
 
 An advantage with \acrshort{dast} is that it can identify security issues that is not detectable through \acrshort{sast}, this can for example be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that gets triggered, for example when the application is under heavy load or when are specific inputs received.
 
@@ -84,7 +91,7 @@ However, there are some limitations with \acrshort{dast} as well, one being that
 \subsection{SCA}
 \acrlong{sca} is, compared to the others, also a type of software security testing tool. What \acrshort{sca} does is that it analyzes the dependencies of a software application to identify and manage potential security risks. The main objective of the \acrshort{sca} is to identify third-party components that may contain security vulnerabilities. \cite{sca}
 
- \acrshort{sca} scans the application's code to identify all of its dependencies, including the different versions of the components used. It then cross-references these dependencies to different databases that include known vulnerabilities. It then generate a report containing any potential risk. In comparison to the others, the report also includes an in-depth description of the vulnerability as well as a recommendation to update the components to newer versions or replacing these. 
+ \acrshort{sca} scans the application's code to identify all of its dependencies, including the different versions of the components used. It then cross-references these dependencies to different databases that include known vulnerabilities and then generate a report containing any potential risk. In comparison to the others, the report also includes an in-depth description of the vulnerability as well as a recommendation to update the components to newer versions or replacing these. 
 
 An advantage with \acrshort{sca} is that it can quickly identify risks that may be introduced from third-party components. It is rather common that modern applications relies on a large number of  different dependencies, which therefore make \acrshort{sca} useful. It can provide a comprehensive view of the security risks associated with an application and help developers make informed decisions about the security and their applications. 
 
@@ -118,9 +125,13 @@ In 2022, the cost of a data breach were estimated to be USD 4,35 million\cite{da
 
 As mentioned in sections 2.3, there are various types of testing that should be executed on an application, including testing of both the written code and the libraries that are integrated and being used. It is crucial to test libraries because they can contain various types of vulnerabilities, especially if they are open source. This is because open-source code is open to common vulnerabilities, which can expose the application to malware injections, distributed denial-of-service (DDoS) attacks, and exposure of sensitive data. \cite{testlibaries}
 
+\newpage
 
 \section{Vulnerability Risk Rating}
 Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, CWE and OWASP Risk Rating Methodology. 
+
+
+
 \subsection{Common Vulnerability Scoring System (CVSS)}
 \acrlong{cvss}, know as \acrshort{cvss}, is \textit{"an Security Content Automation Protocol (SCAP) specification for communicating the characteristics of vulnerabilities and measuring their relative severity"}\cite{nistCVSS}. The system is used to give vulnerabilities a numeric score based on it´s severity. The scores can be translated into low, medium, high and critical to assist organizations to evaluate and rank their vulnerabilities. CVSS is currently at version 3.1. \cite{CVSS}
 \begin{figure}[htp]
@@ -130,11 +141,12 @@ Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, 
     \label{fig:my_label}
 \end{figure}
 
+
 \subsection{Common Vulnerabilities and Exposures (CVE)}
 \acrlong{cve}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The CVE program's mission is to determine, describe, and categorize cybersecurity vulnerabilities that have been made public. All discovered vulnerabilities will be put into records and sent to NVD.\cite{CVE}
 
 \subsection{Common Weakness Enumeration (CWE)}
-\acrlong{cwe}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It was established to serve as a consistent benchmark for security solutions that address vulnerabilities, and as a baseline for identifying, mitigating, and preventing weaknesses. CWE's goals is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source.\cite{CWE} 
+\acrlong{cwe}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It was established to serve as a consistent benchmark for security solutions that address vulnerabilities, and as a baseline for identifying, mitigating, and preventing weaknesses. CWE's goals is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
 
 \subsection{OWASP Risk Rating Methodology}
 OWASP Risk Rating Methodology is an approach which is regularly used in the industry, due to its focus on prioritizing security risks associated with software applications. It contains a formula  that calculates a risk score for each vulnerability based on two factors: likelihood and impact. There are multiple factors which make up the both likelihood and impact. 

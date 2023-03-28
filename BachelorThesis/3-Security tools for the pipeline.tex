@@ -18,8 +18,11 @@ Snyk is a comprehensive developer security platform that helps secure code, depe
 \section{OWASP ZAP}
 OWASP Zed Attack Proxy (ZAP) is an open-source web application security scanner. It is free and is maintained by volunteers across the world under the Open Web Application Security Project (OWASP). ZAP is a DAST tool, and is designed to test web application security. ZAP offers functionality for a wide range of people - from developers to experienced testers. ZAP is available in versions that are compatible with major operating systems, as well as Docker, which means that users are not limited to a specific operating system when using the tool.\cite{owaspZAP}
 
-
 \subsection{Why We Chose OWASP ZAP}
+- Dekker DAST, noe AWS eller GitHub ikke gjør \\
+- Open-source \\
+- Den blir brukt til å bygge sikker pipeline på AWS sine sider, og enkel å bruke med AWS \\
+- 
 
 
 \section{Github Security Tools}
@@ -27,7 +30,7 @@ OWASP Zed Attack Proxy (ZAP) is an open-source web application security scanner.
 \subsection{Dependabot}
 Dependabot is an in-built Github tool that helps developers keep their project dependencies up-to-date. A dependency can be considered a piece of code or software that the project that's being worked on needs and relies on. For example, the project might use a library or package that someone else has written, then this library/package can be considered a dependency of the project. 
 
-Dependencies can be updated over time as new versions are released. Therefore, it is crucial that developers keep the dependencies up to date to ensure that the project stays secure. However, keeping track of all updates that come and manually run these updates can be frustrating for developers since it can be rather time-consuming and error-prone.Dependabot automates the process of checking for new versions of your dependencies and creates pull request to update them, that can be reviewed and merged of the update if necessary. 
+Dependencies can be updated over time as new versions are released. Therefore, it is crucial that developers keep the dependencies up to date to ensure that the project stays secure. However, keeping track of all updates that come and manually run these updates can be frustrating for developers since it can be rather time-consuming and error-prone.Dependabot automates the process of checking for new versions of the dependencies used in the code and then creates pull request to update them. The user can then review the updates and see if its necessary to do any changes or not. 
 Dependabot can also automatically resolve any conflict that may arise when updating dependencies and can even open up separate pull requests for separate dependency updates.  \cite{GithubDependabot2}
 
 Dependabot uses "Github Advisory Database" to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd} and more. \cite{GithubDependabot1}
@@ -44,7 +47,7 @@ CodeQL can be scheduled so that it runs on days that users set. It also makes it
 
 \subsection{Secret Scanner}
 GitHub's Secret scanner is an in-built tool that analyzes the code on all branches to see if there are any secrets within the code. Such secrets can be tokens or private keys. This is the case for archived repositories as well. To authenticate with an external service, developers may require a token or a private key, which can be issued by a service provider. However, if these secrets gets added to the repository, anyone with read access can use these to their advantage and get access to the external service. Therefore it is highly recommended that such secrets are stored outside the repository. However, secret scanning is created to alert on such secrets when detected. Developers can get the
-security scanner in two forms: 
+security scanner in two forms\cite{GithubSecretScanning}: 
 \begin{itemize}
     \item \textbf{Secret Scanning alerts for users}
 Github's security scanning for users is intended for organizations that have licensed Github Advanced Security and it provides the ability to enable and configure scanning for private and internal repositories. This feature allows users to define their own custom pattern-matching rules to identify secrets in code and will report any matches in the security tab of the repository for review by the organization. 
@@ -58,16 +61,15 @@ When Secret Scanning for users is activated, Github will search for secrets used
 Github's Secret scanning for partners is intended for  third-party service providers who have partnered with Github to provide pre-defined pattern-matching for identifying secrets in code. This feature is available for all public repositories and will report any matches of these predefined patterns directly to the relevant partner for their review and action. 
 
 Overall, secret scanning for partners focus on providing predefined pattern-matching rules to third-party service providers. 
-\cite{GithubSecretScanning}
 \end{itemize}
 
 \section{Amazon Web Services Tools}
 \subsection{AWS Lambda}
-\acrshort{aws} Lambda is considered a serverless compute server and is created for developers to be able to run code in the cloud without having the need to set up any servers. It is an on-demand service, which means that developers only pay for what they use. Lambda can be integrated with many different services in the \acrshort{aws} cloud, which means that developers can build rather complex backends and pipelines. 
+According to \acrshort{aws},  Lambda is considered a serverless compute server and is created for developers to be able to run code in the cloud without having the need to set up any servers.\cite{AWSLamda} It is an on-demand service, which means that developers only pay for what they use. Lambda can be integrated with many different services in the \acrshort{aws} cloud, which means that developers can build rather complex backends and pipelines. 
 
 \acrshort{aws} Lambda is what is called an "event-driven" service, which means that it executes code as a response to different events created. Such events can be a lot of things, it can for example be events that have been generated from other \acrshort{aws} services like \acrshort{aws} based data processing pipelines or HTTP endpoints. 
 
-Lambda supports a large amount of different programming languages, such as Python, JavaScript and Ruby etc. However, it also allows developers to create custom runtimes for languages that are not necessarily supported. \cite{AWSLamda}
+Lambda supports a large amount of different programming languages, such as Python, JavaScript and Ruby etc. However, it also allows developers to create custom runtimes for languages that are not necessarily supported. 
 
 
 
@@ -75,7 +77,7 @@ Lambda supports a large amount of different programming languages, such as Pytho
 In short \acrshort{aws} CodePipeline is a "\textit{...fully managed continuous delivery service that helps you automate your release pipeline. It allows users to build, test, and deploy code into a test production environment...}"
 \cite{AWSCodePipeline}
 
-CodePipeline automates the pipeline, which means that the build, test and deploy phases are all automated and CodePipeline runs these when it detects changes in the repository. When a developer pushes changes to the repository, it detects this and then starts the process by building these changes and if there are any tests that are configured it runs these. \cite{AWSCodePipeline1}
+CodePipeline automates the entire \gls{Pipeline}, including the build, test and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects the changes and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodePipeline.png}
@@ -98,7 +100,7 @@ What AWS CodeBuild does is that it downloads the source code provided to it into
 
 \acrshort{aws} CodeCommit is defines as "\textit{...a secure, highly scalable, fully managed source control service that hosts private Git repositories.}"
 \cite{AWSCodeCommit1}
-CodeCommit makes it easier for developers to collaborate on the code and focuses on eliminating the need to operate the source control in the system or scaling the infrastructure. AWS CodeCommit can be necessary for developers who have the need for a secure, reliable and scalable source control system, were code can be stored. \cite{AWSCodeCommit}
+CodeCommit simplifies code collaboration among developers and removes the burden of managing the source control system or scaling infrastructure. AWS CodeComit is particularly useful for developers seeking a secure, dependable and scalable source control system to store their code. \cite{AWSCodeCommit}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1\columnwidth]{Images/CodeCommit.png}
@@ -122,6 +124,5 @@ CodeDeploy can deploy code that runs on a server and is store in for example Git
 
 \newpage
 
-\subsection{AWS S3 Bucket}
-\acrshort{aws} S3 is a simple storage service which is known to be a cloud-based objective storage service. The S3 bucket is designed to provide users with scalable, durable and highly available storage which can be used to store different types of data. Such data can be documents, photos and so on. 
-A S3 bucket can be considered as a container that stores different objects. \cite{S3Bucket}
+\subsection{AWS S3 buckets}
+\acrshort{aws} S3 buckets are a simple storage resources which are known to be  cloud-based. Amazon S3 buckets are designed to provide users with scalable, durable and highly available storage which can be used to store different types of data. Such data can be documents, photos and so on. A S3 bucket can be considered as a container that stores different objects. \cite{S3Bucket}
