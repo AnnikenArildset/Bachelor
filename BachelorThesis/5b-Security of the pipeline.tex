@@ -1,5 +1,5 @@
 \section{Security of the pipeline}
-Security of the pipeline in short terms are the security measures that are taken into consideration when securing the pipeline itself. This includes not only securing the pipeline itself, but also the infrastructure, components, network that are used to process the code that goes through the pipeline. Securing of the pipeline ensures that the code is not tampered through during the process of going through the pipeline. 
+Security of the pipeline in short terms are the security measures that are taken into consideration when securing the pipeline itself. This includes not only securing the pipeline itself, but also the infrastructure, components, network that are used to process the code that goes through the pipeline. Securing of the pipeline ensures that the code is not tampered with during the process of going through the pipeline. 
 
 
 \subsection{Branch Protection}
@@ -12,27 +12,25 @@ Administrators of the repository can add rules to the repository which restricts
 It is under this type of protection the "four eyes" principal is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes, this principal is a controlling mechanism that increases the security measures. 
 \\
 \subsubsection{Require status checks to pass before merging}
-When users work together in the same repository, it is important to maintain high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that needs to be fulfilled before the code is merged. These criteria's are called "status checks", and such checks can run automatically on the code before its merged. Status checks can for example be that the code is checked for style violations or different tests can also be run. 
+When users work together in the same repository, it is important to maintain high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that needs to be fulfilled before the code is merged. 
 \newpage
 \subsubsection{Require conversation resolution before merging}
-Working together with other team members in the same Github repository can quickly become chaotic, therefore it is important to have clear communication and collaboration. A way to secure this is to enable "require conversation resolution before merging". This allows all discussions to be properly resolved before any merging happens. This is a setting that if there are any discussions regarding a pull request, these discussions need to be resolved before its merged. This means that any issues, discussions or comments needs to be resolved for the merge to be successful. 
+When working together on the same repository it is important to have  clear communication and collaboration  A way to secure this is to enable "require conversation resolution before merging". This allows all discussions regarding for example issues or pull requests needs to be properly resolved before any merging happens. 
 \\
 \subsubsection{Require signed commits}
 Enabling require signed commits can be considered a security measure that secures that changes in the code have not been tampered with. 
 To be able to have secured signed commits, all commits pushed to the repository must be signed with a \acrlong{gpg} key. A \acrshort{gpg} key is  a unique digital signature that in short terms verifies the person that is committing to the repository is who they say they are. 
-Such restrictions minimizes the risk of unauthorized users to do changes in the repository, since there are only trusted users that sign with \acrshort{gpg} keys that are allowed to do changes. 
+
 
 \subsubsection{Require linear history}
-When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that have been done and minimizes the chances of mistakes. 
-
-Enforcing such measures restricts users from merging their own changes with the main branch. Consequently, all changes must be made on top of the main branch to ensure easy traceability of all changes to the main branch, without creating confusion with multiple branches.
+When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that have been done and minimizes the chances of mistakes. Enforcing such measures restricts users from merging their own changes with the main branch. 
 \newpage
 
 \subsubsection{Require deployments to succeed before merging}
-Require deployments to succeed before merging is another feature in GitHub, that allows the users to enforce that different required checks that has been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch. This feature will ensure that the code that's been merged to the main branch is in a stable state and meets all the criteria necessary for a proper deployment. This will in some degree prevent issues or bugs in the production environment. 
+Require deployments to succeed before merging is another feature in GitHub, that allows the users to enforce that different required checks that has been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch.
 
 \subsubsection{Lock branch}
-Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. There are only users with admin access to the repository that can unlock the branch or make any changes to it. 
+Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. 
 
 \subsubsection{Do not allow bypassing the above settings}
 This feature in short, prevents users in a repository from bypassing required checks that have been created or other restrictions. For example, if a user with admin access have configured a branch protection rule which requires that all pull requests reviews and status checks needs to be passed before merging, enabling this feature will then tell the user to go through these reviews and checks before any changes are done directly to the branch. 
@@ -40,15 +38,14 @@ This feature in short, prevents users in a repository from bypassing required ch
 
 \subsection{Access Control}
 Access control involves implementing measures to regulate the individuals who are allowed to access certain resources like GitHub, as well as determining the appropriate level of access for each individual. When applying these measures, one should follow the "least privilege" principle. According to NIST, this is \textit{"the principle that a security architecture should be designed so that each entity is granted the minimum system resources and authorizations that the entity needs to perform its function"}\cite{leastprivilege}. In Github, access is controlled by permission - which is the capability to execute a particular task. Employees can also be assigned to roles. A role is a type of permission that you can grant to an employee or a team. \cite{accesscontroll}
-\\
-\\
+\\~\\
 A security measure that works like access control is \acrlong{mfa} (\acrshort{mfa}). It involves requiring users to provide additional information during the login process, not just password. Along with the password, the user must make use of a hardware token or a code sent to their phone. 
 This procedure can aid in the prevention of unauthorized access to a company's systems. It is critical to enable this measure across all system components to ensure overall system security, as securing only one part of the system will not be effective if another part remains unprotected. 
 
  
 \subsection{File Storage and Preservation}
-File storage involves management of digital files and how to secure them in the best way possible.
+To be able to maintain proper security of the pipeline, file storage and preservation can be considered a large part of this. File storage and preservation helps securing the pipeline over time, by doing regularly backups of the data related to the pipeline. By maintaining redundant copies of critical data, the risk of data loss due to attacks or other security breaches can be minimized. 
 
-When it comes to preservation, it in a larger degree ensures the accessibility to the pipeline for a longer period. Who shall have access to do changes to the pipeline after it has been created and for how long. 
+Some other important aspects of file storage and preservation is access control, which should be restricted to bare minimum. As a result this can minimize the chances of data tampering or data theft. 
 
 

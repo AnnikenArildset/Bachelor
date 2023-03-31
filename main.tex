@@ -18,11 +18,15 @@
 \input{BachelorThesis/0a1-trickthesystem}
 \input{BachelorThesis/0b-Sammendrag.tex}
 \input{BachelorThesis/0c-Preface}
+
 \tableofcontents
 
 \listoffigures
 \listoftables
-%\lstlistoflistings
+\cleardoublepage % Ensure that the page number is correct
+\phantomsection % Ensure that the hyperlink is correct
+\addcontentsline{toc}{chapter}{List of Code} % Add to the table of contents as a section
+\lstlistoflistings
 
 \printglossary[type=\acronymtype]
 \printglossary
@@ -47,12 +51,13 @@
 \newpage
 \input{BachelorThesis/6-Deployment}
 \newpage
-\input{BachelorThesis/7-Testing}
+%\input{BachelorThesis/7-Testing}
 \newpage
 \input{BachelorThesis/8-Discussion}
 \newpage
 \input{BachelorThesis/9-Conclusion}
 \newpage
+\input{BachelorThesis/Code}
 
 
 

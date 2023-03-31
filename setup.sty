@@ -141,8 +141,47 @@
 %\import{./Sections/}{Acronyms}
 \import{./BachelorThesis}{Acronyms2}
 
-
+\usepackage{float}
 \usepackage{ragged2e}
 
 \usepackage{boldline,multirow}
 \usepackage{booktabs}
+
+\usepackage{listings}
+\lstdefinestyle{python}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    morecomment=[l][\color{magenta}]{\#}
+ }
+
+
+% Terraform formatting options
+\lstdefinelanguage{terraform}{
+  keywords={resource, provider, variable, output, module},
+  keywordstyle=\color{blue},
+  morestring=[b]",
+  stringstyle=\color{red},
+  comment=[l]{\#},
+  commentstyle=\color{green},
+  morecomment=[s]{/*}{*/},
+  moredelim=**[is][\color{purple}]{@}{@},
+}
+
+\lstdefinestyle{terraform}{
+  language=terraform,
+  basicstyle=\ttfamily\small,
+}
+
+    \lstdefinestyle{cpp}{
+    language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    morecomment=[l][\color{magenta}]{\#}
+}
+
+\usepackage{tcolorbox}
