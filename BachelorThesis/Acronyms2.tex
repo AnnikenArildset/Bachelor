@@ -21,11 +21,16 @@
 \newacronym{gpg}{GPG}{GNU Privacy Guard}
 \newacronym{idea}{IDEA}{International Data Encryption Algorithm}
 \newacronym{mfa}{MFA}{multi-factor authentication}
+\newacronym{iam}{IAM}{identity access management}
+\newacronym{cicd}{CI/CD}{Continuous integration and continuous deployment}
+\newacronym{ec2}{Amazon EC2}{Amazon Elastic Compute Cloud}
+\newacronym{amis}{AMIs}{Amazon Machine Images}
 
 
 \newglossaryentry{buildspec}
 {
     name=Buildspec,
+    text= buildspec,
     description={Buildsec is a collection of build commands and related settings in a YAML format that CodeBuild uses to run a build}
 }
 
@@ -40,7 +45,8 @@ A graphics-based operating system interface that uses icons, menus and a mouse (
 \newglossaryentry{Pipeline}
 {
     name=Pipeline,
-    description={A pipeline is a process that drives software development through a path of building, testing, and deploying code, also known as CI/CD}
+    text = pipeline,
+    description={A pipeline is a process that drives software development through a path of building, testing, and deploying code, also known as \acrshort{cicd}}
 }
 
 
@@ -69,7 +75,7 @@ A graphics-based operating system interface that uses icons, menus and a mouse (
 
 
 \newglossaryentry{Buffer-Overflow}{
-    name = Buffer overflow,
+    name = Buffer-overflow,
     description={Buffer overflow occurs when the volume of data exceeds the storage capacity of the memory buffer}
 }
 
@@ -77,4 +83,21 @@ A graphics-based operating system interface that uses icons, menus and a mouse (
 \newglossaryentry{dependency}{
     name = Dependencies ,
     description={A dependency refers to any external software component that an application relies on in order to function.}
+}
+
+\newglossaryentry{artifact}{
+    name = Artifact,
+    text= artifact,
+    description = {An artifact is an snapshot of running stable code that you save as a backup}
+}
+
+\newglossaryentry{ddos}{
+    name = DDoS attack,
+    description = {A DDoS (Distributed Denial of Service) attack is an attack where multiple systems are used to flood a targeted website or online service with traffic, overwhelming its capacity to handle requests and making it unavailable to legitimate users}
+}
+
+\newglossaryentry{compute platform}{
+    name = Compute platform,
+    text = compute platform,
+    description = {The environment where software is executed. This could be either the operating system or physical hardware}
 }

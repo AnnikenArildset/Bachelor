@@ -5,10 +5,11 @@
 
 \acrlong{sdlc} (\acrshort{sdlc}), describes how software applications are built - from planning through implementation and running in production. It also includes ensuring security at the different stages of software development. In order to accommodate frequent deployments to production, it is important to automate the security testing by building it into the deployment pipeline. The security testing can further benefit from shift-left, where testing is done as early as possible in the pipeline. Implementing a strong and secure software development life cycle is essential to prevent attacks from hackers and other malicious actors on your application. Securing the \acrshort{sdlc} is a large and actively developed area with a lot of interest from the industry. Demonstrating the integration and practical application of various tools and methods can be beneficial for both \acrshort{nbim} and other organizations.
 
-\subsection{Problema Area}
+\subsection{Problem Area}
+The society is constantly developing, and traditional security approaches are no longer sufficient. Securing the \acrlong{sdlc} has become a common topic in the tech industry, and there are a lot of resources available to help organizations implement best practices and effective security measures. Finding the appropriate resources can take time, and automating the complete distribution process, along with automated testing using multiple tools, can be a time-consuming process. NBIM is looking for a proof of concepts on how to build a secure pipeline using best practices, as well as implement multiple tools which can scan for security misconfiguration and vulnerabilities at key stages of the pipeline. 
 
-\section{Scope}
-\section{Scope Limitation}
+ 
+\section{Scope and Limitation}
 In the thesis, all phases of the \acrlong{sdlc} will be introduced. There will be an introduction of what these phases are and why it is important to secure each phase. However, considering the scope, only the later four phases will be in focus in the thesis. 
 
 
@@ -36,6 +37,7 @@ The thesis has multiple target groups. The primary target group is NBIM, their s
 The project group is currently in the third and final year of a Bachelor's degree program in Digital Infrastructure and Cyber Security at NTNU, campus Gjøvik. Throughout the studies, the group have covered a diverse range of subjects such as risk management, ethical hacking, cybersecurity, and teamwork. These subjects have equipped the group with relevant knowledge for their thesis work.
 
 \subsection{Knowledge that had to be acquired}
+\label{section:Knowledge that had to be acquired}
 The group had to acquire various new aspects of software development for the thesis, as it was not extensively covered in their studies. This included topics like \acrshort{sdlc}, \acrlong{sast}, \acrlong{dast} and \acrlong{sca} and more. Due to the inclusion of the practical parts in the thesis, like testing of insecure code, the group had to learn about building a pipeline and integrating various security tools to ensure a secure development. As a significant part of the main scope focused on tools integrated in GitHub and Amazon Web Services, the group had to acquaint themselves with these tools, and the various features of GitHub. Despite the group's previous experience with GitHub from previous courses, there were still numerous features that were unfamiliar to them. In contrast, AWS was entirely unfamiliar to the group, and they had no prior knowledge about it. However, they had used similar cloud services like Microsoft Azure.
 
 In addition, the group had to familiarize themselves with Terraform, which was utilized to establish the automated pipeline. The decision to use Terraform instead of working solely in the GUI was based on several reasons to use infrastructure-as-code over manual configuration. For instance, automation could enhance efficiency and decrease errors in the development process.
@@ -63,13 +65,12 @@ The group used different methods to gain knowledge that was needed to fulfill th
 During the second phase of the project, the group had interviews with different lectures at NTNU Gjøvik for gathering information about the related topics. By exploring the perspectives of experts within software security, the group gained knowledge about the topic from another perspective than the ones given during the literature studies. Questions that the group had were written down in advance so that the group could ask about different topics that was unclear from the research that was done in advanced.   
 
 \subsubsection{Literature study}
-The literature study was done by researching online for relevant information about the topics. The group also used Chatgpt as a guide. It was used to give relevant web pages for each of the topics. The literature study helped the group with adding suitable material for the theory chapter. It also helped the group with gaining more knowledge on the topics since, this was something that was not familiar to the group. 
+The literature study was done by researching online for relevant information about the topics. The group also used ChatGPT as a guide. It was used to give relevant web pages for each of the topics. The literature study helped the group with adding suitable material for the theory chapter. It also helped the group with gaining more knowledge on the topics since, this was something that was not familiar to the group. 
 
 \section{Relevant Hyperlinks}
 As part of the thesis project, the group created a GitHub repository that contains all the code utilized for testing the efficiency of vulnerability scanning tools and configuring an automated pipeline for deployment. 
 
-%\textbf{GitHub Repository:} \href{}{}
-
+\href{https://github.com/SebastianHestsveen/DCSG2900-Bachelor-thesis}{\textbf{https://github.com/SebastianHestsveen/DCSG2900-Bachelor-thesis}}
 
 \section{Thesis structure}
 When reading this thesis, there are some things that can be useful to note. There are clickable links, so that the navigation to chapters, sections, acronyms, figures, tables and sources goes as seamlessly as possible. This means that the reader can for example go in the table of content, click on the chapter or section that the reader wants to look deeper into and and the reader will then be jumped right down to that chapter. The language used in throughout the text is English. It is also worth mentioning that the chapters are divided into chapters, subsections, subsubsections where chapters are the highest level, while subsubsection is the lowest. 
@@ -78,13 +79,11 @@ When reading this thesis, there are some things that can be useful to note. Ther
     \item \textbf{Chapter 1 - (Introduction)}: An introduction to the thesis.
     \item \textbf{Chapter 2 - (Theory)}: Contains different theory that the group consider important 
     to have some knowledge about to understand the thesis as a whole.
-    \item \textbf{Chapter 3 - (Security Tools For The Pipeline)}: Contains an overview of the different tools the group has implemented into their pipeline. This is tools integrated in GitHub and AWS, as well as third-party tools. 
-    \item \textbf{Chapter 4 - (Analyzing of tools)}: Contains more in-depth analyzes of the tool used in this thesis, were pros and cons are looked at. 
-    \item \textbf{Chapter 5a - (Security in the pipeline)}: Contains an overview on what to implement to secure the files that is being sent through the pipeline. 
-    \item \textbf{Chapter 5b - (Security of the pipeline)}: Contains an overview on what to include to secure the actual pipeline itself. 
-    \item \textbf{Chapter 6 - (Deployment)}: ?
-    \item \textbf{Chapter 7 - (Discussion)}: Contains in-depth discussion on everything the group have discussed. 
-    \item \textbf{Chapter 8 - (Conclusion)}: ?
+    \item \textbf{Chapter 3 - (Pipeline security)}: Contains an overview on what to implement to secure files being sent through the pipeline, as well as what to include to secure the pipeline itself. 
+    \item \textbf{Chapter 4 - (Analysis of the pipeline security tools)}: Contains an overview of the different tools the group has implemented into their pipeline, with an analysis of these tools, where pros and cons are looked at. 
+    \item \textbf{Chapter 5 - (Deployment)}: Contains the steps done for implementing chosen security tools. 
+    \item \textbf{Chapter 6 - (Discussion)}: Contains in-depth discussion on everything the group have discussed. 
+    \item \textbf{Chapter 7 - (Conclusion)}: Contains an overview of what has been dicussed throughout the thesis and a conclusion to the groups findings. 
 
 \end{itemize}
 
