@@ -3,10 +3,10 @@ Security in the pipeline is the process of implementing different measures and c
 
 \subsection{Code Scanning}
 %du tester koden som skal bli deployet, alstå det som ligger inni pipelinen. Sjekkes for sårbarheter etc
-Code scanning is security measure where code is analyzed with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. During this step, you can perform a SAST scan using specialized tools that are designed to scan through code. 
+Code scanning is a security measure where code is analyzed with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. During this step, you can perform a SAST scan using specialized tools that are designed to scan through code. 
 \\
 \\
-GitHub provides an integrated code scanner called CodeQL. CodeQL extractsd all source code into a relational database optimized for CodeQL analysis.  It can then be queried to identify insecure patterns in the code and other vulnerabilities. The user can take advantage of the large quantity of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code. 
+GitHub provides an integrated code scanner called CodeQL. CodeQL extracts all source code into a relational database optimized for CodeQL analysis.  It can then be queried to identify insecure patterns in the code and other vulnerabilities. The user can take advantage of a large number of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code. 
  \cite{codeql}
 
  \vspace{2mm}
@@ -18,7 +18,7 @@ GitHub provides an integrated code scanner called CodeQL. CodeQL extractsd all s
 \end{figure}
 
 \subsection{Scan Dependencies and Open Source Libraries}
-All dependencies, open source libraries and third party artefacts that have been utilized should be validated. This can be done by comparing their checksum against a reliable, good source and validating any cryptographic signatures. If any third party software was implemented in the application it's important to conduct an \acrshort{sca} scan using suitable tools to identify whether any vulnerable open-source software was used. \cite{bestpracticeSupplyChain}
+All dependencies, open-source libraries, and third-party \gls{artifact}s that have been utilized should be validated. This can be done by comparing their checksum against a reliable, good source and validating any cryptographic signatures. If any third-party software was implemented in the application it's important to conduct an \acrshort{sca} scan using suitable tools to identify whether any vulnerable open-source software was used. \cite{bestpracticeSupplyChain}
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -44,7 +44,7 @@ In software best practices, it is recommended to run multiple tests and scans to
 
 
 \subsubsection{The Limitations of DAST Tools}
-Even though \acrshort{dast} can be used to identifying potential vulnerabilities, there are certain types of threats that may go undetected. For this reason, the company should engage a red team, which is a group of experts capable of performing penetration testing. A pen test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities and provide a more comprehensive view of an application's security posture. A pen test can also function as a validation of the \acrshort{dast} scan, as it can help determine if the vulnerability can be exploited and the potential impact of the vulnerability. \cite{dastpentesting}
+Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected. For this reason, the company should engage a red team, which is a group of experts capable of performing penetration testing. A pen test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. A pen test can also function as a validation of the \acrshort{dast} scan, as it can help determine if the vulnerability can be exploited and the potential impact of the vulnerability. \cite{dastpentesting}
 
 \vspace{2mm}
 \begin{figure}[H]

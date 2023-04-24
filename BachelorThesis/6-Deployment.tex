@@ -1,6 +1,7 @@
 \chapter{Deployment}
+\label{Deployment}
 \section{Introduction}
-In the following chapter, there will be a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: https://www.terraform.io/} as the programming language. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: https://registry.terraform.io/providers/hashicorp/aws/latest} for information on how to set up the different steps using Terraform. 
+In the following chapter, there will be a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: https://www.terraform.io/}, which is a \gls{infrastructure as code} tool. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: https://registry.terraform.io/providers/hashicorp/aws/latest} for information on how to set up the different steps using Terraform. 
 
 \section{Code used in the pipeline}
 For testing the group decided on using OWASPs Juice Shop\footnote{Code available at: https://github.com/juice-shop/juice-shop}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
@@ -10,20 +11,31 @@ Overall, OWASP Juice Shop encourages users to improve their skills and it allows
 
 \section{Pushing to GitHub}
 When the source code is ready to be pushed to GitHub, security measures must be in place. One of the previously mentioned measurements is branch protection. Branch protection rules are easy to enable in GitHub. It is done for each individual repository. GitHub has different rules one can enable, which are explained in \ref{branchprotection}. This can either be done in \gls{GUI} or automated using Terraform, which is shown in Appendix X. 
+
 %\subsection{Access control}
 %Something about access control
 \begin{comment}
 Can easily be enabled in GitHub. Branch protection rules are enables for individual repositories, different repos have different structures and branches. Under settings->Code and automation->Branches you can add branch protection rules. You just enable the ones you want. 
 \end{comment}
 %\subsection{Signed commits}
-\\~\\
+
 Further, the commit signature has to be configured. For signing commits in GitHub, one can either use an SSH or GPG key. These need to be generated and connected to the user's GitHub account. Adding this security measurement increases the authentication of the developer. How to generate and connect a key to a GitHub account is done by following the steps GitHub has provided\footnote{Available at: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{Images/verified-commit.png}
-    \caption{Verified commit in GitHub}
-    \label{fig:verified-commit}
+\begin{figure}
+  \centering
+  \begin{subfigure}[H]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{Images/signedcommits.png}
+    \caption{Required passphrase when committing to GitHub}
+    \label{fig:image1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[H]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{Images/verified-commit.png}
+    \caption{Verified commit}
+    \label{fig:image2}
+  \end{subfigure}
+  \caption{Required signed commits}
+  \label{fig:overall}
 \end{figure}
 
 \begin{comment}
@@ -94,10 +106,19 @@ When this is done, you have to enter your passphrase, and the commit will be ver
 \end{comment}
 
 \section{Managing security in GitHub}
-After the source code is pushed to its belonging branch, the code must be scanned for potential vulnerabilities before moving forward. One of these scans is SAST scanning using CodeQL. Setting up CodeQL\footnote{Intructions available at: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository} is done by adding the CodeQL YAML file in the workflow. Other security tools in GitHub are Dependabot\footnote{Instructions available at: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates} and Secret scanner\footnote{Instructions available at: https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities. 
+After the source code is pushed to its belonging branch, the code must be scanned for potential vulnerabilities before moving forward. One of these scans is SAST scanning using CodeQL. Setting up CodeQL\footnote{Intructions available at: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository} is done by adding the CodeQL YAML file in the workflow. Other security tools in GitHub are Dependabot\footnote{Instructions available at: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates} and Secret scanner\footnote{Instructions available at: https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{Images/codescan.png}
+    \caption{Critical alert from code scan}
+    \label{fig: Critical alert from code scan}
+\end{figure}
+
+An example of code scanning alerts using CodeQL is this critical alert, notifying the user of a hard-coded credential. The code scanning alerts refer to CWE weaknesses, which are explained further in \ref{cwe}.
 
 \section{Committing the source code to AWS}
-When all vulnerabilities are detected and fixed in GitHub, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. AWS CodeStar Connection enables the connection of cloud resources to external code repositories, such as the Juice-Shop repository on GitHub. By creating this connection as a resource, it can be used by AWS CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
+When all vulnerabilities are detected and fixed in GitHub, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. AWS CodeStar Connection enables the connection of cloud resources to external code repositories, such as the Juice-Shop repository on GitHub. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
 This can either be done on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider. 
 
 \begin{tcolorbox}
@@ -109,12 +130,10 @@ resource "aws_codestarconnections_connection" "code-connection" {
 \end{verbatim}
 \end{tcolorbox}
 
-Following the successful creation of the connection resource in \acrshort{aws} using Terraform, a manual verification process in AWS is required. This is essential due to the requirement to log in to the system with one's GitHub account credentials, as passing secrets through AWS to GitHub login is not possible, due to the connection opening a third-party login page that AWS does not control.
+Following the successful creation of the connection resource in \acrshort{aws} using Terraform, a manual verification process in \acrshort{aws} is required. This is essential due to the requirement to log in to the system with one's GitHub account credentials, as passing secrets through \acrshort{aws} to GitHub login is not possible, due to the connection opening a third-party login page that \acrshort{aws} does not control.
 
 \section{Storing artifacts}
-To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional 
-
-One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this as a means to differentiate between buckets owned by different users.
+To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional variables. One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this as a means to differentiate between buckets owned by different users. Either the name can be configured like in the code below, or the name variable can be excluded and \acrshort{aws} will configure the name themselves.
 
 \begin{tcolorbox}
 \begin{verbatim}
@@ -124,7 +143,7 @@ resource "aws_s3_bucket" "codepipeline_artifact" {
 \end{verbatim}
 \end{tcolorbox}
 
-In order for each stage to be able to access the S3 bucket and retrieve the last stage's \gls{artifact}s, it has to be given access to the bucket. These access rights have to be individually given to each stage in the pipeline. In the following code the pipeline and every stage is given access to the bucket, hence the "s3:*".
+In order for each stage to be able to access the S3 bucket and retrieve the last stage's \gls{artifact}s, it has to be given access to the bucket. These access rights have to be individually given to each stage in the pipeline. In the following code the pipeline and every stage are given access to the bucket, hence the "s3:*".
 
 \begin{tcolorbox}
 \begin{verbatim}
