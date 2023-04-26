@@ -13,7 +13,7 @@ It is under this type of protection that the "four eyes" principle is applied. S
 \\
 \subsubsection{Require status checks to pass before merging}
 When users work together in the same repository, it is important to maintain the high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that need to be fulfilled before the code is merged. 
-\newpage
+
 \subsubsection{Require conversation resolution before merging}
 When working together on the same repository it is important to have clear communication and collaboration  A way to secure this is to enable "require conversation resolution before merging". This allows all discussions regarding for example issues or pull requests that need to be properly resolved before any merging happens. 
 \\
@@ -29,10 +29,9 @@ When enabling this security feature, it ensures that all changes done in the rep
 Require deployments to succeed before merging is another feature in GitHub, that allows the users to enforce that different required checks that have been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch.
 
 
-
 \subsubsection{Lock branch}
 Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. 
-\newpage
+
 
 \subsubsection{Do not allow bypassing the above settings}
 This feature, in short, prevents users in a repository from bypassing required checks that have been created or other restrictions. For example, if a user with admin access has configured a branch protection rule which requires that all pull requests reviews and status checks needs to be passed before merging, enabling this feature will then tell the user to go through these reviews and checks before any changes are done directly to the branch. 

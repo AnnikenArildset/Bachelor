@@ -1,7 +1,7 @@
 \chapter{Deployment}
 \label{Deployment}
 \section{Introduction}
-In the following chapter, there will be a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: https://www.terraform.io/}, which is a \gls{infrastructure as code} tool. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: https://registry.terraform.io/providers/hashicorp/aws/latest} for information on how to set up the different steps using Terraform. 
+In the following chapter, there is a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: https://www.terraform.io/}, which is a \gls{infrastructure as code} tool. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: https://registry.terraform.io/providers/hashicorp/aws/latest} for information on how to set up the different steps using Terraform. 
 
 \section{Code used in the pipeline}
 For testing the group decided on using OWASPs Juice Shop\footnote{Code available at: https://github.com/juice-shop/juice-shop}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
@@ -19,9 +19,10 @@ Can easily be enabled in GitHub. Branch protection rules are enables for individ
 \end{comment}
 %\subsection{Signed commits}
 
-Further, the commit signature has to be configured. For signing commits in GitHub, one can either use an SSH or GPG key. These need to be generated and connected to the user's GitHub account. Adding this security measurement increases the authentication of the developer. How to generate and connect a key to a GitHub account is done by following the steps GitHub has provided\footnote{Available at: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}.
+Further, the commit signature has to be configured. For signing commits in GitHub, one can either use an SSH or GPG key. These need to be generated and connected to the user's GitHub account.
+GitHub provides documentation\footnote{Available at: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits} on how to create a GPG and SSH key, as well as how to connect these keys to a GitHub account.
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \begin{subfigure}[H]{0.4\textwidth}
     \includegraphics[width=\textwidth]{Images/signedcommits.png}
@@ -117,6 +118,25 @@ After the source code is pushed to its belonging branch, the code must be scanne
 
 An example of code scanning alerts using CodeQL is this critical alert, notifying the user of a hard-coded credential. The code scanning alerts refer to CWE weaknesses, which are explained further in \ref{cwe}.
 
+\vspace{2mm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{Images/dependabotalert.png}
+    \caption{Critical alert from Dependabot}
+    \label{fig: Critical alert from Dependabot}
+\end{figure}
+
+Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts from Dependabot in the Juice-Shop repository. It shows a vulnerability in the dependency version used, following a suggestion on a patched version. Dependabot, similarly to CodeQL, refers to CWE weaknesses. Additionally, it refers to a CVE ID. 
+
+\vspace{2mm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{Images/secretscanneralert.png}
+    \caption{Alert from secret scanner} Adapted from: \cite{GitHubVideo}
+    \label{fig: Alert from secret scanner}
+\end{figure}
+The GitHub Secret scanner did not detect any secrets in the Juice-Shop repository. Therefore, Figure \ref{fig: Alert from secret scanner} is taken from GitHub's demonstration of the secret scanner. The alert warns the user about an API key that matches the pattern of their partner Twilio. 
+
 \section{Committing the source code to AWS}
 When all vulnerabilities are detected and fixed in GitHub, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. AWS CodeStar Connection enables the connection of cloud resources to external code repositories, such as the Juice-Shop repository on GitHub. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
 This can either be done on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider. 
@@ -131,6 +151,8 @@ resource "aws_codestarconnections_connection" "code-connection" {
 \end{tcolorbox}
 
 Following the successful creation of the connection resource in \acrshort{aws} using Terraform, a manual verification process in \acrshort{aws} is required. This is essential due to the requirement to log in to the system with one's GitHub account credentials, as passing secrets through \acrshort{aws} to GitHub login is not possible, due to the connection opening a third-party login page that \acrshort{aws} does not control.
+
+INSERT MODEL HERE?
 
 \section{Storing artifacts}
 To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional variables. One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this as a means to differentiate between buckets owned by different users. Either the name can be configured like in the code below, or the name variable can be excluded and \acrshort{aws} will configure the name themselves.
@@ -172,7 +194,10 @@ data "aws_iam_policy_document" "tf-cicd-build-policies" {
 \end{tcolorbox}
 \end{comment}
 
+INSERT MODEL WITH S2 HERE?
+
 \section{The build stage}
+In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website. The CodeBuild 
 The build stage has three key components: the build resource, the \gls{buildspec} file, and the \acrshort{iam}. Then link the build resource to the pipeline resource. The key point in the build resource is the container you are building an environment where we set up a temporary container from AWS's pre-built images. The key point in building resources is the container being built as an environment where a temporary container is set up using pre-built images from AWS. 
 
 
