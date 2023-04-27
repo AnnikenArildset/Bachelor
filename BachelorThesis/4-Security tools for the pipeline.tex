@@ -1,5 +1,5 @@
 \chapter{Analysis of Security tools for the pipeline}
-
+\label{chap:Tools}
 \section{Introduction}
 This chapter presents an introduction to the selected tools for this thesis and provides a description of their features. Additionally, the group will explain their reasoning behind selecting each of the different tools and look at the pros and cons of each. 
 
@@ -51,6 +51,8 @@ These pros and cons are a combination of the personal experiences and informatio
 
 
 \section{Github Security Tools}
+\subsection{Why tools integrated in GitHub was chosen}
+Initially, the plan for the thesis  was to explore third-party tools, such as Snyk and Mend,  that could be integrated in Github and AWS and do an analysis of these. Nonetheless, a lecturer at NTNU Gjøvik suggested that the group could look closer into the in-built tools in GitHub and aws that perform \acrshort{sast}, \acrshort{dast} and \acrshort{sca} tests. The lecturer pointed out that examining third-party tools, such as Snyk, wouldn't be that intriguing since the third-party tools could already be considered up-to-date and reliable. On the other hand however, it could be interesting  to look into already in-built tools in AWS and Github and analyze these instead of implementing third-party tools. The reason behind the suggestion was that it could be useful to investigate tools that are already integrated and make a secure pipeline with these rather than look at state-of-the-art third-party tools. 
 
 \subsection{Dependabot}
 Dependabot is an in-built GitHub tool that helps developers keep their project dependencies up-to-date. A dependency can be considered a piece of code or software that the project that's being worked on needs and relies on. For example, the project might use a library or package that someone else has written, then this library/package can be considered a dependency of the project. 
@@ -60,8 +62,8 @@ Dependabot can also automatically resolve any conflict that may arise when updat
 
 Dependabot uses the "GitHub Advisory Database" to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd}, and several others. \cite{GithubDependabot1}
 
-\subsection{Why Dependabot was chosen}
-Dependabot was chosen to gain a better understanding of tools that are already integrated into GitHub instead of implementing third-party tools for the different application security tests. This was to evaluate the necessity of a third-party tool, given that GitHub already offers tools that are widely used by developers. The group found it reasonable to assume that GitHub provides sufficient tools making it unnecessary to implement a third-party tool, which is the reason why the group decided to test this theory. 
+%\subsection{Why Dependabot was chosen}
+%Dependabot was chosen to gain a better understanding of tools that are already integrated into GitHub instead of implementing third-party tools for the different application security tests. This was to evaluate the necessity of a third-party tool, given that GitHub already offers tools that are widely used by developers. The group found it reasonable to assume that GitHub provides sufficient tools making it unnecessary to implement a third-party tool, which is the reason why the group decided to %test this theory. 
 \subsubsection{Pros and cons}
 These pros and cons are a combination of the personal experiences and information found during research. \cite{prosconsdependabot} 
 
@@ -88,7 +90,7 @@ These pros and cons are a combination of the personal experiences and informatio
 \end{table}
 
 \subsection{Code Scanner}
-GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. The results of these analyzes are shown as code scanning alerts in GitHub.This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
+GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. The results of these analyzes are shown as code-scanning alerts in GitHub.This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
 
 CodeQL can be scheduled so that it runs on days that users set. It is also possible to trigger CodeQL to run when for example changes have been done to the repository.
 Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different fixes easily between members of the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
@@ -112,6 +114,7 @@ Any issues found during the scanning process are displayed as alerts within the 
 - Auto-build: When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab. &
 - CodeQL isn't always as well-suited for certain types of projects. \newline
 - CodeQL's precision can depend on the quality of the code\newline
+- CodeQL only supports a smaller set of languages \newline
 - May require configuration and customization to fit project needs \\
 \hline
 \end{tabular}
@@ -132,7 +135,7 @@ Overall, security scanning for users allows organizations to define their own cu
 \item \textbf{Secret Scanning alerts for partners}\\
 This feature can be enabled for teams that use the GitHub Enterprise Cloud and have a license for GitHub Advanced Security. This means that, to access this form the repositories have to be owned by an organization that has a license to GitHub Advanced Security. It is not available for repositories that are owned by individuals. 
 
-When Secret Scanning for users is activated, GitHub will search for secrets used by various of service providers. If any supported secrets are detected, a secret scanning alert will be generated by GitHub Enterprise Cloud.
+When Secret Scanning for users is activated, GitHub will search for secrets used by various service providers. If any supported secrets are detected, a secret scanning alert will be generated by GitHub Enterprise Cloud.
 GitHub's Secret scanning for partners is intended for third-party service providers who have partnered with GitHub to provide pre-defined pattern-matching for identifying secrets in code. This feature is available for all public repositories and will report any matches of these predefined patterns directly to the relevant partner for their review and action. 
 
 Overall, secret scanning for partners focuses on providing predefined pattern-matching rules to third-party service providers. 
@@ -154,7 +157,7 @@ Lambda supports a large amount of different programming languages, such as Pytho
 In short \acrshort{aws} CodePipeline is a "\textit{...fully managed continuous delivery service that helps you automate your release pipeline. It allows users to build, test, and deploy code into a test production environment...}"
 \cite{AWSCodePipeline}
 
-CodePipeline automates the entire \gls{Pipeline}, including the build, test and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects the changes and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
+CodePipeline automates the entire \gls{Pipeline}, including the build, test, and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects the changes and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{Images/CodePipeline.png}
@@ -174,10 +177,10 @@ What AWS CodeBuild does is that it downloads the source code provided to it into
 \end{figure}
 
 \subsection{AWS CodeDeploy}
-\acrshort{aws} CodeDeploy is defined as "\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lambda and more[...]}"\cite{AWSCodeDeploy}.
+\acrshort{aws} CodeDeploy is numbered as "\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lambda and more[...]}"\cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
 
-CodeDeploy can deploy code that runs on a server and is stored in for example GitHub repositories or in a \acrshort{aws} S3 Bucket. With CodeDeploy, developers do not have to do any changes in the code already existing to use CodeDeploy. \cite{CodeDeploy1}
+CodeDeploy can deploy code that runs on a server and is stored in for example GitHub repositories or in a \acrshort{aws} S3 Bucket. In order to use CodeDeploy, developers are not required to make any adjustments to their existing code. \cite{CodeDeploy1}
 
 \begin{figure}[H]
     \centering

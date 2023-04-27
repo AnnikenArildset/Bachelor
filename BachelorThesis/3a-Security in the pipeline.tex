@@ -1,11 +1,12 @@
 \section{Security in the pipeline}
 Security in the pipeline is the process of implementing different measures and controls to protect the code that is being sent through the pipeline from various security threats. The pipeline commonly consists of multiple phases like code development, testing, and deployment, all of which may be susceptible to various security threats, like unauthorized access, data breaches, malware, and denial-of-service attacks. Security in the pipeline is crucial to secure the integrity and confidentiality of software applications and data.
+Below are tools that can be used to in security in the pipeline and for a more in-depth explanation of the different tools, see chapter \ref{chap:Tools}. 
 
 \subsection{Code Scanning}
 Code scanning is a security measure where code is analyzed with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. During this step, you can perform a SAST scan using specialized tools that are designed to scan through code. 
 \\
 \\
-GitHub provides an integrated code scanner called CodeQL. CodeQL extracts all source code into a relational database optimized for CodeQL analysis.  It can then be queried to identify insecure patterns in the code and other vulnerabilities. The user can take advantage of a large number of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code. 
+GitHub provides an integrated code scanner called CodeQL. CodeQL extracts all source code into a relational database optimized for CodeQL analysis.  It can then be queried to identify insecure patterns in the code and other vulnerabilities. The user can take advantage of a large number of queries already made by other developers, or they can make their own. An example of a simple query could be getting the location of all method calls in the code.  For more information regarding code scanning see \ref{tab: Code Scanning}
  \cite{codeql}
 
  \vspace{2mm}
@@ -50,7 +51,7 @@ In software best practices, it is recommended to run multiple tests and scans to
 
 
 \subsubsection{The Limitations of DAST Tools}
-Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected. For this reason, the company should engage a red team, which is a group of experts capable of performing penetration testing. A pen test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. A pen test can also function as a validation of the \acrshort{dast} scan, as it can help determine if the vulnerability can be exploited and the potential impact of the vulnerability. \cite{dastpentesting}
+Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected. For this reason, the company should engage a red team, which is a group of experts capable of performing penetration testing. A penetration test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. A pen test can also function as a validation of the \acrshort{dast} scan, as it can help determine if the vulnerability can be exploited and the potential impact of the vulnerability. \cite{dastpentesting}
 
 \vspace{2mm}
 \begin{figure}[H]
