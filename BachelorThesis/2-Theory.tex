@@ -24,6 +24,7 @@ In the deployment phase, the process of releasing the software into the environm
 \subsection{Maintenance} 
 In this phase, the software has been deployed and is now being monitored to ensure that it is functioning as it was designed to. Any refactoring and upgrades are done if needed. Monitoring the software can be done in different ways depending on how the maintenance phase has been set up. The most common way of monitoring however is usually through real-time reporting or ad-hoc reporting systems, which are automatically generated within the software that was created and then sent to the company that created it.\cite{MaintenanceSDLC} 
 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/devsec.png}
@@ -81,12 +82,12 @@ There are, however, some limitations to \acrshort{sast} tools. For example, it c
 
 
 \subsection{DAST}
-Compared to \acrshort{sast}, \acrlong{dast} is black-box testing. The purpose of \acrshort{dast} is that it evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast} which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this includes the interaction of different components and the runtime environment. 
+\acrshort{dast} evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast} which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this includes the interaction of different components and the runtime environment. 
 
 \acrshort{dast} simulates real-world attacks, which is done by sending malicious requests and inputs to the application it is testing and then monitoring the responses. In the end, the tool generates a report that includes the different vulnerabilities that were identified, including a more in-depth description as well as remediation on how to fix the issue. 
 \acrshort{dast} usually runs black box testing  which is mentioned in section 2.4.1.1. \cite{dast}
 
-An advantage with \acrshort{dast} is that it can identify security issues that are not detectable through \acrshort{sast}, this can for example be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that get triggered, for example when the application is under heavy load or when are specific inputs received.
+An advantage with \acrshort{dast} is that it can identify security issues that are not detectable through \acrshort{sast}, this can for example be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that get triggered, for example when the application is under heavy load or when specific inputs are received.
 
 However, there are some limitations with \acrshort{dast} as well, one being that it can only detect vulnerabilities that are present in the deployed version of the application and cannot give an in-depth description of vulnerabilities that lie in the source code.
 \begin{figure}[H]

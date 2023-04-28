@@ -5,12 +5,18 @@ This chapter will consist of a justification of the group's choices during the c
 \section{Pipeline Design}
 %Pipeline design - present and argue our design \\
 
+\section{Our use of the SDLC} %Bytte navn perhaps? 
+
 \section{Chosen branch protection rules}
 When deciding which branch protection rules to implement, it is important that securing the branch does not drastically affect the workflow. There are several possible protection rules to enable, described in section \ref{branchprotection}. Though, enabling all of the rules at once may do more harm than good, as every pull request and commit must go through several steps which will make the workflow less efficient. Therefore, selecting only the most useful rules will benefit the development. 
 \\~\\
 The "Four Eyes Principle" is a mechanism where activities, in this case, pull requests, need approval from two individuals.  This principle is implemented by enabling "Require a pull request before merging", and requiring two approvals before merging. By enabling this rule, the risk of unwanted code being merged into the basecode is lower, without disrupting the work of all developers since only two need to look through the code. \cite{foureyes} 
 \\~\\
 Another implemented branch rule is requiring signed commits. Signed commits require some pre-configurations, but once that is done, all the developers have to do is enter a passphrase, and the commit is verified. Implementing required signed commits ensures the integrity of the code while the workflow is undisturbed.
+
+\subsection{Why the group did not choose the other branch protections}%Change name perhaps? 
+
+
 
 
 
@@ -26,6 +32,12 @@ Another implemented branch rule is requiring signed commits. Signed commits requ
 Automation is the use of \gls{infrastructure as code} to perform tasks, instead of doing them manually. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs, by replacing the manual work of IT professionals with automated processes or by reducing the need for physical hardware, such as servers, by moving to a cloud-based solution. Automation can also speed up development by automating repetitive tasks, such as testing, building, and deploying code, allowing developers to work on more complex jobs. In addition, it can improve security by reducing the risk of human errors, or by automating security protocols that can help to speed up the detection, verification, and escalation of security issues without the need for manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{infrastructure as code} is mostly based on the benefits mentioned above. Furthermore, the group attempted to automate as many processes as possible in order to remove the need for manual involvement during deployment and testing. \cite{automation} \cite{automationredhat}
 
 Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. A goal should be to create an idempotent process that assures the pipeline's output is consistent every time it is built. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. \cite{idempotent}
+
+
+
+
+
+
 
 \section{Revising the Thesis Angle}
 When writing the project plan, the group originally planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 
@@ -47,4 +59,9 @@ The group struggled to find proper academic research for their thesis, therefore
 
 \subsection{Other}
 %something else to note?
+
+\section{Our use of the SDLC} %Bytte navn perhaps? 
+
+\section{Use of framework} %NIST, hvordan vi oppfyller noen krav
+
 

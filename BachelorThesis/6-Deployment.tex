@@ -177,6 +177,9 @@ Application refers to deployment group and deployment etc (keep track of everyth
 The deployment group specifies what configurations to use for the deployment. Also specifies what instance (preconfigured) to use for the deployment.
 Deployment deploys the given revision (source code). Appspec is added to the revision. Glossary for appspec.
 
+I have no idea how to start this section.
+In a deployment process, an application refers to the combination of deployment groups and deployments that keep track of all the necessary components. The deployment group specifies the configurations to use for the deployment and also specifies which preconfigured instance to use for the deployment. The deployment itself deploys the given revision, which typically consists of source code for an application. In addition, an Appspec file is often added to the revision, which contains instructions for how to deploy and configure the application
+
 \vspace{2mm}
 \begin{figure}[H]
     \centering
@@ -194,7 +197,9 @@ Deployment deploys the given revision (source code). Appspec is added to the rev
 \end{figure}
 
 
-Our security tests work by setting up a Docker container \footnote{https://www.docker.com/resources/what-container/} on this \acrshort{ec2} instance, which uses the weekly stable image \footnote{https://www.zaproxy.org/docs/docker/} of OWASP Zap to run one of the automated standard tests that are predefined by OWASP. Typically, you would build these specifically for your application, but for our demo/test, this works very well. We start up the container and point the scan towards the other instance in our \acrshort{vpc}. This wil give us a resolt lucking like this
+%Our security tests work by setting up a Docker container \footnote{https://www.docker.com/resources/what-container/} on this \acrshort{ec2} instance, which uses the weekly stable image \footnote{https://www.zaproxy.org/docs/docker/} of OWASP Zap to run one of the automated standard tests that are predefined by OWASP. Typically, you would build these specifically for your application, but for our demo/test, this works very well. We start up the container and point the scan towards the other instance in our \acrshort{vpc}. This wil give us a resolt lucking like this
+The security tests are conduted by setting up a docker container\footnote{https://www.docker.com/resources/what-container/} on an \acrshort{ec2} instance, which runs one of the automated standard tests predefined by OWASP. The container uses the weekly stable image of OWASP ZAP\footnote{https://www.zaproxy.org/docs/docker/}. Although these tests are typically customized to suit the specific requirements of an application, for this demo, the predefined tests are satisfactory. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained resembvles the following.
+
 \vspace{2mm}
 \begin{figure}[H]
     \centering
@@ -204,8 +209,9 @@ Our security tests work by setting up a Docker container \footnote{https://www.d
 \end{figure}
 
 
-To ensure that the to \acrshort{ec2} instances can communicate with each other in the \acrshort{vpc}, we have assigned each instance its own network interface having only one possible IP address. This approach ensures that both instances are always able to locate each other.
+%To ensure that the two \acrshort{ec2} instances can communicate with each other in the \acrshort{vpc}, we have assigned each instance its own network interface having only one possible IP address. This approach ensures that both instances are always able to locate each other.
 
+To enable communication between the \acrshort{ec2} instances within the \acrshort{vpc}, individual network interfaces have been allocated to each instance with a single IP address. This method guarantees that both instances can always find each other. 
 
 \begin{tcolorbox}
 \begin{verbatim}
@@ -232,7 +238,10 @@ resource "aws_network_interface" "interface_network2" {
 
 \section{production}
 
-In the production stage, the CodePipeline uses CodeDeploy to deploy an EC2 instance like we did in the previus chapter, that will host the final product. But before we get to that stage, you need to manually approve the pipeline before the code continues to production. This is so that you can review the results that come from the automated security tests to ensure that you do not deploy faulty code.
+In the production stage, the CodePipeline uses CodeDeploy to deploy an EC2 instance as we did in the previous chapter, that will host the final product. But before we get to that stage, you need to manually approve the pipeline before the code continues to production. This is so that you can review the results that come from the automated security tests to ensure that you do not deploy faulty code.
+
+
+
 \vspace{2mm}
 \begin{figure}[H]
     \centering
