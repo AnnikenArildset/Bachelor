@@ -15,10 +15,18 @@ The "Four Eyes Principle" is a mechanism where activities, in this case, pull re
 Another implemented branch rule is requiring signed commits. Signed commits require some pre-configurations, but once that is done, all the developers have to do is enter a passphrase, and the commit is verified. Implementing required signed commits ensures the integrity of the code while the workflow is undisturbed.
 
 \subsection{Why the group did not choose the other branch protections}%Change name perhaps? 
-The group chose the particular branch protections based on the functionality and workflow of the repository. Enabling all branch protection rules would make daily activites difficult and the workflow would not be as seamless. Nonetheless, the group do suggest that individuals look into the different branch protection options and activates the ones that are needed. 
+The group chose the particular branch protections based on the functionality and workflow of the repository. Enabling all branch protection rules would make daily activities difficult and the workflow would not be as seamless. Nonetheless, the group does suggest that individuals look into the different branch protection options and activates the ones that are needed. 
 
 
 
+\section{The different tools chosen}
+Upon evaluating the various tools used to secure the pipeline, the group has formed perspectives and recommendations. 
+
+\subsection{Chosen SAST tool}
+
+\subsection{Chosen DAST tool}
+
+\subsection{Chosen SCA tool}
 
 %Chosen tools - why, what to think about \\
 %sum up\\~\\
@@ -34,18 +42,23 @@ Automation is the use of \gls{infrastructure as code} to perform tasks, instead 
 Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. A goal should be to create an idempotent process that assures the pipeline's output is consistent every time it is built. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. \cite{idempotent}
 
 \section{The Use of Framework}
+\subsection{SLSA}
+%We will wait with this one!
+\subsection{SSDF}
+While numerous models exist for the \acrlong{sdlc}, only a limited number of them prioritize security. As a result, it is necessary to integrate security into the SDLC models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the software development lifecycle (SDLC). 
 
+In \acrshort{ssdf} documentation one can find different practices that cover a lot of security aspects one can implement into the development process. While the SSDF is a suitable framework for secure software development, they did not explicitly have it in mind while developing and designing the pipeline in the thesis. However, the group believes that the practical work in the thesis aligns with many of the practices and principles of the SSDF, even though it wasn't explicitly followed. 
 
+Implement Supporting Toolchains (PO.3)
 
-\section{}
 
 
 
 
 \section{Revising the Thesis Angle}
-When writing the project plan, the group originally planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 
+When writing the project plan, the group initially planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 
 
-After a meeting with our professor Erik Hjelmås discussing this issue, the group found an alternative approach for the thesis, based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and placing greater focus on utilizing tools that were already integrated into GitHub and AWS as well as implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life, and what kind of research was needed today.  
+After a meeting with our professor Erik Hjelmås discussing this issue, the group found an alternative approach for the thesis, based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and AWS and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life, and what kind of research was needed today.  
 
 
 \section{Expectation Compared to Reality}
@@ -65,9 +78,12 @@ The group struggled to find proper academic research for their thesis, therefore
 
 \section{Our use of the SDLC} %Bytte navn perhaps? 
 
-\section{Use of framework} %NIST, hvordan vi oppfyller noen krav
 
 \section{Critique of the thesis}
 
 \subsection{Not using Framework from the beginning}
-The group was not familiar with the different frameworks at the beginning of this bachelor thesis, which made it difficult to integrated it when the knowledge first was gained, which was a bit late. Therefore, it was hard to 
+At the beginning of the thesis, the group was not familiar with any frameworks, and therefore, did not consider using one. Later, when the group discovered different frameworks, the group decided that it was too late to integrate them into the work. Doing so would have required a significant amount of work in some cases simply not possible because the group was too far into the thesis. A lot of the requirements for the different frameworks was needed to be achieved before the thesis was started. There were also many tasks that needed to be completed if the group were to integrate the framework later in the thesis, which would have added unnecessary complexity to the thesis. The scope did also not specify anything about following a framework, which also made the group decide not to implement one. 
+\newpage
+\subsubsection{Delays in the beginning}
+Initially, the group struggled with understanding the scope given by the stakeholder and the requirements that followed. The group was given a lot of leeway and was told to interpret the scope however suited, which due to lack of knowledge about the topic made it difficult to establish what the scope was really asking. As a result, the group had to invest more time in the beginning, leading to a delayed start of the thesis. 
+

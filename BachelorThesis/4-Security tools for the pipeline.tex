@@ -43,7 +43,7 @@ These pros and cons are a combination of the personal experiences and informatio
             \hline
         \end{tabular}
         \begin{tablenotes}
-            \item[*] There is a lot of debate around this topic,  with some claiming that open-source software is highly secure and others claiming that it can create risks. A list of advantages and disadvantages can be found at the following website: https://cybersecuritynews.com/pros-and-cons-of-using-open-source-software/
+            \item[*] There is a lot of debate around this topic,  with some claiming that open-source software is highly secure and others claiming that it can create risks. A list of advantages and disadvantages can be found at the following website: \href{https://cybersecuritynews.com/pros-and-cons-of-using-open-source-software/}{pros and cons website}
             \caption{Pros and cons of OWASP ZAP}
         \end{tablenotes}
     \end{threeparttable}
@@ -92,7 +92,8 @@ These pros and cons are a combination of the personal experiences and informatio
 \subsection{Code Scanner}
 GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. The results of these analyzes are shown as code-scanning alerts in GitHub.This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
 
-CodeQL can be scheduled so that it runs on days that users set. It is also possible to trigger CodeQL to run when for example changes have been done to the repository.
+CodeQL can be scheduled so that it runs on chosen days or occurrences of events. Rather than scanning each branch individually, it is possible to set up a trigger that will initiate the code scan only when the code is pushed to the main branch or when a pull request is made to the main branch. This helps to reduce the amount of time and resources required to perform the scans. Also, it minimizes the risk of vulnerabilities or errors being introduced into the production environment.
+
 Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different fixes easily between members of the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
 \cite{GithubCodeScanning}
 
@@ -197,4 +198,4 @@ CodeDeploy can deploy code that runs on a server and is stored in for example Gi
 \acrlong{ec2} offers a \gls{compute platform}, with virtual computing environments, also known as instances. \acrlong{ec2} offers a wide range of instance types to meet different computing needs. These instances come with preconfigured templates called \acrlong{amis} that contain the necessary software and operating system to run the server. Users can choose from various configurations of CPU, memory, storage, and networking capacity for their instances, known as instance types.\cite{awsec2}
 
 \subsection{AWS CodeStar Connections}
-\acrshort{aws} CodeStar Connection is a tool from \acrshort{aws} that enables users to connect to third-party repositories so that \acrshort{aws} can retrieve their code. This tool can be configured to a specific branch, so when new code is pushed or merged, CodeStar Connection will fetch the code from the repository and place it in an S3 bucket. 
+\acrshort{aws} CodeStar Connection is a tool from \acrshort{aws} that enables users to connect to third-party repositories for \acrshort{aws} to retrieve their code. This tool can be configured to a specific branch, so when new code is pushed or merged, CodeStar Connection will fetch the code from the repository and place it in an S3 bucket.\cite{AWSCodeStarConnections}

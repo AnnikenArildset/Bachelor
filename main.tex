@@ -6,12 +6,11 @@
 % Importing document settings from our file "packages.sty"
 \usepackage{setup}
 
-\usepackage{dirtytalk}
-\setlength{\footnotesep}{0.3em}
+
 % Beginning of document
 \begin{document}
 \import{./Sections/}{FrontPage}
-% Inserting title page
+%\setlength{\footruleskip}{10pt} % set distance from footer to line% Inserting title page
 
 
 % Defining front matter settings (Norsk: innstillinger for forord m.m.)
@@ -62,6 +61,8 @@
 
 % Printing bibliography
 %\chapter*{\bibname}
+\cleardoublepage
+\pagestyle{plain}
 \printbibliography[heading = bibintoc, title = Bibliography]  
 
 
@@ -86,5 +87,10 @@
 \newpage
 
 \input{Appendix/MeetingMintuesOther/MMOther}
+
+\newpage
+
+\input{Appendix/Code/Branch_protection/FrontPage}
+
 % End of document
 \end{document}

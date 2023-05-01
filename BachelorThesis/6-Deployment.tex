@@ -3,9 +3,7 @@
 \section{Introduction}
 In the following chapter, there is a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: \url{https://www.terraform.io/}}, which is a \gls{infrastructure as code} tool. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} for information on how to set up the different steps using Terraform. 
 \\~\\
-Below is a figure of the pipeline in \acrshort{aws}, showing its structure and how it is connected. The model will be built as the different steps in the pipeline are presented, 
-
-
+Below is a figure of the pipeline in \acrshort{aws}, showing its structure and how it is connected. The model will be built as the different steps in the pipeline are presented.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -14,8 +12,6 @@ Below is a figure of the pipeline in \acrshort{aws}, showing its structure and h
     \caption{Pipline in AWS}
     \label{fig: Pipeline in AWS}
 \end{figure}
-
-
 
 \section{Code used in the pipeline}
 For testing the group decided on using OWASPs Juice Shop\footnote{Code available at: \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
@@ -56,20 +52,30 @@ GitHub provides documentation\footnote{Available at: \url{https://docs.github.co
 
 
 \section{Managing security in GitHub}
-After the source code is pushed to its belonging branch, the code must be scanned for potential vulnerabilities before moving forward.
+When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Intructions available at: \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
 
-After source code is securily pushed to belonging branch. Need to scan code before getting to main-branch. Instead of scanning each branch, you can make the code scan trigger only when code is pushed to main or there is a pull-request to main branch.
+Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. To customize the trigger for the analysis, the pull request and push events are added to the workflow file, causing the analysis to run automatically whenever a pull request or push is made to the specified branch. The branch specified in this case is the main branch. \cite{CodeQLCustom}
 
-One of these scans is SAST scanning using CodeQL. Setting up CodeQL\footnote{Intructions available at: \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} is done by adding the CodeQL YAML file in the workflow. Other security tools in GitHub are Dependabot\footnote{Instructions available at: \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret scanner\footnote{Instructions available at: \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
+\begin{tcolorbox}
+\begin{verbatim}
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+\end{verbatim}
+\end{tcolorbox}
+
+ Other security tools in GitHub are Dependabot\footnote{Instructions available at: \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret scanner\footnote{Instructions available at: \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/codescan.png}
-    \caption{Critical alert from code scan}
-    \label{fig: Critical alert from code scan}
+    \caption{Critical alert from CodeQL}
+    \label{fig: Critical alert CodeQL}
 \end{figure}
 
-An example of code scanning alerts using CodeQL is this critical alert, notifying the user of a hard-coded credential. The code scanning alerts refer to CWE weaknesses, which are explained further in \ref{cwe}.
+An example of code scanning alerts using CodeQL is this critical alert, notifying the user of a hard-coded credential. This alert is shown in a pull request from a branch to the main branch. The code scanning alerts refer to CWE weaknesses, which are explained further in \ref{cwe}.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -91,8 +97,8 @@ Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts f
 The GitHub Secret scanner did not detect any secrets in the Juice-Shop repository. Therefore, Figure \ref{fig: Alert from secret scanner} is taken from GitHub's demonstration of the secret scanner. The alert warns the user about an API key that matches the pattern of their partner Twilio. 
 
 \section{Committing the source code to AWS}
-When all vulnerabilities are detected and fixed in GitHub, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. AWS CodeStar Connection enables the connection of cloud resources to external code repositories, such as the Juice-Shop repository on GitHub. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
-This can either be done on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider. 
+When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. This can be done using CodeStar Connection. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
+This can either be done on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
 
 \begin{tcolorbox}
 \begin{verbatim}
@@ -177,9 +183,9 @@ Further, the build project downloads the source code and uses build commands, fo
     \label{fig: Build stage}
 \end{figure}
 
-\section{Deployment and Testing}
+\section{Deployment to testing}
 \label{Deployment and Testing}
-In the deployment stage, an application refers to the combination of deployment groups and deployments that keep track of all the necessary components. The deployment group specifies the configurations to use for the deployment and also specifies which preconfigured instance\footnote{Available at: \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}} to use for the deployment. The deployment itself deploys the given revision, which typically consists of source code for an application. In addition, an \gls{appspec} file is added to the revision. 
+In the deployment stage, an application refers to the combination of deployment groups and deployments that keep track of all the necessary components. The deployment group specifies the configurations to use for the deployment and also specifies which preconfigured instance\footnote{Available at: \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}} to use for the deployment. The deployment itself deploys the given revision, which typically consists of the source code for an application. In addition, an \gls{appspec} file is added to the revision. 
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -189,14 +195,14 @@ In the deployment stage, an application refers to the combination of deployment 
     \label{fig: AWS CodeDeploy}
 \end{figure}
 
-In this section utilizes two CodeDeploy agents to account for OWASP Zap and the application operating on separate instances while undergoing testing. The OWASP Zap code and application code are sourced from different directories within the S3 bucket to prevent interference between the two.
+This stage utilizes two CodeDeploy agents to account for OWASP Zap and the application operating on separate instances while undergoing testing. The OWASP Zap code and application code are sourced from different directories within the S3 bucket to prevent interference between the two.
 
 \vspace{2mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\columnwidth]{Images/aws-piplin-5.png}
-    \caption{CodeDeploy}
-    \label{fig: CodeDeploy}
+    \caption{Deployment to testing}
+    \label{fig: Deployment to testing}
 \end{figure}
 
 
@@ -216,7 +222,7 @@ resource "aws_network_interface" "interface_network2" {
 \end{verbatim}
 \end{tcolorbox}
 
-The security tests are conducted by setting up a docker container\footnote{https://www.docker.com/resources/what-container/} on an \acrshort{ec2} instance, which runs one of the automated standard tests predefined by OWASP. The container uses the weekly stable image of OWASP Zap\footnote{https://www.zaproxy.org/docs/docker/}. Although these tests are typically customized to suit the specific requirements of an application, for this demo, the predefined tests are satisfactory. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained resembvles the following.
+The security tests are conducted by setting up a docker container\footnote{Available at: \url{https://www.docker.com/resources/what-container/}} on an \acrshort{ec2} instance, which runs one of the automated standard tests predefined by OWASP. The container uses the weekly stable image of OWASP Zap\footnote{Available at: \url{https://www.zaproxy.org/docs/docker/}}. Although these tests are typically customized to suit the specific requirements of an application, for this demo, the predefined tests are satisfactory. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained resembles the following.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -227,10 +233,10 @@ The security tests are conducted by setting up a docker container\footnote{https
 \end{figure}
 
 
-\section{production}
-
-In the production stage, CodePipeline utilizes CodeDeploy as described \ref{Deployment and Testing} to deploy an application to an EC2 instance, which will host the final product, prior to reaching that stage, manual approval is required for the pipeline before the code can move on to production. The purpose of this step is to allow for a review of the results from the automated security tests, so as to ensure that no faulty code is deployed.
-
+\section{Deployment to production}
+In the production stage, CodePipeline utilizes CodeDeploy, as described in \ref{fig: Deployment to testing}. Before the code gets moved to production, it is set a manual approval. This requires a user to accept the changes in the code. The
+purpose of this step is to allow for a review of the results from the automated security tests, so as
+to ensure that no faulty code is deployed.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -240,7 +246,7 @@ In the production stage, CodePipeline utilizes CodeDeploy as described \ref{Depl
     \label{fig: Manual approval}
 \end{figure}
 
-After the manual approval is completed, the code will be put into production in the same way that we did in \ref{Deployment and Testing} and we end up with a pipeline that locks like this. for the ful code \url{https://github.com/DCSG2900-Bachelor-thesis/CodePipeline}
+After the manual approval process is completed, the code will be deployed to production in a similar manner to the process described in \ref{Deployment and Testing}. After all these steps are complete, the pipeline results in \ref{fig: Pipeline in AWS}.\footnote{Complete code available at: \url{https://github.com/DCSG2900-Bachelor-thesis/CodePipeline}}
 
 \vspace{2mm}
 \begin{figure}[H]
