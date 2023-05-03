@@ -5,7 +5,7 @@ This chapter will consist of a justification of the group's choices during the c
 \section{Pipeline Design}
 %Pipeline design - present and argue our design \\
 
-\section{Our use of the SDLC} %Bytte navn perhaps? 
+\section{The groups use of the SDLC} %Bytte navn perhaps? 
 
 
 \section{Chosen branch protection rules}
@@ -19,9 +19,9 @@ Another implemented branch rule is requiring signed commits. Signed commits requ
 
 
 \section{The different tools chosen}
-Upon evaluating the various tools used to secure the pipeline, the group has formed perspectives and recommendations about the different tools. Even though the group decided to use integrated tools in GitHub to run \acrfull{sast} and \acrshort{sca} testing, and a third-party tool for \acrshort{dast} testing, was mostly because it suited well with the task given and was recommended by Erik Hjelmås. However, it is important to note that does not necessarily imply that others should use the same tools. Conducting such tests can be considered important when it comes to developing applications, but the selection of tools to carry out such tests should be based on specific requirements. Therefore, it is essential to explore the various tools available for the different tests and evaluate if these meet one´s requirements. The tools chosen by the group are only examples of what may be used. 
+Upon evaluating the various tools used to secure the pipeline, the group has formed perspectives and recommendations about the different tools. Even though the group decided to use integrated tools in GitHub to run \acrfull{sast} and \acrshort{sca} testing, and a third-party tool for \acrshort{dast} testing, was mostly because it suited well with the task given and was recommended by Erik Hjelmås. However, it is important to note that this does not necessarily imply that others should use the same tools. Conducting such tests can be considered important when it comes to developing applications, but the selection of tools to carry out such tests should be based on specific requirements. Therefore, it is essential to explore the various tools available for the different tests and evaluate if these meet one´s requirements. The tools chosen by the group are only examples of what may be used. 
 
-\subsection{Our Experience with CodelQL}
+\subsection{The groups Experience with CodelQL}
 The group used CodeQL as their \acrshort{sast} tool, which as mentioned above is an integrated tool in GitHub and is set as default when enabling Code Scanning. The group found it uncomplicated to set up and customize it for personal use. For example, the tool was configured to be triggered only when a push to the main branch was done, which was easily achievable. 
 \\~\\
 The group created a separate repository where OWASP ZAP´s Juice-Shop code was forked to and then enabled CodeQL for this repository. After enabling CodeQL, the group enabled notification, so every time it found an vulnerability all the group members would be notified by email. However, due to the many vulnerabilities within the code, the group quickly decided not to continuing with the notifications since the group got a significant amount of emails. Nonetheless, if the group were to decide only to be notified every time the tool found vulnerabilities that were considered high or critical, the amount of emails would have been significantly lower. Even tough, the group decided to turn of the notifications, it continued to find vulnerabilities, and lastly it managed to find all the vulnerabilities it could find as a \acrshort{sast} tool. It was registered 101 vulnerabilities and together with Dependabot, CodeQL manage to find all.  
@@ -34,7 +34,7 @@ To sum up, the group thought it worked well and was easy to set up, but since th
 
 
 
-\subsection{Our Experience with OWASP ZAP}
+\subsection{The groups experience with OWASP ZAP}
 
 The group opted for OWASP ZAP as \acrshort{dast} tool and found it quite easy to set up. However, rather than customizing their own scans, the group utilized pre-made functions due to limited documentation on customizing their own scans and time constraints. Creating own scans would quickly be too complicated and therefore take too much time. 
 \\~\\
@@ -45,20 +45,20 @@ In contrast to the SAST tool, the group also used JuiceShop code for the  DAST s
 
 
 
-\subsection{Our Experience with Dependabot}
-Dependabot was used as \acrshort{sca} tool, and was quite easy to set up. When compared to both \acrshort{dast} and \acrshort{sast}, the group ran JuiceShop code through Dependabot, which as mentioned above, manage together with \acrshort{sast} to find all the vulnerabilities within the code. 
-Compared with CodeQL, Dependabot provides detailed explanation of the error and suggests recommendations for fixing it. For instance, if an outdated version of an depencendy has been detected, Dependabot recommends which version to update it to and if there is not an update out yet, Dependabot suggest that another dependency should be used, but does not come with a recommendation for.  The group found this feature useful, as it provides suggestion for maintaining security. However, it is important to note that the group did not investigate the suggested fixes, as it was beyond the project´s scope.
+\subsection{The groups Experience with Dependabot}
+Dependabot was used as \acrshort{sca} tool, and was quite easy to set up. When compared to both \acrshort{dast} and \acrshort{sast}, the group ran JuiceShop code through Dependabot, which as mentioned above, managed together with \acrshort{sast} to find all the vulnerabilities within the code. 
+Compared with CodeQL, Dependabot provides a detailed explanation of the error and suggests recommendations for fixing it. For instance, if an outdated version of a dependency has been detected, Dependabot recommends which version to update it to and if there is not an update out yet, Dependabot suggests that another dependency should be used, but does not come with a recommendation for it.  The group found this feature useful, as it provides suggestions for maintaining security. However, it is important to note that the group did not investigate the suggested fixes, as it was beyond the project´s scope.
 \\~\\
-To sum up, the group thought Dependabot was useful and since it was so easy to set up. However, there are still some features that the group think it lack, for example that it does not come with examples of dependencies that can be used instead, if the one used has an vulnerability. 
+To sum up, the group thought Dependabot was useful and since it was so easy to set up. However, there are still some features that the group thinks it lacks, for example, it does not come with examples of dependencies that can be used instead, if the one used has an vulnerability. 
 
-\subsection{Our Experience with Secret Scanning}
-Finally, the group explored Secret Scanning, which as mentioned is also is an integrated tool in GitHub. Although, Secret Scanning is not necessarily an Application Security testing, the group found it valuable as it scans the code for secrets such as tokens and API keys, which could allow access to sensitive information. If such secretes were exposed, they can be exploited by an attacker to steal data for instance. 
+\subsection{The groups Experience with Secret Scanning}
+Finally, the group explored Secret Scanning, which as mentioned is also an integrated tool in GitHub. Although Secret Scanning is not necessarily an Application Security testing, the group found it valuable as it scans the code for secrets such as tokens and API keys, which could allow access to sensitive information. If such secrets were exposed, they can be exploited by an attacker to steal data for instance. 
 \\~\\
 Since \acrshort{sast} tools can be used to scan the code for vulnerabilities that an attacker can exploit, the group considered it good practice to use another scanner that checks for secrets as well. 
 \\~\\
-Compared to different application security testings, Secret Scanning was also quite easy to set up. Thus, the group decided it would be beneficial to use it. It enhances security and can also be configured to trigger when specific events occur, making it a profitable tool to use. 
+Compared to different application security tests, Secret Scanning was also quite easy to set up. Thus, the group decided it would be beneficial to use it. It enhances security and can also be configured to trigger when specific events occur, making it a profitable tool to use. 
 \\~\\
-Secret Scanning, also gives detailed explanation of the errors and how to solve them, which seem to be an usual thing that GitHub tools does. 
+Secret Scanning also gives a detailed explanation of the errors and how to solve them, which seems to be a usual thing that GitHub tools do. 
 
 \section{Automation}
 Automation is the use of \gls{infrastructure as code} to perform tasks, instead of doing them manually. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs, by replacing the manual work of IT professionals with automated processes or by reducing the need for physical hardware, such as servers, by moving to a cloud-based solution. Automation can also speed up development by automating repetitive tasks, such as testing, building, and deploying code, allowing developers to work on more complex jobs. In addition, it can improve security by reducing the risk of human errors, or by automating security protocols that can help to speed up the detection, verification, and escalation of security issues without the need for manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{infrastructure as code} is mostly based on the benefits mentioned above. Furthermore, the group attempted to automate as many processes as possible in order to remove the need for manual involvement during deployment and testing. \cite{automation} \cite{automationredhat}
@@ -102,7 +102,7 @@ Identify and Confirm Vulnerabilities on an Ongoing Basis (RV.1): \say{Help ensur
 \section{Revising the Thesis Angle}
 When writing the project plan, the group initially planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 
 \\~\\
-After a meeting with our professor Erik Hjelmås discussing this issue, the group found an alternative approach for the thesis, based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and AWS and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life, and what kind of research was needed today.  
+After a meeting with the group's professor Erik Hjelmås  (\ref{møteErik})discussing this issue, the group found an alternative approach for the thesis, based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and AWS and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life, and what kind of research was needed today.  
 
 
 \section{Expectation Compared to Reality}

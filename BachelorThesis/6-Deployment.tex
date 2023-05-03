@@ -165,8 +165,7 @@ environment {
 \end{verbatim}
 \end{tcolorbox}
 
-Further, the build project downloads the source code and uses build commands, found in the \gls{buildspec} file, to run the build. The source code is retrieved from the S3 bucket, where it was put from the previous stage. \cite{CodeBuildProcess}
-dette er et 
+Further, the build project downloads the source code and uses build commands, found in the \gls{buildspec} file, to run the build. The source code is retrieved from the S3 bucket, where it was put from the previous stage. \cite{CodeBuildProcess} Below is a figure that illustrates this process.
 \vspace{2mm}
 \begin{figure}[H]
     \centering
@@ -238,7 +237,7 @@ The security tests are conducted by setting up a docker container\footnote{Avail
 
 \section{Deployment to production}
 In the production stage, CodePipeline utilizes CodeDeploy, as described in \ref{Deployment to testing}. Before the code gets moved to production, it needs to be accepted by manual approval by a user in \acrshort{aws}. The purpose of this step is to allow for a review of the results from the automated security tests, to
-ensure that no faulty code is deployed. When new code or changes have gone through testing, a notification will occur in the \acrshort{sns} topic\footnote{\acrshort{sns} is a service that provides message delivery to a topic. A topic is the communication channel the users can subscribe to \cite{SNStopic}.} created. Someone then has to manually accept the code waiting to be moved to production.
+ensure that no faulty code is deployed. When new code or changes have gone through testing, a notification will occur in the \acrshort{sns} topic\footnote{\acrlong{sns} provides message delivery to a topic. A topic is the communication channel the users can subscribe to \cite{SNStopic}.} that is created. Someone then has to manually accept the code waiting to be moved to production.
 
 \vspace{2mm}
 \begin{figure}[H]
