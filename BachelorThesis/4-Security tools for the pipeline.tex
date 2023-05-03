@@ -11,22 +11,20 @@ This chapter presents an introduction to the selected tools for this thesis and 
 %The group decided on using Snyk because it is a well-known testing tool. It also has a reputation for being reliable, and user-friendly while it offers comprehensive security coverage. It also has a strong track record for quickly detecting vulnerabilities and alerting the users, which the group found %quite interesting and wanted to test further. \cite{snyk3}
 
 \section{OWASP ZAP}
-OWASP Zed Attack Proxy (ZAP)\footnote{https://www.zaproxy.org/} is an open-source web application security scanner. It is free and is maintained by volunteers across the world under the Open Web Application Security Project (OWASP). ZAP is a DAST tool and is designed to test web application security. The tool offers functionality for a wide range of people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker, which means that users are not limited to a specific operating system when using the tool.\cite{owaspZAP}
+OWASP Zed Attack Proxy (ZAP)\footnote{Available at \url{https://www.zaproxy.org/}} is an open-source web application security scanner. It is free and is maintained by volunteers across the world under the Open Web Application Security Project (OWASP). ZAP is a DAST tool and is designed to test web application security. The tool offers functionality for a wide range of people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker, which means that users are not limited to a specific operating system when using the tool.\cite{owaspZAP}
 
 \subsection{Why OWASP ZAP was chosen}
 When the group started the research on different \acrshort{sast}, \acrshort{dast} and \acrshort{sca} tools, one of the \acrshort{dast} tools that were rapidly mentioned was OWASP ZAP - which claims to be the world's most widely used web app scanner. 
-The group then discovered during research that there were some advantages to OWASP ZAP, one being easy to use and set up. Since ZAP is intended for use by people of diverse skill levels, the group thought it would be a beneficial tool because of minimal expertise with penetration testing. Another advantage is that OWASP ZAP is a free open-source tool, which makes it possible to try all functionality the software has to offer without any costs. OWASP ZAP is used when building pipelines in AWS and was easy to implement in AWS. These are some of the reasons why the group decided to use this tool. 
+The group then discovered during research that there were some advantages to OWASP ZAP, one being easy to use and set up. Since ZAP is intended for use by people of diverse skill levels, the group thought it would be a beneficial tool because of minimal expertise with penetration testing. Another advantage is that OWASP ZAP is a free open-source tool, which makes it possible to try all functionality the software has to offer without any costs. OWASP ZAP is used when building pipelines in AWS and was easy to implement in AWS.
 
 \subsubsection{Pros and cons}
-These pros and cons are a combination of the personal experiences and information found during research.\cite{prosconsZAP}
+The following pros and cons are a combination of the personal experiences and information found during research.\cite{prosconsZAP}
 \begin{table}[H]
-    \centering
     \begin{threeparttable}
-        \begin{tabular}{|c|p{6cm}|p{6cm}|}
+        \begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
             \hline
-             & \textbf{Pros} & \textbf{Cons} \\
+            \textbf{Pros} & \textbf{Cons} \\
             \hline
-            \textbf{OWASP ZAP} &
             \begin{itemize}
                 \item [-]Open Source
                 \item [-]Easy to configure with AWS
@@ -56,10 +54,10 @@ Initially, the plan for the thesis  was to explore third-party tools, such as Sn
 
 \subsection{Dependabot}
 Dependabot is an in-built GitHub tool that helps developers keep their project dependencies up-to-date. A dependency can be considered a piece of code or software that the project that's being worked on needs and relies on. For example, the project might use a library or package that someone else has written, then this library/package can be considered a dependency of the project. 
-
+\\~\\
 Dependencies can be updated over time as new versions are released. Therefore, it is crucial that developers keep the dependencies up to date to ensure that the project stays secure. However, keeping track of all updates that come and manually running these updates can be frustrating since it can be rather time-consuming and error-prone. Dependabot automates the process of checking for new versions of the dependencies used in the code and then creates a pull request to update them. The user can then review the updates and see if it is necessary to do any changes or not. 
 Dependabot can also automatically resolve any conflict that may arise when updating dependencies and can even open up separate pull requests for separate dependency updates.  \cite{GithubDependabot2}
-
+\\~\\
 Dependabot uses the "GitHub Advisory Database" to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, \acrlong{nvd}, and several others. \cite{GithubDependabot1}
 
 %\subsection{Why Dependabot was chosen}
@@ -69,20 +67,24 @@ These pros and cons are a combination of the personal experiences and informatio
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|p{6cm}|p{6cm}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
 \hline
- & \textbf{Pros} & \textbf{Cons} \\
+\textbf{Pros} & \textbf{Cons} \\
 \hline
-\textbf{Dependabot} & 
-- Automates dependency updates, saving time and reducing manual errors \newline
-- Supports a wide range of languages and package managers \newline
-- Provides detailed changelogs and release notes \newline
-- Integrates with various development tools and services &
-- Dependabot sends a notification for every update which can quickly 
-  become overwhelming. \newline
-- Can create merge conflicts with other changes \newline
-- Its automatic scans can generate many false positives which can be 
-  time-consuming. \\
+\begin{itemize}
+\item [-]Automates dependency updates, saving time and reducing manual errors 
+\item [-] Supports a wide range of languages and package managers 
+\item [-] Provides detailed changelogs and release notes 
+\item [-] Integrates with various development tools and services
+\end{itemize}
+&
+\begin{itemize}
+\item [-] Dependabot sends a notification for every update which can quickly 
+  become overwhelming. 
+\item [-] Can create merge conflicts with other changes 
+\item [-] Its automatic scans can generate many false positives which can be time-consuming
+\end{itemize}
+\\
 \hline
 \end{tabular}
 \caption{Pros and Cons of Dependabot}
@@ -90,10 +92,10 @@ These pros and cons are a combination of the personal experiences and informatio
 \end{table}
 
 \subsection{Code Scanner}
-GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. The results of these analyzes are shown as code-scanning alerts in GitHub.This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
-
+GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. CodeQL is also a recommended tool according to Microsoft's best practice for secure \acrshort{sdlc} that argues the use of approved tools \cite{microsoftSDLCpractices}. The results of these analyzes are shown as code-scanning alerts in GitHub. This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
+\\~\\
 CodeQL can be scheduled so that it runs on chosen days or occurrences of events. Rather than scanning each branch individually, it is possible to set up a trigger that will initiate the code scan only when the code is pushed to the main branch or when a pull request is made to the main branch. This helps to reduce the amount of time and resources required to perform the scans. Also, it minimizes the risk of vulnerabilities or errors being introduced into the production environment.
-
+\\~\\
 Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different fixes easily between members of the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
 \cite{GithubCodeScanning}
 
@@ -104,19 +106,24 @@ Any issues found during the scanning process are displayed as alerts within the 
 \subsubsection{Pros and cons}
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|p{6cm}|p{6cm}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
 \hline
- & \textbf{Pros} & \textbf{Cons} \\
+\textbf{Pros} & \textbf{Cons} \\
 \hline
-\textbf{Code Scanning} & 
-- Triggers: Teams can decide when they want the scanning to be triggered. This is usually when an event occurs, such ass pull requests.  \newline
-- Configure the scan to suit the project: The scan can be configured so that it tailors the 
-  different needs. \newline
-- Auto-build: When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab. &
-- CodeQL isn't always as well-suited for certain types of projects. \newline
-- CodeQL's precision can depend on the quality of the code\newline
-- CodeQL only supports a smaller set of languages \newline
-- May require configuration and customization to fit project needs \\
+\begin{itemize}
+\item [-] Triggers: Teams can decide when they want the scanning to be triggered. This is usually when an event occurs, such ass pull requests.
+\item [-]Configure the scan to suit the project: The scan can be configured so that it tailors the 
+  different needs. 
+\item [-] Auto-build: When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab. 
+\end{itemize}
+&
+   \begin{itemize}
+\item [-] CodeQL isn't always as well-suited for certain types of projects. 
+\item [-] CodeQL's precision can depend on the quality of the code
+\item [-] CodeQL only supports a smaller set of languages 
+\item [-] May require configuration and customization to fit project needs
+\end{itemize}
+\\
 \hline
 \end{tabular}
 \caption{Pros and Cons of Code Scanning}
@@ -130,16 +137,19 @@ security scanner in two forms\cite{GithubSecretScanning}:
 \begin{itemize}
     \item \textbf{Secret Scanning alerts for users}\\
 GitHub's security scanning for users is intended for organizations that have licensed GitHub Advanced Security and it provides the ability to enable and configure scanning for private and internal repositories. This feature allows users to define their own custom pattern-matching rules to identify secrets in code and will report any matches in the security tab of the repository for review by the organization. 
-
+\\~\\
 Overall, security scanning for users allows organizations to define their own custom rules and enables scanning for private and internal repositories.
 
 \item \textbf{Secret Scanning alerts for partners}\\
 This feature can be enabled for teams that use the GitHub Enterprise Cloud and have a license for GitHub Advanced Security. This means that, to access this form the repositories have to be owned by an organization that has a license to GitHub Advanced Security. It is not available for repositories that are owned by individuals. 
-
+\\~\\
 When Secret Scanning for users is activated, GitHub will search for secrets used by various service providers. If any supported secrets are detected, a secret scanning alert will be generated by GitHub Enterprise Cloud.
 GitHub's Secret scanning for partners is intended for third-party service providers who have partnered with GitHub to provide pre-defined pattern-matching for identifying secrets in code. This feature is available for all public repositories and will report any matches of these predefined patterns directly to the relevant partner for their review and action. 
+\\~\\
+Overall, secret scanning for partners focuses on providing predefined pattern-matching rules to third-party service providers.
 
-Overall, secret scanning for partners focuses on providing predefined pattern-matching rules to third-party service providers. 
+THIS IS FROM CHAPTER 3 BUT NEEDS TO BE MERGED WITH THIS SECTION:\\
+GitHub has a Secret Scanning Partner Program\footnote{{Available at \url{https://docs.github.com/en/code-security/secret-scanning/secret-scanning-partner-program}}} that allows service providers to collaborate with GitHub to secure their secret token formats. This program uses secret scanning technology, which examines code repositories hosted on GitHub for any unintentional commits of the service provider's secret format. If a potential secret is discovered, it can be routed to the service provider's verify endpoint for additional investigation and management. The benefit of this program is the ability for organizations and products to give their users a better and more complete security solution for their GitHub code repositories \cite{partnerprogram}. The secret scanner also alerts normal GitHub users. These scans use their service providers\footnote{List of partners available at \url{https://docs.github.com/en/code-security/secret-scanning/secret-scanning-patterns}} to scan for content that matches the partners' secret patterns \cite{GitHubSecretScannerUserAlert}.
 \end{itemize}
 \subsubsection{Pros and cons}
 
@@ -157,7 +167,7 @@ Lambda supports a large amount of different programming languages, such as Pytho
 \subsection{AWS CodePipeline}
 In short \acrshort{aws} CodePipeline is a "\textit{...fully managed continuous delivery service that helps you automate your release pipeline. It allows users to build, test, and deploy code into a test production environment...}"
 \cite{AWSCodePipeline}
-
+\\~\\
 CodePipeline automates the entire \gls{Pipeline}, including the build, test, and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects the changes and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
 \begin{figure}[H]
     \centering
@@ -169,6 +179,7 @@ CodePipeline automates the entire \gls{Pipeline}, including the build, test, and
 \subsection{AWS CodeBuild }
 AWS CodeBuild can be described as a "\textit{...fully managed continuous integration service that compiles source code, runs tests, and produces ready-to-deploy software packages.}"
 \cite{AWSCodeBuild}
+\\~\\
 What AWS CodeBuild does is that it downloads the source code provided to it into a build environment and then uses a \Gls{buildspec} which defines how the built project should be executed\cite{AWSCodeBuild1}
 \begin{figure}[H]
     \centering
@@ -180,7 +191,7 @@ What AWS CodeBuild does is that it downloads the source code provided to it into
 \subsection{AWS CodeDeploy}
 \acrshort{aws} CodeDeploy is numbered as "\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lambda and more[...]}"\cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
-
+\\~\\
 CodeDeploy can deploy code that runs on a server and is stored in for example GitHub repositories or in a \acrshort{aws} S3 Bucket. In order to use CodeDeploy, developers are not required to make any adjustments to their existing code. \cite{CodeDeploy1}
 
 \begin{figure}[H]
@@ -196,6 +207,3 @@ CodeDeploy can deploy code that runs on a server and is stored in for example Gi
 
 \subsection{AWS EC2}
 \acrlong{ec2} offers a \gls{compute platform}, with virtual computing environments, also known as instances. \acrlong{ec2} offers a wide range of instance types to meet different computing needs. These instances come with preconfigured templates called \acrlong{amis} that contain the necessary software and operating system to run the server. Users can choose from various configurations of CPU, memory, storage, and networking capacity for their instances, known as instance types.\cite{awsec2}
-
-\subsection{AWS CodeStar Connections}
-\acrshort{aws} CodeStar Connection is a tool from \acrshort{aws} that enables users to connect to third-party repositories for \acrshort{aws} to retrieve their code. This tool can be configured to a specific branch, so when new code is pushed or merged, CodeStar Connection will fetch the code from the repository and place it in an S3 bucket.\cite{AWSCodeStarConnections}

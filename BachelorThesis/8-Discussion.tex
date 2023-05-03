@@ -7,83 +7,121 @@ This chapter will consist of a justification of the group's choices during the c
 
 \section{Our use of the SDLC} %Bytte navn perhaps? 
 
+
 \section{Chosen branch protection rules}
 When deciding which branch protection rules to implement, it is important that securing the branch does not drastically affect the workflow. There are several possible protection rules to enable, described in section \ref{branchprotection}. Though, enabling all of the rules at once may do more harm than good, as every pull request and commit must go through several steps which will make the workflow less efficient. Therefore, selecting only the most useful rules will benefit the development. 
 \\~\\
-The "Four Eyes Principle" is a mechanism where activities, in this case, pull requests, need approval from two individuals.  This principle is implemented by enabling "Require a pull request before merging", and requiring two approvals before merging. By enabling this rule, the risk of unwanted code being merged into the basecode is lower, without disrupting the work of all developers since only two need to look through the code. \cite{foureyes} 
+Based on the "Four Eyes Principle" which can be read more about in \ref{Security of the pipeline}, is a principle that is implemented when enabling "Require a pull request before merging", and requiring two approvals before merging. By enabling this rule, the risk of unwanted code being merged into the basecode is lower, without disrupting the work of all developers since only two need to look through the code. \cite{foureyes} 
 \\~\\
 Another implemented branch rule is requiring signed commits. Signed commits require some pre-configurations, but once that is done, all the developers have to do is enter a passphrase, and the commit is verified. Implementing required signed commits ensures the integrity of the code while the workflow is undisturbed.
 
-\subsection{Why the group did not choose the other branch protections}%Change name perhaps? 
-The group chose the particular branch protections based on the functionality and workflow of the repository. Enabling all branch protection rules would make daily activities difficult and the workflow would not be as seamless. Nonetheless, the group does suggest that individuals look into the different branch protection options and activates the ones that are needed. 
 
 
 
 \section{The different tools chosen}
-Upon evaluating the various tools used to secure the pipeline, the group has formed perspectives and recommendations. 
+Upon evaluating the various tools used to secure the pipeline, the group has formed perspectives and recommendations about the different tools. Even though the group decided to use integrated tools in GitHub to run \acrfull{sast} and \acrshort{sca} testing, and a third-party tool for \acrshort{dast} testing, was mostly because it suited well with the task given and was recommended by Erik Hjelmås. However, it is important to note that does not necessarily imply that others should use the same tools. Conducting such tests can be considered important when it comes to developing applications, but the selection of tools to carry out such tests should be based on specific requirements. Therefore, it is essential to explore the various tools available for the different tests and evaluate if these meet one´s requirements. The tools chosen by the group are only examples of what may be used. 
 
-\subsection{Chosen SAST tool}
+\subsection{Our Experience with CodelQL}
+The group used CodeQL as their \acrshort{sast} tool, which as mentioned above is an integrated tool in GitHub and is set as default when enabling Code Scanning. The group found it uncomplicated to set up and customize it for personal use. For example, the tool was configured to be triggered only when a push to the main branch was done, which was easily achievable. 
+\\~\\
+The group created a separate repository where OWASP ZAP´s Juice-Shop code was forked to and then enabled CodeQL for this repository. After enabling CodeQL, the group enabled notification, so every time it found an vulnerability all the group members would be notified by email. However, due to the many vulnerabilities within the code, the group quickly decided not to continuing with the notifications since the group got a significant amount of emails. Nonetheless, if the group were to decide only to be notified every time the tool found vulnerabilities that were considered high or critical, the amount of emails would have been significantly lower. Even tough, the group decided to turn of the notifications, it continued to find vulnerabilities, and lastly it managed to find all the vulnerabilities it could find as a \acrshort{sast} tool. It was registered 101 vulnerabilities and together with Dependabot, CodeQL manage to find all.  
+\\~\\
+However, it is important to mention that JuiceShop is a widely used repository, which might be a reason why CodeQL together with Dependabot managed to find all the vulnerabilities. If the group were to evaluate the tool more thoroughly, the group would have run other repositories with code containing vulnerabilities or personal code with vulnerabilities only the group knew about. That would probably have made the result even more accurate and the tool wouldn't have necessarily found all the vulnerabilities. 
+\\~\\
+However, the group found the tool quite intuitive and thought it was practical that when it found an error, it explained thoroughly what the warning was and even gave an example of how to patch it. The group did not look into the example and saw if it could be considered a good patch, but thought it was good to at least receive a possible fix. It also refers to CWE vulnerabilities with a hyperlink to the different ones. 
+\\~\\
+To sum up, the group thought it worked well and was easy to set up, but since the group did not test it with other repositories than JuiceShop it is hard to estimate if it can be considered accurate. However, this is out of the group's scope and was therefore not investigated further. 
 
-\subsection{Chosen DAST tool}
-
-\subsection{Chosen SCA tool}
-
-%Chosen tools - why, what to think about \\
-%sum up\\~\\
 
 
+\subsection{Our Experience with OWASP ZAP}
+
+The group opted for OWASP ZAP as \acrshort{dast} tool and found it quite easy to set up. However, rather than customizing their own scans, the group utilized pre-made functions due to limited documentation on customizing their own scans and time constraints. Creating own scans would quickly be too complicated and therefore take too much time. 
+\\~\\
+When OWASP ZAP, finally was up and running with basic configurations, the group encountered difficulties with understanding the output of the results and extracting the output from the docker container. 
+\\~\\
+In contrast to the SAST tool, the group also used JuiceShop code for the  DAST scan, which seem to be quite effective. 
+%I will add more here once we have looked at the dast scan. 
 
 
-%\section{Chosen SAST tool}
+
+\subsection{Our Experience with Dependabot}
+Dependabot was used as \acrshort{sca} tool, and was quite easy to set up. When compared to both \acrshort{dast} and \acrshort{sast}, the group ran JuiceShop code through Dependabot, which as mentioned above, manage together with \acrshort{sast} to find all the vulnerabilities within the code. 
+Compared with CodeQL, Dependabot provides detailed explanation of the error and suggests recommendations for fixing it. For instance, if an outdated version of an depencendy has been detected, Dependabot recommends which version to update it to and if there is not an update out yet, Dependabot suggest that another dependency should be used, but does not come with a recommendation for.  The group found this feature useful, as it provides suggestion for maintaining security. However, it is important to note that the group did not investigate the suggested fixes, as it was beyond the project´s scope.
+\\~\\
+To sum up, the group thought Dependabot was useful and since it was so easy to set up. However, there are still some features that the group think it lack, for example that it does not come with examples of dependencies that can be used instead, if the one used has an vulnerability. 
+
+\subsection{Our Experience with Secret Scanning}
+Finally, the group explored Secret Scanning, which as mentioned is also is an integrated tool in GitHub. Although, Secret Scanning is not necessarily an Application Security testing, the group found it valuable as it scans the code for secrets such as tokens and API keys, which could allow access to sensitive information. If such secretes were exposed, they can be exploited by an attacker to steal data for instance. 
+\\~\\
+Since \acrshort{sast} tools can be used to scan the code for vulnerabilities that an attacker can exploit, the group considered it good practice to use another scanner that checks for secrets as well. 
+\\~\\
+Compared to different application security testings, Secret Scanning was also quite easy to set up. Thus, the group decided it would be beneficial to use it. It enhances security and can also be configured to trigger when specific events occur, making it a profitable tool to use. 
+\\~\\
+Secret Scanning, also gives detailed explanation of the errors and how to solve them, which seem to be an usual thing that GitHub tools does. 
 
 \section{Automation}
 Automation is the use of \gls{infrastructure as code} to perform tasks, instead of doing them manually. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs, by replacing the manual work of IT professionals with automated processes or by reducing the need for physical hardware, such as servers, by moving to a cloud-based solution. Automation can also speed up development by automating repetitive tasks, such as testing, building, and deploying code, allowing developers to work on more complex jobs. In addition, it can improve security by reducing the risk of human errors, or by automating security protocols that can help to speed up the detection, verification, and escalation of security issues without the need for manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{infrastructure as code} is mostly based on the benefits mentioned above. Furthermore, the group attempted to automate as many processes as possible in order to remove the need for manual involvement during deployment and testing. \cite{automation} \cite{automationredhat}
-
+\\~\\
 Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. A goal should be to create an idempotent process that assures the pipeline's output is consistent every time it is built. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. \cite{idempotent}
 
 \section{The Use of Framework}
 \subsection{SLSA}
-%We will wait with this one!
+\textcolor{red}{We will wait with this one!}
 \subsection{SSDF}
-While numerous models exist for the \acrlong{sdlc}, only a limited number of them prioritize security. As a result, it is necessary to integrate security into the SDLC models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the software development lifecycle (SDLC). 
+While numerous models exist for the \acrlong{sdlc}, only a limited number of them prioritize security. As a result, it is necessary to integrate security into the \acrshort{sdlc} models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the \acrshort{sdlc}. 
+\\~\\
+In \acrshort{ssdf} documentation, which was elaborated in \ref{ssdf}, one can find different practices that cover a lot of security aspects one can implement into the development process. While the SSDF is a suitable framework for secure software development, the group did not explicitly have it in mind while developing and designing the pipeline in the thesis. However, the group believes that the practical work in the thesis aligns with many of the practices and principles of the SSDF, even though it wasn't explicitly followed. The group will review some examples of the practices to which they believe they accommodate and their methods of implementation. The group has decided to review the practices in a category-wise manner, with each practice being assigned to a specific category. 
+\\~\\
+\textbf{Under Prepare the Organization (PO):}
 
-In \acrshort{ssdf} documentation one can find different practices that cover a lot of security aspects one can implement into the development process. While the SSDF is a suitable framework for secure software development, they did not explicitly have it in mind while developing and designing the pipeline in the thesis. However, the group believes that the practical work in the thesis aligns with many of the practices and principles of the SSDF, even though it wasn't explicitly followed. 
+Implement Supporting Toolchains (PO.3): \say{Use automation to reduce human effort and improve the accuracy, reproducibility, usability, and comprehensiveness of security practices throughout the SDLC, as well as provide a way to document and demonstrate the use of these practices. Toolchains and tools may be used at different levels of the organization, such as organization-wide or project-specific, and may address a particular part of the SDLC, like a build pipeline.}\cite{ssdf}
+\\~\\
+This practice recommends selecting the right tools for the toolchain, following the recommended security practices, and utilizing tools to generate artifacts. In order to accomplish this, the group used a variety of security tools to run different security tests, all of which comply with best practices for supply chain security. One of the key security practices the group has implemented is to use code-based configuration by automating the pipeline with Terraform. The automation of the pipeline not only ensures that the pipeline is efficient and effective, but also promotes consistency and reduces the likelihood of errors. In \acrshort{aws}, the implementation of this practice is shown by the fact that each stage of the pipeline generates an artifact stored in an S3 bucket. This ensures that the artifacts created are safe, secure, and available for future use.
+\\~\\
 
-Implement Supporting Toolchains (PO.3)
+\textbf{Protect Software (PS):}
 
+Protect All Forms of Code from Unauthorized
+Access and Tampering (PS.1): \say{Help prevent unauthorized changes to code, both inadvertent and intentional, which could circumvent or negate the intended security characteristics of the software. For code that is not intended to be publicly accessible, this helps prevent theft of the software and may make it more difficult or time-consuming for attackers to find vulnerabilities in the software.}\cite{ssdf}
+\\~\\
+The focus of this practice is on maintaining the integrity and availability of code, as well as how one should be storing all forms of code. To keep track of the modifications to the code, the group utilizes GitHub's version control and the artifacts generated in \acrshort{aws} if necessary. Signed commits are also used by the group to ensure code integrity. To follow the \say{least privilege} principle, the group decided to give each member access based on the specific tasks assigned to them. The code repository was accessible in read-only to only the two members who were responsible for writing the report, while the other two members, who were responsible for practical work, were granted full access. 
+\\~\\
+\textbf{Produce Well-Secured Software (PW):}
 
+Review and/or Analyze Human-Readable
+Code to Identify Vulnerabilities and Verify Compliance with Security Requirements (PW.7): \say{Help identify vulnerabilities so that they can be corrected before the software is released to prevent exploitation. Using automated methods lowers the effort and resources needed to detect vulnerabilities. Human-readable code includes source code, scripts, and any other form of code that an organization deems human-readable}\cite{ssdf}
+\\~\\
+This practice covers code security and provides guidelines on how to evaluate the source code that is being used. This can be done through manual code review or through the use of automated tools.  The goal is to identify and correct vulnerabilities before the software is released, to prevent exploitation. The group has incorporated various automated security scans throughout the pipeline, such as SCA, SAST, and DAST. 
+\\~\\
+\textbf{Respond to Vulnerabilities (RV):}
 
-
+Identify and Confirm Vulnerabilities on an Ongoing Basis (RV.1): \say{Help ensure that vulnerabilities are identified more quickly so that they can be remediated more quickly in accordance with risk, reducing the window of opportunity for attackers.}\cite{ssdf}
+\\~\\This practice includes doing frequent vulnerability scans, threat assessments, and penetration testing, as well as monitoring and analyzing system logs and network traffic for indications of possible security problems. Various automated security scans, such as SCA, SAST, and DAST tests, have been implemented throughout the pipeline. These scans help in the detection of potential vulnerabilities and security concerns in the code. In addition to these scans, the group discussed the possibility of application monitoring. This means performing tests after deployment to confirm that the application is still secure and no new vulnerabilities are created. In addition, 
 
 \section{Revising the Thesis Angle}
 When writing the project plan, the group initially planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 
-
+\\~\\
 After a meeting with our professor Erik Hjelmås discussing this issue, the group found an alternative approach for the thesis, based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and AWS and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life, and what kind of research was needed today.  
 
 
 \section{Expectation Compared to Reality}
+\subsection{Practical work}
 As mentioned in the section \ref{section: Knowledge that had to be acquired}, the group had little to no knowledge about \gls{infrastructure as code}, especially not Terraform. During the work process, the group encountered far more problems with the building of the pipeline with Terraform and \acrshort{aws} than first expected. The group had some experience with Microsoft Azure from previous courses and perhaps thought that \acrshort{aws} was a bit more similar to Azure than it actually is. Additionally, \acrshort{aws} provides a wide range of services that targets the same or similar issues. Choosing these services and connecting them with each other has been a larger challenge than expected. Furthermore, doing all of these configurations using Terraform has made it more challenging.
 
-
-\section{Limitations}
-\subsection{Unexpected Challenges}
-Throughout this thesis, the group has met some unexpected challenges. For the practical part, the group did not expect it to take the amount of time it did. However, looking back on the process the group has concluded that the reason behind the delay was mostly due to lack of knowledge for especially Terraform and AWS. There was also a wish to automate the whole practical part so that it would be easier for the stakeholder and others to use the product later, which was also something the group was quite confident in achieving. Nonetheless, this was not achievable mostly because of scope, and it would have increased the work amount because of everything that was needed to do so. When it comes to the theoretical part, there weren't that many unexpected challenges, mostly because the group was aware of what was needed in the thesis in advance. However, the group did not expect it to be that difficult to integrate the practical part of the thesis and make it as smooth as possible.
-
 \subsection{Research}
-The group struggled to find proper academic research for their thesis, therefore the majority of their resources came from websites or blog posts. To establish the credibility of these sources, the group either confirmed the author's or company's credibility or cross-referenced the information with additional sources to confirm its accuracy. These precautions were taken to assure the accuracy and validity of the data in the thesis.  
+The group struggled to find proper academic research for their thesis, therefore the majority of their resources came from websites or blog posts. To establish the credibility of these sources, the group either confirmed the author's or company's credibility or cross-referenced the information with additional sources to confirm its accuracy. These precautions were taken to assure the accuracy and validity of the data in the thesis.
 
-
-\subsection{Other}
+\subsection{Integrate practical work in the thesis}%Change name
 %something else to note?
-
-\section{Our use of the SDLC} %Bytte navn perhaps? 
-
+The group faced difficulties in integrating the practical part of the thesis, such as the build of the pipeline and the tools used in the pipeline in a clear and comprehensible manner for the reader. It quickly became chaotic and unsystematic when the group first tried to implement it into the thesis. 
 
 \section{Critique of the thesis}
 
 \subsection{Not using Framework from the beginning}
-At the beginning of the thesis, the group was not familiar with any frameworks, and therefore, did not consider using one. Later, when the group discovered different frameworks, the group decided that it was too late to integrate them into the work. Doing so would have required a significant amount of work in some cases simply not possible because the group was too far into the thesis. A lot of the requirements for the different frameworks was needed to be achieved before the thesis was started. There were also many tasks that needed to be completed if the group were to integrate the framework later in the thesis, which would have added unnecessary complexity to the thesis. The scope did also not specify anything about following a framework, which also made the group decide not to implement one. 
-\newpage
-\subsubsection{Delays in the beginning}
-Initially, the group struggled with understanding the scope given by the stakeholder and the requirements that followed. The group was given a lot of leeway and was told to interpret the scope however suited, which due to lack of knowledge about the topic made it difficult to establish what the scope was really asking. As a result, the group had to invest more time in the beginning, leading to a delayed start of the thesis. 
+The group did not delve deeper into following a framework as the scope did not contain any specifications regarding it. However, when the group discovered different frameworks, the group decided that it was too late to integrate them into the work. Doing so would have required a significant amount of work, and since the group was too far into the thesis, it was decided to not look into it. A lot of the requirements for the different frameworks was needed to be achieved before the thesis was started. There were also many tasks that needed to be completed if the group were to integrate the framework later in the thesis, which would have added unnecessary complexity to the thesis. 
+
+\subsubsection{Defining scope}
+Initially, the group struggled with understanding the scope given by the stakeholder and the requirements that followed. The group was given a lot of leeway and was told to interpret the scope however suited, which due to lack of knowledge about the topic made it difficult to establish what the scope was really asking. As a result, the group had to invest more time and work in the beginning to ensure that the thesis became the best possible. As mentioned above the group for example had a talk with Erik Hjelmås about the scope and how to make it as good as possible. However, this resulted in a delayed start of the thesis. 
+
 

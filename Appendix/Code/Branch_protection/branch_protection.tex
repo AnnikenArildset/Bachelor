@@ -1,3 +1,4 @@
+\label{branchprotectionrules}
 \begin{lstlisting}[language=terraform, caption=Enable branch protection]
 #Decleares that Github is required and a specific version
 terraform {
@@ -15,7 +16,7 @@ provider "github" {
   token = var.gh_token
 }
 
-#Specifiex wich repository the changes will be done to
+#Specifies which repository the changes will be done to
 data "github_repository" "DCSG2900-Bachelor-thesis" {
   full_name = "${var.owner}/${var.repository_name}"
 }
