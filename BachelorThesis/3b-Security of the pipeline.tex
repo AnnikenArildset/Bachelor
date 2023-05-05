@@ -1,32 +1,31 @@
 \section{Security of the pipeline}
 \label{Security of the pipeline}
-Security of the pipeline is the security measures that are taken into consideration when securing the pipeline itself. This includes not only securing the pipeline itself but also the infrastructure, components, and network that are used to process the code that goes through the pipeline. Securing the pipeline ensures that the code is not tampered with during the process of going through the pipeline. 
-
+Security of the pipeline refers to the measures taken to protect not only the pipeline, but the underlying infrastructure, and network involved in processing the code that passes through it. By ensuring the security of the pipeline, it is restricted to perform only its intended functions and preventing unauthorized access to restricted resources.  
 
 \subsection{Branch Protection}
 \label{branchprotection}
-Branch protection is a feature of GitHub, that enforces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain the stability and security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main codebase. In the pipeline, Figure \ref{fig: Pipeline with implemented branch protection rules}, this is done before code is pushed to GitHub in order for the source code to enter a secure repository. Below are the different branch protection features that can be enabled in GitHub. \cite{ProtectedBranches}
+Branch protection is a feature of GitHub, that enforces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain the security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main branch. In the pipeline, Figure \ref{fig: Pipeline with implemented branch protection rules}, this is done before code is pushed to GitHub in order for the source code to enter a secure repository. Below are the different branch protection features that can be enabled in GitHub. \cite{ProtectedBranches}
 
 \subsubsection{Require a pull request before merging}
 Administrators of the repository can add rules to the repository which restrict pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow users with written permissions to do the approving as well as users considered to be code owners. 
 \\~\\
-It is under this type of protection that the "Four Eyes Principle" is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes, this principle is a controlling mechanism that increases the security measures. 
+It is under this type of protection that the "Four Eyes Principle" is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes this principle is a controlling mechanism that increases the security measures. 
 
-\subsubsection{Require status checks to pass before merging}
-When users work together in the same repository, it is important to maintain the high quality of the code that's being pushed and merged. Enabling "require status checks to pass before merging" allow the administrators of the repository to set certain criteria that need to be fulfilled before the code is merged. 
+\subsubsection{Require status checks before merging}
+When users work together in the same repository, it is important to maintain the high quality of the code that's being pushed and merged. Enabling \say{require status checks to pass before merging} allow the administrators of the repository to set certain criteria, such as code review approval, where at least one team member needs to approve the code,  that need to be fulfilled before the code is merged. 
 
 \subsubsection{Require conversation resolution before merging}
-When working together on the same repository it is important to have clear communication and collaboration  A way to secure this is to enable "require conversation resolution before merging". This allows all discussions regarding for example issues or pull requests that need to be properly resolved before any merging happens. 
+When working together on the same repository it is important to have clear communication and collaboration. A way to secure this is to enable \say{require conversation resolution before merging}. This allows all discussions regarding for example issues or pull requests that need to be properly resolved before any merging happens. 
 
 \subsubsection{Require signed commits}
-Enabling require signed commits can be considered a security measure that secures that changes in the code have not been tampered with. 
-To be able to have secured signed commits, all commits pushed to the repository must be signed with a \acrlong{gpg} key. A \acrshort{gpg} key is a unique digital signature that in short terms verifies the person that is committing to the repository is who they say they are. 
+Enabling require \say{signed commits} can be considered a security measure that secures that changes in the code have not been tampered with. 
+To be able to have secured signed commits, all commits pushed to the repository must be signed with a \acrlong{gpg} key or an \acrshort{ssh} key. A \acrshort{gpg} key is a unique digital signature that in short terms verifies the person that is committing to the repository is who they say they are. 
 
-\subsubsection{Require linear history}
-When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that have been done and minimizes the chances of mistakes. Enforcing such measures restricts users from merging their changes with the main branch. 
+%\subsubsection{Require linear history}
+%When enabling this security feature, it ensures that all changes done in the repository are done in a specific order, one after another without creating any branches or forks. This will as a result make it easier to keep track of all the changes that have been done and minimizes the chances of mistakes. Enforcing such measures restricts users from merging their changes with the main branch. 
 
 \subsubsection{Require deployments to succeed before merging}
-Require deployments to succeed before merging is another feature in GitHub, that allows the users to enforce that different required checks that have been created, such as pre-merge checks or automated tests, are passed before a pull request can be merged into the main branch.
+\say{Require deployments to succeed before merging} enables users to enforce passing of various required checks, such as pre-merge checks or automated tests, before allowing a pull request to be merged into the main branch.
 
 \subsubsection{Lock branch}
 Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. 

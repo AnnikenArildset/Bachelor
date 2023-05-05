@@ -9,20 +9,24 @@ This chapter will provide an explanation of different types of concepts that is 
 \acrlong{sdlc} can be defined as \textit{"structured process that enables the production of high-quality, low-cost software, in shortest possible production time. The goal of the \acrshort{sdlc} is to produce superior software that meets and exceeds all customer expectations and demands"}\cite{sdlc1}.  SDLC consists of several phases that provide a framework for software development testing and deployment. Below are the five phases that fulfill the \acrshort{sdlc}. 
 
 \subsection{Planning} 
-The planning phase is the first phase of the \acrshort{sdlc}. During this phase, the project's goals and objectives are determined. Aspects like resources, costs, and time should be discussed, and a timeline for the work should be created.  Furthermore, a project plan should be developed where tasks and resources necessary to construct the project's structure are identified, prioritized, and assigned. \cite{planningphase}
- 
+Planning is the first phase of the \acrshort{sdlc}. During this phase, the project's goals and objectives are determined. Aspects like resources, costs, and time should be discussed, and a timeline for the work should be created.  Furthermore, a project plan should be developed where tasks and resources necessary to construct the project's structure are identified, prioritized, and assigned. \cite{planningphase}|
+
+Above: for first time "use"
+Next: for further development
+%Må tenke at den går hele tiden i en "sirkel" så den vil aldri stoppe, men når det blir lagt til en ny feature så går det igjennom planning phasen også går man videre. 
 \subsection{Implementation}
-It is in this phase the actual development of the software takes place. During the implementation phase, the software design is translated into code using programming languages. After the code is completed and reviewed, the build process begins, and several security scans are performed.
+In the implementation phase, the actual development of the software takes place. During the implementation phase, the software design is translated into code using programming languages. After the code is completed and reviewed, the build process begins, and several security scans are performed.
 The implementation phase is considered quite important since this is the phase that involves the actual development of the software and the preparation of the software for deployment into the environment.  \cite{ImplementationSDLC}
  
 \subsection{Testing}
-In this phase, the development team ensures that the software meets the functional, performance, and quality requirements that were decided in the earlier phases of the \acrshort{sdlc}. Here the software gets tested so that any potential defects get identified and corrected. It is in this phase the developer team ensures the high quality of the software and that it meets the needs of the users. \cite{TestingSDLC}
+In the testing phase, the development team verifies that the software fulfills functional, performance, and quality criteria established in earlier stages of the \acrshort{sdlc}. The software is subjected to both manual user testing and automated testing to detect and correct possible defects. This is the phase in which the development team ensures that the software meets the user's requirements.\cite{TestingSDLC}
  
 \subsection{Deployment}
-In the deployment phase, the process of releasing the software into the environment can be considered the main priority. In this phase, the deployment team works together with the development team and other stakeholders to plan the release of the software so that it goes as smoothly as possible. This also includes creating the deployment timeline, selecting a method for the deployment, and defining the environment the software is being deployed into. \cite{DeploymentSDLC}
+In the deployment phase, the process of releasing the software into the environment can be considered the main priority. In this phase, the deployment team works together with the development team and other stakeholders to plan the release of the software in order to ensure a seamless process. This also includes creating the deployment timeline, selecting a method for the deployment, and defining the environment the software is being deployed into. \cite{DeploymentSDLC}
+
 
 \subsection{Maintenance} 
-In this phase, the software has been deployed and is now being monitored to ensure that it is functioning as it was designed to. Any refactoring and upgrades are done if needed. Monitoring the software can be done in different ways depending on how the maintenance phase has been set up. The most common way of monitoring however is usually through real-time reporting or ad-hoc reporting systems, which are automatically generated within the software that was created and then sent to the company that created it.\cite{MaintenanceSDLC} 
+In the maintenance phase, the software has been deployed and is now being monitored to ensure that it is functioning according to its intended design. Any refactoring and upgrades are done if needed. Monitoring the software can be done in different ways depending on how the maintenance phase has been set up. The most common way of monitoring, however, is usually through real-time reporting or ad-hoc reporting systems, which are automatically generated within the software that was created and then sent to the company that created it.\cite{MaintenanceSDLC} 
 
 
 \begin{figure}[H]
@@ -35,11 +39,11 @@ In this phase, the software has been deployed and is now being monitored to ensu
 
 \section{Functional Testing vs Security Testing}
 \label{Functional Testing vs Security Testing}
-Software testing is a very broad area, and each test varies according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions. Functional testing is emphasizing the software's behavior and that the software is working as expected. The functional test cases are based on the requirements of the software which were specified by the stakeholder. There are several functional testing methodologies that can be conducted, such as unit testing and integration testing\cite{difftesting}. White box testing and black box testing are some examples of security testing methods. This topic will be described more in section \ref{boxtesting}. 
+Software testing is a very broad area, and each test varies according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions. Functional testing is emphasizing the software's behavior and that the software is working as expected. The functional test cases are based on the requirements of the software which were specified by the stakeholder. There are several functional testing methodologies that can be conducted, such as unit testing and integration testing \cite{difftesting}. 
 \\~\\
-Unit testing involves testing small components of the code, which is known as units to determine if the units behave as expected. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The goal of the unit testing is to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. Integration testing, on the other hand, evaluates how the previously tested components perform when integrated into a larger system and communicate across various components \cite{unitvsintergration}.
+Unit testing involves testing small components of the code, which are known as units, to determine if the units behave as expected. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The goal of the unit testing is to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. Integration testing, on the other hand, evaluates how the previously tested components perform when integrated into a larger system and communicate across various components. \cite{unitvsintergration}.
 \\~\\
-Security testing, on the other hand, wants to break the software to uncover vulnerabilities and verify its security features\cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attacker's point of view. These kinds of tests can be done manually or be done by software tools, called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them.
+Security testing, on the other hand, wants to break the software to uncover vulnerabilities and verify its security features \cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attacker's point of view. These kinds of tests can be done manually or be done by software tools, called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing, black box testing, and grey box testing are some examples of security testing methods. This topic will be described more in section \ref{boxtesting}. 
 
 
 
@@ -47,30 +51,29 @@ Security testing, on the other hand, wants to break the software to uncover vuln
 
 
 \section{Application Security Testing}
-Application Security Testing can be described as a \say{process of making applications more resistant to security threats, by identifying security weaknesses and vulnerabilities in source code.}\cite{AST}
+Application Security Testing can be described as a \say{process of making applications more resistant to security threats, by identifying security weaknesses and vulnerabilities in source code} \cite{AST}.
 \\~\\
-Below are some of the different security tools that can be used to make applications more resistant to security threats, and which the group will use in securing the \acrshort{sdlc}. 
-The various testing tools utilize a type of testing technique called "box testing", which will also be described below. 
+Below are some of the different security tools that can be used to make applications more resistant to security threats, and which will be used in securing the \acrshort{sdlc}. 
+The various testing tools utilize a type of testing technique called \say{box testing}.
 
 \subsection{Box testing}
 \label{boxtesting}
 
 \subsubsection{Black Box Testing}
 \label{BlackBoxTesting}
-Black box testing is a testing technique that primarily focuses on the functionality and behaviour of an application without any knowledge of its internal structure and processes  \cite{blackbox}. It can be thought of as treating the application as a black box, where   only the inputs and outputs are visible and the internal workings unknown. This makes it an effective approach testing the functionality of an application, as the tester verifies whether the input produces the expected output without any knowledge of the underlying code or design. As a result, black box testing is often used as a form of functionality testing\cite{BlackBoxTestingFunctional}, ensuring that the software passes the black box test if it passes the expected output for the input.
-
+Black box testing is a testing technique that primarily focuses on the functionality and behavior of an application without any knowledge of its internal structure and processes  \cite{blackbox}. It can be thought of as treating the application as a black box, where only the inputs and outputs are visible and the internal workings are unknown. This makes it an effective approach to test the functionality of an application, as the tester verifies whether the input produces the expected output without any knowledge of the underlying code or design. As a result, black box testing is often used as a form of functionality testing\cite{BlackBoxTestingFunctional} and if the software produces the expected output for the given input, it can be considered to have passed the black box test. 
 
 \subsubsection{White Box Testing}
-White box testing focuses on the application from within. In such tests, the source code and infrastructure will be looked at. The testing consists of covering paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to have knowledge of programming and IT. The tester looks through the code to find weaknesses such as infinite loops or data flow issues. However, white box testing can be quite complex and when running such testing on a large amount of code, it can take days or even weeks to test. \cite{whitebox}
+White box testing focuses on the application from within. In such tests, the source code and infrastructure will be looked at. The testing consists of covering paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to have knowledge of programming and IT. The tester looks through the code to find weaknesses such as infinite loops or data flow issues. However, white box testing can be quite complex and when running such tests on a large amount of code, it can take days or even weeks to test. \cite{whitebox}
 
 \subsubsection{Grey Box Testing}
-Grey box testing is a method that limits the user's knowledge of the different components being tested. It is a combination of white box testing and black box testing, where the user has access to internal code or design but not enough access to run a full white box testing, and the test practices are done at the same level as black box testing. \cite{GreyBox}
+Grey box testing is a method that limits the user's knowledge of the different components being tested. It is a combination of white box testing and black box testing, where the user has access to internal code or design but not enough access to run a full white box test. The test practices are done at the same level as black box testing. \cite{GreyBox}
 
 
 \subsection{SAST}
-\acrlong{sast} is white-box testing that analyzes the source code of an application to identify security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application is deployed. \cite{sast}
+\acrlong{sast} is a type of white-box testing that analyzes the source code of an application to identify security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application is deployed. \cite{sast}
 \\~\\
-\acrshort{sast} tools scan source code for known security threats, such as \gls{Cross-site scripting}, \gls{SQL-injection}, and \gls{Buffer-Overflow}. \acrshort{sast} tools also give warnings on any security weaknesses that may lie in the code that potentially can be exploited. After the tool has gone through the code it generates a report that contains the different vulnerabilities that it has identified, including a more in-depth description of the vulnerability and remediation on how to fix it. \acrshort{sast} usually runs white box testing  which is mentioned in section 2.4.1.2. 
+\acrshort{sast} tools scan source code for known security threats, such as \gls{Cross-site scripting}, \gls{SQL-injection}, and \gls{Buffer-Overflow}. \acrshort{sast} tools also give warnings on any security weaknesses that may lie in the code that potentially can be exploited. After the tool has gone through the code it generates a report that contains the different vulnerabilities that it has identified. This includes a more in-depth description of the vulnerability and remediation on how to fix it. \
 \\~\\
 One of the advantages of \acrshort{sast} is that it gives detailed information about the source of the vulnerability, which gives the developer a better understanding of how to fix the issue. 
 \\~\\
@@ -87,10 +90,9 @@ There are, however, some limitations to \acrshort{sast} tools. For example, it c
 
 
 \subsection{DAST}
-\acrlong{dast} evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast} which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this includes the interaction of different components and the runtime environment. 
+\acrlong{dast} uses a black box testing technique, that evaluates the security of an application by performing security assessments of a running instance of the application. Unlike \acrshort{sast}, which analyzes the source code of an application, \acrshort{dast} evaluates the application as its being used, this includes the interaction of different components and the runtime environment. 
 \\~\\
 \acrshort{dast} simulates real-world attacks, which is done by sending malicious requests and inputs to the application it is testing and then monitoring the responses. In the end, the tool generates a report that includes the different vulnerabilities that were identified, including a more in-depth description as well as remediation on how to fix the issue. 
-\acrshort{dast} usually runs black box testing  which is mentioned in section \ref{BlackBoxTesting} \cite{dast}
 \\~\\
 An advantage with \acrshort{dast} is that it can identify security issues that are not detectable through \acrshort{sast}, this can for example be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that get triggered, for example when the application is under heavy load or when specific inputs are received.
 \\~\\
@@ -106,14 +108,13 @@ In Figure \ref{fig: Where to perform DAST in SDLC}, \acrshort{dast} is set to pe
 \end{figure}
 
 \subsection{SCA}
-\acrlong{sca} is a type of software security testing tool that analyzes the dependencies of a software application to identify and manage potential security risks. The main objective of the \acrshort{sca} is to identify third-party components that may contain security vulnerabilities. \cite{sca}
+\acrlong{sca} is a type of grey box testing, that analyzes the dependencies of a software application to identify and manage potential security risks. The main objective of the \acrshort{sca} is to identify third-party components that may contain security vulnerabilities. \cite{sca}
 \\~\\
-\acrshort{sca} scans the application's code to identify all of its \gls{dependency}, including the different versions of the components used. It then cross-references these \gls{dependency} to different databases that include known vulnerabilities and then generates a report containing any potential risk. In comparison to the others, the report also includes an in-depth description of the vulnerability as well as a recommendation to update the components to newer versions or replace these. \acrshort{sca} usually runs grey box testing which is mentioned in section 2.4.1.3. 
+\acrshort{sca} scans the application's code to identify all of its \gls{dependency}, including the different versions of the components used. It then cross-references these \gls{dependency} to different databases that include known vulnerabilities and then generates a report containing any potential risk. In comparison to the other tests, the report also includes an in-depth description of the vulnerability as well as a recommendation to update the components to newer versions or replace these. 
 \\~\\
-An advantage with \acrshort{sca} is that it can quickly identify risks that may be introduced from third-party components. It is rather common that modern applications rely on a large number of different dependencies, which therefore make \acrshort{sca} useful. It can provide a comprehensive view of the security risks associated with an application and help developers make informed decisions about the security and their applications. 
+An advantage with \acrshort{sca} is that it can quickly identify risks that may be introduced from third-party components. It is rather common that modern applications rely on a large number of different dependencies, which therefore make \acrshort{sca} useful. It can provide a comprehensive view of the security risks associated with an application and help developers make informed decisions about the security in the applications being developed. 
 \\~\\
-However, it is important to remember that \acrshort{sca} does not always have access to updated information, and may give some false positives 
-about vulnerabilities that don't necessarily exist anymore. 
+However, \acrshort{sca} may give some false positives that can occur because you have a large library in your code, and it can trigger from a dependency that is never used and is therefore not actually possible to exploit.
 \\~\\
 Figure \ref{fig: Where to perform SCA in SDLC} \acrshort{sca} scans are in both the implementation and maintenance phases to immediately detect vulnerable dependencies. The maintenance phase should also include checks as dependencies may become vulnerable after deployment.
 \vspace{2mm}
@@ -126,7 +127,7 @@ Figure \ref{fig: Where to perform SCA in SDLC} \acrshort{sca} scans are in both 
 
 \newpage
 \subsection{Comparison of SAST, DAST, and SCA}
-Upon reviewing the different security application tests, similarities between \acrshort{sast}, \acrshort{dast} and \acrshort{sca} were discovered. The table below shows some commonalities, which indicates that a combination of the different testing mechanisms can enhance the testing process of the application. 
+Upon reviewing the different security application tests, similarities between \acrshort{sast}, \acrshort{dast} and \acrshort{sca} were discovered. The table below shows some commonalities and differences, which indicates that a combination of the different testing mechanisms can enhance the testing process of the application. 
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -137,14 +138,13 @@ Upon reviewing the different security application tests, similarities between \a
 \end{figure}
 
 \section{The Significance of Software Security Testing}
-Security testing plays a critical role in the \acrlong{sdlc}, as it is employed to identify potential security vulnerabilities in the system and prevent real-world attacks. It is a process where the security of the system is evaluated and identifies the system's possible security weaknesses and risks of vulnerability.\cite{whysectest}
+Security testing plays a critical role in the \acrlong{sdlc}, as it is employed to identify potential security vulnerabilities in the system and prevent real-world attacks. It is a process where the security of the system is evaluated and identifies the system's possible security weaknesses and risks of vulnerability. \cite{whysectest}
 \\~\\
-According to IBM's report, in 2022, the cost of a data breach was estimated to be USD 4.35 million\cite{databreach}. Investing in cybersecurity measures can potentially save a lot of money for a company in the event of a cyber attack. The report states that companies that have implemented zero trust security measures saved about USD 1 million in breach costs on average when compared to those that have not. To repair a vulnerability in the design phase costs an average of USD 500\cite{fixvulnerability}. Starting software testing early in the SDLC results in reduced costs and saved time. 
-\\~\\
-As mentioned in section \ref{Functional Testing vs Security Testing}, there are various types of testing that should be executed on an application, including testing of both the written code and the libraries that are integrated and being used. It is crucial to test libraries because they can contain various types of vulnerabilities. \cite{testlibaries}
+According to IBM's report, in 2022, the cost of a data breach was estimated to be USD 4.35 million\cite{databreach}. Investing in cybersecurity measures can potentially save a lot of money for a company in the event of a cyber attack. The report states that companies that have implemented zero trust security measures saved about USD 1 million in breach costs on average when compared to those that have not. To repair a vulnerability in the design phase costs an average of USD 500\cite{fixvulnerability}. Starting software testing early in the SDLC results in reduced costs and saved time. As mentioned in section \ref{Functional Testing vs Security Testing}, there are various types of testing that should be executed on an application, including testing of both the written code and the libraries that are integrated and being used.
+
 
 \section{OWASP Top 10}
-\acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and developers to raise their knowledge of potential security threats. It represents an agreement on the most critical threats to web-based applications. The document contains a prioritized list and recommendations for fixing the 10 severe security flaws in web applications. The function of this article is to educate readers on the most common security risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these dangers in their applications. 
+\acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and for developers to raise their knowledge of potential security threats. It represents an agreement on the most critical threats to web-based applications. The document contains a prioritized list and recommendations for fixing the 10 severe security flaws in web applications. The function of this document is to educate readers on the most common security risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these dangers in their applications. 
 
 
 \section{Vulnerability Risk Rating}
@@ -162,7 +162,7 @@ Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, 
 
 \subsection{Common Vulnerabilities and Exposures (CVE)}
 \label{Common Vulnerabilities and Exposures}
-\acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The CVE program's mission is to determine, describe, and categorize cybersecurity vulnerabilities that have been made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} \footnote{https://nvd.nist.gov}.
+\acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The CVE program's mission is to determine, describe, and categorize cybersecurity vulnerabilities that have been made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} \footnote{https://nvd.nist.gov}, which is a list of vulnerabilities maintained by the United States government.
 
 \subsection{Common Weakness Enumeration (CWE)}
 \label{cwe}
