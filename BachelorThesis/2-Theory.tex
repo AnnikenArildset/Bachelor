@@ -12,7 +12,7 @@ This chapter will provide an explanation of different types of concepts that is 
 The planning phase is the first phase of the \acrshort{sdlc}. During this phase, the project's goals and objectives are determined. Aspects like resources, costs, and time should be discussed, and a timeline for the work should be created.  Furthermore, a project plan should be developed where tasks and resources necessary to construct the project's structure are identified, prioritized, and assigned. \cite{planningphase}
  
 \subsection{Implementation}
-It is in this phase the actual development of the software takes place. During the implementation phase, the software design is translated into code using programming languages. After the code is completed and reviewed, the building process begins, and several security scans are performed.
+It is in this phase the actual development of the software takes place. During the implementation phase, the software design is translated into code using programming languages. After the code is completed and reviewed, the build process begins, and several security scans are performed.
 The implementation phase is considered quite important since this is the phase that involves the actual development of the software and the preparation of the software for deployment into the environment.  \cite{ImplementationSDLC}
  
 \subsection{Testing}
@@ -29,18 +29,17 @@ In this phase, the software has been deployed and is now being monitored to ensu
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/devsec.png}
     \caption{DevSecOps Life Cycle}
-    \label{fig: DevSecOps Life Cycle}
+    \label{fig: DevSecOps Life Cycle}\cite{devsecopsbilde}
 \end{figure}
 
 
 \section{Functional Testing vs Security Testing}
 \label{Functional Testing vs Security Testing}
-Software testing is a very broad area, and each test varies according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions. Functional testing is emphasizing the software's behavior and that the software is working as expected. The functional test cases are based on the requirements of the software which were specified by the stakeholder. There are several functional testing methodologies that can be conducted, such as unit testing and integration testing. White box testing and black box testing are some examples of security testing methods. This topic will be described more in section \ref{boxtesting}. \cite{difftesting}
+Software testing is a very broad area, and each test varies according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions. Functional testing is emphasizing the software's behavior and that the software is working as expected. The functional test cases are based on the requirements of the software which were specified by the stakeholder. There are several functional testing methodologies that can be conducted, such as unit testing and integration testing\cite{difftesting}. White box testing and black box testing are some examples of security testing methods. This topic will be described more in section \ref{boxtesting}. 
 \\~\\
-Unit testing involves testing small components of the code, which is known as units to determine if the units behave as expected. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The goal of the unit testing is to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. Integration testing, on the other hand, evaluates how the previously tested components perform when integrated into a larger system and communicate across various components. 
-\cite{unitvsintergration}
+Unit testing involves testing small components of the code, which is known as units to determine if the units behave as expected. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The goal of the unit testing is to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. Integration testing, on the other hand, evaluates how the previously tested components perform when integrated into a larger system and communicate across various components \cite{unitvsintergration}.
 \\~\\
-Security testing, on the other hand, wants to break the software to uncover vulnerabilities. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attacker's point of view. These kinds of tests can be done manually or be done by software tools, called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them.\cite{whysectest}
+Security testing, on the other hand, wants to break the software to uncover vulnerabilities and verify its security features\cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attacker's point of view. These kinds of tests can be done manually or be done by software tools, called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them.
 
 
 
@@ -58,18 +57,18 @@ The various testing tools utilize a type of testing technique called "box testin
 
 \subsubsection{Black Box Testing}
 \label{BlackBoxTesting}
-Black box testing is a testing technique that primarily focuses on the functionality and behaviour of an application without any knowledge of its internal structure and processes. It can be thought of as a treating the application as a black box, where   only the inputs and outputs are visible and the internal workings unknown. This makes it an effective approach testing the functionality of an application, as the tester verifies whether the input produces the expected output without any knowledge of the underlying code or design. As a result, black box testing is often used as a form of functionality testing\cite{BlackBoxTestingFunctional}, ensuring that the software passes the black box test if it passes the expected output for the input. \cite{blackbox}
+Black box testing is a testing technique that primarily focuses on the functionality and behaviour of an application without any knowledge of its internal structure and processes  \cite{blackbox}. It can be thought of as treating the application as a black box, where   only the inputs and outputs are visible and the internal workings unknown. This makes it an effective approach testing the functionality of an application, as the tester verifies whether the input produces the expected output without any knowledge of the underlying code or design. As a result, black box testing is often used as a form of functionality testing\cite{BlackBoxTestingFunctional}, ensuring that the software passes the black box test if it passes the expected output for the input.
 
 
 \subsubsection{White Box Testing}
-White box testing focuses on the application from within. In such tests, the source code and infrastructure will be looked at. The testing consists of covering paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to have knowledge of programming and IT. The tester looks through the code to find weaknesses such as infinite loops or data flow issues. However, white box testing can be quite complex and when running such testing on a large amount of code, it can take days to test. \cite{whitebox}
+White box testing focuses on the application from within. In such tests, the source code and infrastructure will be looked at. The testing consists of covering paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to have knowledge of programming and IT. The tester looks through the code to find weaknesses such as infinite loops or data flow issues. However, white box testing can be quite complex and when running such testing on a large amount of code, it can take days or even weeks to test. \cite{whitebox}
 
 \subsubsection{Grey Box Testing}
 Grey box testing is a method that limits the user's knowledge of the different components being tested. It is a combination of white box testing and black box testing, where the user has access to internal code or design but not enough access to run a full white box testing, and the test practices are done at the same level as black box testing. \cite{GreyBox}
 
 
 \subsection{SAST}
-\acrlong{sast} is white-box testing that analysis the source code of an application to identify security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application actually is deployed. \cite{sast}
+\acrlong{sast} is white-box testing that analyzes the source code of an application to identify security vulnerabilities within the code. This method of testing usually takes place during the development phase of the \acrlong{sdlc}. The primary purpose of this method is to identify and remediate security issues before the application is deployed. \cite{sast}
 \\~\\
 \acrshort{sast} tools scan source code for known security threats, such as \gls{Cross-site scripting}, \gls{SQL-injection}, and \gls{Buffer-Overflow}. \acrshort{sast} tools also give warnings on any security weaknesses that may lie in the code that potentially can be exploited. After the tool has gone through the code it generates a report that contains the different vulnerabilities that it has identified, including a more in-depth description of the vulnerability and remediation on how to fix it. \acrshort{sast} usually runs white box testing  which is mentioned in section 2.4.1.2. 
 \\~\\
@@ -113,7 +112,8 @@ In Figure \ref{fig: Where to perform DAST in SDLC}, \acrshort{dast} is set to pe
 \\~\\
 An advantage with \acrshort{sca} is that it can quickly identify risks that may be introduced from third-party components. It is rather common that modern applications rely on a large number of different dependencies, which therefore make \acrshort{sca} useful. It can provide a comprehensive view of the security risks associated with an application and help developers make informed decisions about the security and their applications. 
 \\~\\
-However, it is important to remember that \acrshort{sca} does not always have access to updated information, and may give some false positives about vulnerabilities that don't necessarily exist anymore. 
+However, it is important to remember that \acrshort{sca} does not always have access to updated information, and may give some false positives 
+about vulnerabilities that don't necessarily exist anymore. 
 \\~\\
 Figure \ref{fig: Where to perform SCA in SDLC} \acrshort{sca} scans are in both the implementation and maintenance phases to immediately detect vulnerable dependencies. The maintenance phase should also include checks as dependencies may become vulnerable after deployment.
 \vspace{2mm}
@@ -141,10 +141,10 @@ Security testing plays a critical role in the \acrlong{sdlc}, as it is employed 
 \\~\\
 According to IBM's report, in 2022, the cost of a data breach was estimated to be USD 4.35 million\cite{databreach}. Investing in cybersecurity measures can potentially save a lot of money for a company in the event of a cyber attack. The report states that companies that have implemented zero trust security measures saved about USD 1 million in breach costs on average when compared to those that have not. To repair a vulnerability in the design phase costs an average of USD 500\cite{fixvulnerability}. Starting software testing early in the SDLC results in reduced costs and saved time. 
 \\~\\
-As mentioned in section \ref{Functional Testing vs Security Testing}, there are various types of testing that should be executed on an application, including testing of both the written code and the libraries that are integrated and being used. It is crucial to test libraries because they can contain various types of vulnerabilities, especially if they are open-source. This is because open-source code is open to common vulnerabilities, which can expose the application to malware injections, distributed denial-of-service (DDoS) attacks, and exposure of sensitive data. \cite{testlibaries}
+As mentioned in section \ref{Functional Testing vs Security Testing}, there are various types of testing that should be executed on an application, including testing of both the written code and the libraries that are integrated and being used. It is crucial to test libraries because they can contain various types of vulnerabilities. \cite{testlibaries}
 
 \section{OWASP Top 10}
-\acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and developers to raise their knowledge of potential security threats. It represents an agreement on the most critical threats to web-based applications. The document contains a prioritized list and recommendations for fixing the 10 severe security flaws in web applications. The function of this article is to educate readers on the most common safety risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these dangers in their applications. 
+\acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and developers to raise their knowledge of potential security threats. It represents an agreement on the most critical threats to web-based applications. The document contains a prioritized list and recommendations for fixing the 10 severe security flaws in web applications. The function of this article is to educate readers on the most common security risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these dangers in their applications. 
 
 
 \section{Vulnerability Risk Rating}
@@ -161,6 +161,7 @@ Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, 
 
 
 \subsection{Common Vulnerabilities and Exposures (CVE)}
+\label{Common Vulnerabilities and Exposures}
 \acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The CVE program's mission is to determine, describe, and categorize cybersecurity vulnerabilities that have been made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} \footnote{https://nvd.nist.gov}.
 
 \subsection{Common Weakness Enumeration (CWE)}
@@ -168,7 +169,7 @@ Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, 
 \acrlong{cwe}\footnote{Available at \url{https://cwe.mitre.org/}}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It was established to serve as a consistent benchmark for security solutions that address vulnerabilities and as a baseline for identifying, mitigating, and preventing weaknesses. CWE's goal is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
 
 \subsection{OWASP Risk Rating Methodology}
-OWASP Risk Rating Methodology contains a formula that calculates a risk score for each vulnerability based on two factors: likelihood and impact. There are multiple factors that make up both likelihood and impact. 
+\acrshort{owasp} Risk Rating Methodology contains a formula that calculates a risk score for each vulnerability based on two factors: likelihood and impact. There are multiple factors that make up both likelihood and impact. 
 \\~\\
 Factors that together compose the estimation of likelihood are separated into different groups which are related to the threat actor and the vulnerability. The set of factors related to the threat actor is skill level, motive, opportunity, and size. The set of factors related to the vulnerability is the ease of discovery, ease of exploit, awareness, and intrusion detection. Each factor will have different options, and each option will receive a likelihood rating from 0-9. 
 \\~\\
@@ -198,4 +199,4 @@ Combining the estimates of likelihood and impact factors produces an overall sev
 \acrlong{aws}\footnote{Available at \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform distributed by Amazon and provides a range of services from \acrlong{iaas}(\acrshort{iaas}) to \acrlong{paas}(\acrshort{paas}), and more. This allows customers to run their applications and store their data in the cloud. With their pay-as-you-go cloud computing model, the customer can scale their resources up and down - without having to invest in physical infrastructure.\cite{aws}  
 
 \section{GitHub}
-GitHub\footnote{Available at \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open-source projects. The developers can manage their projects in repositories, and track bugs and issues. It offers a range of different collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system, utilized for the management and monitoring of file versioning. GitHub employs this technology as the basis for its service. This allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.\cite{github}
+GitHub\footnote{Available at \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects. The developers can manage their projects in repositories, and track bugs and issues. It offers a range of different collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system, utilized for the management and monitoring of file versioning. GitHub employs this technology as the basis for its service. This allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.\cite{github}

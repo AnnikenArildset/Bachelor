@@ -8,15 +8,15 @@ Below is a figure of the pipeline in \acrshort{aws}, showing its structure and h
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{Images/aws-piplin-7.png}
-    \caption{Pipline in AWS}
+    \caption{Pipeline in AWS}
     \label{fig: Pipeline in AWS}
 \end{figure}
 
 \section{Code used in the pipeline}
-For testing, the group decided on using OWASPs Juice Shop\footnote{Code available at \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
-The code in the OWASP Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular for \gls{front-end} \cite{owaspJuiceShopCode}.
+For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
+The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular for \gls{front-end} \cite{owaspJuiceShopCode}.
 The code contains different vulnerabilities, including \gls{SQL-injection}s, \gls{Cross-site scripting}, and many others. 
-Overall, OWASP Juice Shop encourages users to improve their skills and it allows for customization and adaption for specific needs from the users. 
+Overall, \acrshort{owasp} Juice Shop encourages users to improve their skills and it allows for customization and adaption for specific needs from the users. 
 
  
 \section{Pushing to GitHub}
@@ -54,7 +54,7 @@ GitHub provides documentation\footnote{Available at \url{https://docs.github.com
 \section{Managing security in GitHub}
 When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Instructions available at \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
 \\~\\
-Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. To customize the trigger for the analysis, the pull request and push events are added to the workflow file, causing the analysis to run automatically whenever a pull request or push is made to the specified branch. The branch specified in this case is the main branch. \cite{CodeQLCustom}
+Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. To customize the trigger for the analysis, the pull request and push events are added to the workflow file, causing the analysis to run automatically whenever a pull request or push is made to the specified branch. The branch specified in this case is the main branch. \cite{CodeQLCustom} 
 
 \begin{tcolorbox}
 \begin{verbatim}
@@ -65,7 +65,8 @@ on:
     branches: [main]
 \end{verbatim}
 \end{tcolorbox}
-
+To see how to enable CodeQL from \acrshort{cli}, see Appendix \ref{EnableCodeQL}.
+\\~\\
  Other security tools in GitHub are Dependabot\footnote{Instructions available at \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret scanner\footnote{Instructions available at \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
 
 \begin{figure}[H]
