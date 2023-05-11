@@ -5,11 +5,11 @@ This chapter consists of a justification of the group's choices during the const
 
 \section{The groups use of the SDLC} %Bytte navn perhaps? 
 Working on the thesis, a product consisting of a report and code was created. Though this is not software, the process has some similarities to software development. Therefore, the group decided to consider using the \acrshort{sdlc} in their work.
-\\~\\
+%\\~\\
 During the planning phase, the group focused on gathering requirements for the thesis and developing a project plan. Initially, the group created a plan for using third-party tools for the scans, and set an estimate of the costs. However, the plan of using third-party tools was later discarded, with the exception of the \acrshort{dast} tool. The project plan included a Gantt chart that outlined the expected timeframe for tasks. Additionally, the group utilized Jira\footnote{Available at \url{https://www.atlassian.com/software/jira}} to create a Kanban board for task assignments. To prepare for pipeline implementation, the group created several models that detailed its structure, including security scans. The group also became familiar with the software and tools that would be utilized for the pipeline.
-\\~\\
+%\\~\\
 In the implementation phase, the group began the development of the pipeline while simultaneously working on the thesis. The coding process for the pipeline involved repeatedly implementing code and testing its functionality. For instance, the group implemented the code for \acrshort{aws} CodeBuild and tested whether the service was created in accordance with the code. As a result, the implementation and testing phases were carried out iteratively.
-\\~\\
+%\\~\\
 The end result was ultimately merged into a GitHub repository and documented in the thesis. As the product is not an application and is not intended for direct use in the future, but rather as a demonstration, no plans have been made for its maintenance. 
 
 \section{Chosen branch protection rules}
@@ -72,7 +72,9 @@ Secret Scanning also gives a detailed explanation of the errors and how to solve
 \section{Automation}
 Automation is the use of \gls{infrastructure as code} to perform tasks, instead of doing them manually. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs, by replacing the manual work of IT professionals with automated processes or by reducing the need for physical hardware, such as servers, by moving to a cloud-based solution. Automation can also speed up development by automating repetitive tasks, such as testing, building, and deploying code, allowing developers to work on more complex jobs. In addition, it can improve security by reducing the risk of human errors, or by automating security protocols that can help to speed up the detection, verification, and escalation of security issues without the need for manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{infrastructure as code} is mostly based on the benefits mentioned above. Furthermore, the group attempted to automate as many processes as possible in order to remove the need for manual involvement during deployment and testing. \cite{automation} \cite{automationredhat}
 \\~\\
-Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. A goal should be to create an \gls{idempotent} process that assures the pipeline's output is consistent every time it is built. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. \cite{idempotent}
+Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. One significant benefit of automating the development process is the ability to reuse the automated configuration across several projects. By automating the process once, it may be reused in a variety of settings, allowing numerous projects to benefit from the same improved pipeline.
+\\~\\
+A goal should be to create an \gls{idempotent} process that assures the pipeline's output is consistent every time it is built. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. \cite{idempotent}
 
 \section{The Use of Framework}
 \subsection{SLSA}
@@ -115,8 +117,7 @@ Identify and Confirm Vulnerabilities on an Ongoing Basis (RV.1): \textit{\say{He
 While the framework has some usefulness in terms of promoting good code heritage, its major issue is the significant amount of work needed to set it up and its high level of complexity that makes it difficult to work with. For a small project like ours, this complexity is not justified. However, the group can appreciate the value of this framework for larger open-source projects with broader user bases. Nevertheless, for the current size and scope, the complexity remains the biggest problem with this framework.
 
 \textbf{SSDF}
-
-
+Despite not initially following the SSDF framework, the group was able to accommodate many of its practices by adhering to industry best practices. This highlights that implementing the SSDF need not be an additional step in the development process, but can serve as a means for developers to evaluate the project's security level. Furthermore, the framework could be valuable for organizations with limited security competence, as it can provide a useful guide for determining which security measures to implement. Since the SSDF does not specify how the measures should be implemented, it is highly customizable to each project's unique needs. 
 
 \section{Revising the Thesis Angle}
 When writing the project plan, the group initially planned to write the thesis where various security testing tools would be tested and analyzed, and later on, demonstrate how the different tools could be used together. The main focus would be on the tools, and try to test as many tools as possible. The group found it difficult to create a unique thesis due to previous theses with similar topics. 

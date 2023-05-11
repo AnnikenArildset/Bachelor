@@ -42,6 +42,7 @@
 \usepackage{caption}        % Enables controlling the look and feel of captions, see package documentation
 \usepackage{subcaption}     % Recommended when making sub-figures
 \usepackage[nottoc]{tocbibind}  % Includes Bibliography, Index, list of Listing etc. to table of contents
+
 \newcommand{\source}[1]{\vspace{-4pt} \caption*{\hfill \footnotesize{Source: {#1}} } }   % Easily insert sources in images
 
 % --- Code ---
@@ -98,6 +99,8 @@
     \renewcommand*\contentsname{Table of Contents}  % Rename table of contents
     \renewcommand{\listfigurename}{List of Figures} % Rename list of figures
     \renewcommand{\listtablename}{List of Tables}   % Rename list of tables
+    \renewcommand{\lstlistlistingname}{Code Listings} % Rename list of listings
+    \renewcommand{\lstlistingname}{Code} 
     \def\equationautorefname{Equation}              % Autoref-name for equations
     \def\figureautorefname{Figure}                  % Autoref-name for figures
     \def\tableautorefname{Table}                    % Autoref-name for tables
@@ -121,6 +124,7 @@
 \usepackage{textcomp}   % Used in the package "gensymb" (below), which will give warnings if "textcomp" is not imported in advance
 \usepackage{gensymb}    % Adds extra generic symbols for math and text mode, e.g. \degree
 
+\usepackage{amsfonts}
 
 % --- Page setup ---
 \usepackage[a4paper, total={150mm, 245mm,footskip = 14mm}]{geometry}
@@ -157,15 +161,14 @@
     morecomment=[l][\color{magenta}]{\#}
  }
 
-
 % Terraform formatting options
 \lstdefinelanguage{terraform}{
   keywords={resource, provider, variable, output, module},
-  keywordstyle=\color{black},
+  keywordstyle=\color{teal},
   morestring=[b]",
-  stringstyle=\color{red},
+  stringstyle=\color{blue},
   comment=[l]{\#},
-  commentstyle=\color{blue},
+  commentstyle=\color{green},
   morecomment=[s]{/*}{*/},
   moredelim=**[is][\color{purple}]{@}{@},
 }
@@ -193,7 +196,7 @@
 \usepackage{parskip}
 \usepackage{dirtytalk}
 \usepackage{geometry}
-\geometry{left=4cm, right=4cm, top=4cm, bottom=3cm}
+\geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
 \frenchspacing
 \usepackage{fancyhdr}
 

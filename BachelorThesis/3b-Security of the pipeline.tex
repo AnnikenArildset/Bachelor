@@ -1,11 +1,11 @@
 \section{Security of the pipeline}
 \label{Security of the pipeline}
-Security of the pipeline refers to the measures taken to protect not only the pipeline, but the underlying infrastructure, and network involved in processing the code that passes through it. By ensuring the security of the pipeline, it is restricted to perform only its intended functions and preventing unauthorized access to restricted resources.  
+Security of the pipeline refers to the measures taken to protect not only the pipeline, but the underlying infrastructure, and network involved in processing the code that passes through it. By ensuring the security of the pipeline, it is restricted to performing only its intended functions and preventing unauthorized access to restricted resources.  
 
 \subsection{Branch Protection}
-Branch protection ensures that certain criteria are met before merging code into main. This feature allows users to create branch protection rules that enforce specific workflows for one or multiple branches, such as mandating an approving review or passing status checks for all pull requests merged into the protected branch. Access to this feature of GitHub is available for all users.\cite{branch}
+Branch protection ensures that certain criteria are met before merging code. This feature allows users to create branch protection rules that enforce specific workflows for one or multiple branches, such as mandating an approving review or passing status checks for all pull requests merged into the protected branch. Access to this feature of GitHub is available for all users.\cite{branch}
 \\
-By enforcing branch protection, the chances of introducing errors and vulnerabilities into the secured branch are less likely. Branch protection also increases a clearer development process by providing sufficient set of guidelines and requirements for making changes in the code. This can help ensure that all team members are on the same page and working towards the same goal. 
+By enforcing branch protection, the chances of introducing errors and vulnerabilities into the secured branch are less likely. Branch protection also creates a clearer development process by providing a set of guidelines and requirements for making changes in the code. This can help ensure that all team members are on the same page and working towards the same goal. 
 %\label{branchprotection}
 %Branch protection is a feature of GitHub, that enforces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain the security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main branch. Figure \ref{fig: Pipeline with implemented branch protection rules} demonstrates that enabling of branch protection is done before code is pushed to GitHub, in order for the source code to enter a secure repository. Below are the different branch protection features that can be enabled in GitHub. \cite{ProtectedBranches}
 
@@ -50,10 +50,7 @@ Secure authentication is a crucial aspect of maintaining system security. It inv
 \\~\\
 One of the ways that organizations can enhance their authentication process is through the use of conditional access. This involves setting rules and conditions that determine when, where, and how users can access a system. For example, an organization might require multi-factor authentication for all users who are accessing the system from outside the corporate network, or they might limit access to certain applications or data based on the user's role or location.
 \\~\\
-By using conditional access, organizations can more effectively control access to their systems, reduce the risk of unauthorized access or data breaches, and ensure compliance with regulatory requirements. It is an important part of a comprehensive security strategy, and should be implemented across all system components to provide maximum protection.
-\\~\\
-%Transition to AWS 
-Access control should be done before the code enters any software, in this case GitHub and \acrshort{aws}, to ensure the regulation of access at any time, as shown in Figure \ref{fig: Pipeline with implemented access control}.
+By using conditional access, organizations can more effectively control access to their systems, reduce the risk of unauthorized access or data breaches, and ensure compliance with regulatory requirements. It is an important part of a comprehensive security strategy, and should be implemented across all system components to provide maximum protection. Access control should be done before the code enters any software, in this case GitHub and \acrshort{aws}, to ensure the regulation of access at any time, as shown in Figure \ref{fig: Pipeline with implemented access control}.
 
 \vspace{2mm}
 \begin{figure}[H]

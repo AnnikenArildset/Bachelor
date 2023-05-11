@@ -15,15 +15,14 @@ The following advantages and disadvantages are a combination of the personal exp
             \textbf{Advantages} & \textbf{Disadvantages} \\
             \hline
             \begin{itemize}
-                \item [-]Open Source
-                \item [-]Easy to configure with \acrshort{aws}
-                \item [-]Free for both personal and commercial use
-                \item [-]There are multiple application security testing approaches available that can help discover potential vulnerabilities
+                \item [-]\textbf{Open source:} It is open source which allows users to access without paying for it. 
+                \item [-]\textbf{Configuration:}Easy to configure with \acrshort{aws}
+                \item [-]\textbf{Many available:}There are multiple application security testing approaches available that can help discover potential vulnerabilities
             \end{itemize}
             &
             \begin{itemize}
-                \item [-] The documentation could be improved and is, for some, difficult to understand
-                \item [-]Compared to other tools, the automated scanning features are restricted
+                \item [-] \textbf{Documentation:}The documentation could be improved and is, for some, difficult to understand
+                \item [-]\textbf{Compare:} Compared to other tools, the automated scanning features are restricted
             \end{itemize}
             \\
             \hline
@@ -55,15 +54,14 @@ These advantages and disadvantages are a combination of the personal experiences
 \textbf{Advantages} & \textbf{Disadvantages} \\
 \hline
 \begin{itemize}
-\item [-]Automates dependency updates, saving time and reducing manual errors 
-\item [-] Supports a wide range of languages and package managers 
-\item [-] Provides detailed changelogs and release notes 
-\item [-] Integrates with various development tools and services
+\item [-]\textbf{Automated:} It Automates dependency updates, saving time and reducing manual errors 
+\item [-] \textbf{Support:} It supports a wide range of languages and package managers 
+\item [-]\textbf{Change-logs:} It Provides detailed change-logs and release notes 
 \end{itemize}
 &
 \begin{itemize}
-\item [-] Can create merge conflicts with other changes 
-\item [-] The automatic scan of Dependabot may generate many false positives, which can be time-consuming to rectify. This requires users to manually review each of the issues to determine whether a change is necessary. 
+\item [-] \textbf{Merge conflict:} Can create merge conflicts with other changes 
+\item [-] \textbf{False-positives:} The automatic scan of Dependabot may generate many false positives, which can be time-consuming to rectify. This requires users to manually review each of the issues to determine whether a change is necessary. 
 
 \end{itemize}
 \\
@@ -93,17 +91,14 @@ Any issues found during the scanning process are displayed as alerts within the 
 \textbf{Advantages} & \textbf{Disadvantages} \\
 \hline
 \begin{itemize}
-\item [-] Triggers: Teams can decide when they want the scanning to be triggered. This is usually when an event occurs, such as pull requests
-\item [-]Configure the scan to suit the project: The scan can be configured so that it tailors the 
-  different needs
-\item [-] Auto-build: When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab
+\item [-] \textbf{Create triggers:} Teams can decide when they want the scanning to be triggered. This is usually when an event occurs, such as pull requests
+\item [-]\textbf{Suitable for projects:} The scan can be configured so that it tailors the different needs
+\item [-] \textbf{Auto-build:} When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab
 \end{itemize}
 &
    \begin{itemize}
-\item [-] It isn't always as well-suited for certain types of projects such as small projects with simple code bases, as the complexity of setting up CodeQL will not give significant benefits. 
-\item [-]Precision can depend on the quality of the code
-\item [-] Only supports a smaller set of languages 
-\item [-] May require configuration and customization to fit project needs
+\item [-]\textbf{Precision:} The precision can depend on the quality of the code that it is scanning
+\item [-] \textbf{Language support:}Only supports a smaller set of languages 
 \end{itemize}
 \\
 \hline
@@ -146,14 +141,14 @@ To prevent fraudulent use of accidentally committed secrets, GitHub scans reposi
    \begin{itemize}
 \item [-] \textbf{False positives:} Secret Scanning cannot always determine if the secret is legitimate or not, which occasionally can occur in false positives
 \item [-] \textbf{Limited Coverage:} It can be limited an not always detect all secrets
-\end{itemize}
-\\
-\hline
-\end{tabular}
-\caption{Advantages and disadvantages of GitHub´s Secret Scanner}\cite{Secret_Scanner_pros_cons}
-\label{tab: Secret_Scanner}
-\end{table}
-
+    \end{itemize}
+    \\
+    \hline
+    \end{tabular}
+    \caption{Advantages and disadvantages of GitHub´s Secret Scanner}\cite{Secret_Scanner_pros_cons}
+    \label{tab: Secret_Scanner}
+    \end{table}
+    
 
 \subsection{Branch Protection}
 \label{branchprotection}
@@ -162,7 +157,7 @@ Branch protection is a feature of GitHub, that enforces different rules and requ
 \subsubsection{Require a pull request before merging}
 Administrators of the repository can add rules to the repository which restrict pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow users with written permissions to do the approving as well as users considered to be code owners. 
 \\~\\
-It is under this type of protection that the "Four Eyes Principle" is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes. This principle can be considered a controlling mechanism that improves the quality of the outcome, minimize risk errors and prevents malicious actions by a single individual. 
+It is under this type of protection that the "Four Eyes Principle" is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes. This principle can be considered a controlling mechanism that improves the quality of the outcome, minimize risk errors, and prevents malicious actions by a single individual. 
 
 \subsubsection{Require status checks before merging}
 Maintaining high code quality is important when multiple users collaborate within a shared repository. 
@@ -185,7 +180,30 @@ Lock branch as the name implies allows the users to lock a branch in a repositor
 \subsubsection{Do not allow bypassing the above settings}
 This feature stops users from bypassing required checks and restrictions in a repository. For example, if an administrator sets a rule that all pull requests must pass reviews and checks before merging, the feature prompts users to comply before making changes to the branch.
 
-
+\subsection{Branch protection: advantages and disadvantages}
+\begin{table}[H]
+\centering
+\begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
+\hline
+\textbf{Advantages} & \textbf{Disadvantages} \\
+\hline
+\begin{itemize}
+\item [-] \textbf{Code changes:} It prevents unauthorized code changes, which ensures that only authorized users can make changes to a particular branch.
+\item [-]\textbf{Code quality:} It can help enforce code review and approval of code which specifies the quality of the code. 
+\item [-] \textbf{Collaboration:} By restricting certain actions within different branches, it allows users to work on different aspects of the project without it compromising others work towards the same goal.  
+\end{itemize}
+&
+   \begin{itemize}
+\item [-] \textbf{Create bottlenecks:} If there are only few individuals that are authorized to do changes, it can create bottlenecks and delays in approving different issues. 
+\item [-] \textbf{Workflow:} Branch protections can quickly ruin workflows if something always needs to be approved before one can move on. 
+    \end{itemize}
+    \\
+    \hline
+    \end{tabular}
+    \caption{Advantages and disadvantages of GitHub´s Branch Protection}
+    \label{tab: Branch_protection}
+    \end{table}
+    
 
 
 \section{Amazon Web Services Tools}
