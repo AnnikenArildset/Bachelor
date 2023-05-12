@@ -1,0 +1,26 @@
+\newpage
+\section{Comments to the script}
+The commands given above is designed to work for the group, but will not necessary work for others that does not have access to the repository used in this case. 
+However, the syntax is the same, so below one will find the syntax for the different commands. It is also important to mention that the "run-id" is the id that is received  from when you run the second command below. 
+
+\begin{tcolorbox}
+\begin{verbatim}
+#Authenticate
+ gh auth login
+#Enables CodeQL with basic setup
+gh api -X PATCH /repos/[org-name]/[repo-name]/code-scanning/
+default-setup -f state=configured
+
+#Monitors the change
+gh api /repos/[org-name]/[repo-name]/actions/runs/run_id 
+--jq '.status,.conclusion'
+
+#Checks if it was successful 
+gh api /repos/[org-name]/[repo-name]/code-scanning/default-setup
+
+___________________________________________
+#Enable Dependabot
+gh api -X PUT /repos/[org-name]/[repo-name]/vulnerability-alerts
+ 
+\end{verbatim}
+\end{tcolorbox}

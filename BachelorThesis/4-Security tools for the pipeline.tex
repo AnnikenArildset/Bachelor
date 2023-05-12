@@ -4,10 +4,10 @@
 The following chapter presents tools that can be utilized as the security tools implemented in the \gls{pipeline} presented in Chapter \ref{Pipeline security}. Additionally, the group will explain the reasoning behind selecting each of the different tools and look at the advantages and disadvantages of each tool. 
 
 \section{OWASP ZAP}
-\acrshort{owasp} \acrlong{zap} (\acrshort{owasp} \acrshort{zap})\footnote{Available at \url{https://www.zaproxy.org/}} is an open-source web application security scanner. It is free and maintained by volunteers across the world under the \acrlong{owasp}. \acrshort{zap} is a \acrshort{dast} tool and is designed to test web application security. The tool offers functionality for a wide range of people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker\footnote{Available at: https://www.docker.com/}, which means that users are not limited to a specific operating system when using the tool.\cite{owaspZAP}
+\acrshort{owasp} \acrlong{zap} (\acrshort{owasp} \acrshort{zap})\footnote{Available at \url{https://www.zaproxy.org/}} is an open-source web application security scanner \cite{owaspZAP}. It is free and maintained by volunteers worldwide under the \acrlong{owasp}. \acrshort{zap} is a \acrshort{dast} tool and is designed to test web application security. The tool offers functionality for many people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker\footnote{Available at: https://www.docker.com/}, which means that users are not limited to a specific operating system when using the tool.
 
 \subsection{OWASP ZAP: advantages and disadvantages}
-The following advantages and disadvantages are a combination of the personal experiences and information found during research.\cite{prosconsZAP}
+The following advantages and disadvantages combine the personal experiences and information found during research.\cite{prosconsZAP}
 \begin{table}[H]
     \begin{threeparttable}
         \begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
@@ -15,7 +15,7 @@ The following advantages and disadvantages are a combination of the personal exp
             \textbf{Advantages} & \textbf{Disadvantages} \\
             \hline
             \begin{itemize}
-                \item [-]\textbf{Open source:} It is open source which allows users to access without paying for it. 
+                \item [-]\textbf{Open source:} It is open source, which allows users to access it without paying for it. 
                 \item [-]\textbf{Configuration:}Easy to configure with \acrshort{aws}
                 \item [-]\textbf{Many available:}There are multiple application security testing approaches available that can help discover potential vulnerabilities
             \end{itemize}
@@ -33,19 +33,19 @@ The following advantages and disadvantages are a combination of the personal exp
 
 
 \section{GitHub security Tools}
-Below are the GitHub tools that can be utilized to perform various application security testing on the code sent through the pipeline. 
-\subsection{Dependabot}
-Dependabot is an in-built GitHub tool that helps developers keep their project dependencies up-to-date and is an example of an \acrshort{sca} tool that can be used in the implementation phase.
-\\~\\
-Dependencies can be updated over time as new versions are released. Therefore, it is crucial that developers keep the dependencies up to date to ensure that the project stays secure. However, keeping track of all updates that come and manually running these updates can be rather time-consuming and error-prone. Dependabot automates the process of checking for new versions of the dependencies used in the code and then creates a pull request to update them. The user can then review the updates and see if it is necessary to do any changes. 
-Dependabot can also automatically resolve any conflict that may arise when updating dependencies and can open up separate pull requests for separate dependency updates. \cite{GithubDependabot2}
-\\~\\
-Dependabot uses the \say{GitHub Advisory Database} to check for vulnerable data. This database covers a lot of public vulnerabilities and it uses multiple sources, like \acrlong{cve}, explained in \ref{Common Vulnerabilities and Exposures}, \acrlong{nvd}, and several others. \cite{GithubDependabot1}
+Below are the GitHub tools that can be utilized to conduct a wide range of application security testing on the code sent through the pipeline. 
 
-%\subsection{Why Dependabot was chosen}
-%Dependabot was chosen to gain a better understanding of tools that are already integrated into GitHub instead of implementing third-party tools for the different application security tests. This was to evaluate the necessity of a third-party tool, given that GitHub already offers tools that are widely used by developers. The group found it reasonable to assume that GitHub provides sufficient tools making it unnecessary to implement a third-party tool, which is the reason why the group decided to %test this theory. 
+\subsection{Dependabot}
+Dependabot is an in-built GitHub tool that helps developers keep their project dependencies up-to-date and is an example of an \acrshort{sca} tool that can be used in the implementation phase \cite{GithubDependabot1}.
+\\~\\
+Dependencies can be updated over time as new versions are released. Therefore, developers must keep the dependencies current to ensure the project stays secure. However, keeping track of all updates that come and manually running these updates can be rather time-consuming and error-prone. Dependabot automates checking for new versions of the dependencies used in the code and then creates a pull request to update them. The user can then review the updates and see if it is necessary to make any changes. 
+Dependabot can also automatically resolve any conflict that may arise when updating dependencies and can open up separate pull requests for separate dependency updates. 
+\\~\\
+Dependabot uses the \say{GitHub Advisory Database} to check for vulnerable data. This database covers a lot of public vulnerabilities, and it uses multiple sources, like \acrlong{cve}, explained in \ref{Common Vulnerabilities and Exposures}, \acrlong{nvd}, and several others. \cite{GithubDependabot2}
+
+
 \subsubsection{Dependabot: advantages and disadvantages}
-These advantages and disadvantages are a combination of the personal experiences and information found during research. \cite{prosconsdependabot} 
+These advantages and disadvantages combine the personal experiences and information found during research. \cite{prosconsdependabot} 
 
 \begin{table}[H]
 \centering
@@ -61,7 +61,7 @@ These advantages and disadvantages are a combination of the personal experiences
 &
 \begin{itemize}
 \item [-] \textbf{Merge conflict:} Can create merge conflicts with other changes 
-\item [-] \textbf{False-positives:} The automatic scan of Dependabot may generate many false positives, which can be time-consuming to rectify. This requires users to manually review each of the issues to determine whether a change is necessary. 
+\item [-] \textbf{False-positives:} The automatic scan of Dependabot may generate many false positives, which can be time-consuming to rectify. Getting false positives requires users to manually review each issue to determine whether a change is necessary. 
 
 \end{itemize}
 \\
@@ -72,15 +72,15 @@ These advantages and disadvantages are a combination of the personal experiences
 \end{table}
 
 \subsection{CodeQL}
-GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code that is in the GitHub repository to find vulnerabilities and errors in the code. This tool can be used as the \acrshort{sast} tool in the \gls{pipeline}. CodeQL is also a recommended tool according to Microsoft's best practice for secure \acrshort{sdlc} that argues the use of approved tools \cite{microsoftSDLCpractices}. The results of these analyzes are shown as code-scanning alerts in GitHub. This feature helps identify existing issues but also prevents new ones from being introduced. \cite{CodeQL1}
+GitHub has an in-built code scanning tool called CodeQL that allows the users to analyze the code in the GitHub repository to find vulnerabilities and errors in the code \cite{CodeQL1}. This tool can be used as the \acrshort{sast} tool in the \gls{pipeline}. CodeQL is also a recommended tool according to Microsoft's best practice for secure \acrshort{sdlc} that argues using approved tools \cite{microsoftSDLCpractices}. The results of these analyzes are shown as code-scanning alerts in GitHub. This feature helps identify existing issues and prevents new ones from being introduced. 
 \\~\\
-CodeQL can be scheduled so that it runs on chosen days or occurrences of events. Rather than scanning each branch individually, it is possible to set up a trigger that will initiate the code scan only when the code is pushed to the main branch or when a pull request is made to the main branch. This helps to reduce the amount of time and resources required to perform the scans. Also, it minimizes the risk of vulnerabilities or errors being introduced into the production environment.
+CodeQL can be scheduled so that it runs on chosen days or occurrences of events. For example, rather than scanning each branch individually, it is possible to set up a trigger that will initiate the code scan only when the code is pushed to the main branch or when a pull request is made. Limiting the triggers helps to reduce the amount of time and resources required to perform the scans. Also, it minimizes the risk of vulnerabilities or errors being introduced into the production environment.
 \\~\\
-Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different issues easily between members of the team.  Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
+Any issues found during the scanning process are displayed as alerts within the repository. This means that developers can divide the different issues easily between team members. Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using web-hooks and the code scanning API. 
 \cite{GithubCodeScanning}
 
 \begin{comment}
-    CodeQL and Dependabot have together detected 101 vulnerabilities. This is the exact amount of vulnerabilities that were "...intentionally planted in the application..." \cite{owaspJuiceShop}.
+    CodeQL and Dependabot have together detected 101 vulnerabilities. This is the exact number of vulnerabilities "...intentionally planted in the application..." \cite{owaspJuiceShop}.
 \end{comment}
 
 \subsubsection{CodeQL: advantages and disadvantages}
@@ -91,13 +91,13 @@ Any issues found during the scanning process are displayed as alerts within the 
 \textbf{Advantages} & \textbf{Disadvantages} \\
 \hline
 \begin{itemize}
-\item [-] \textbf{Create triggers:} Teams can decide when they want the scanning to be triggered. This is usually when an event occurs, such as pull requests
+\item [-] \textbf{Create triggers:} Teams can decide when to trigger the scanning. This is usually when an event occurs, such as pull requests
 \item [-]\textbf{Suitable for projects:} The scan can be configured so that it tailors the different needs
 \item [-] \textbf{Auto-build:} When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab
 \end{itemize}
 &
    \begin{itemize}
-\item [-]\textbf{Precision:} The precision can depend on the quality of the code that it is scanning
+\item [-]\textbf{Precision:} The precision can depend on the code. If the code requires a specific type of customization, then the precision of the default setup for CodeQL will not necessarily be that suitable. 
 \item [-] \textbf{Language support:}Only supports a smaller set of languages 
 \end{itemize}
 \\
@@ -109,21 +109,16 @@ Any issues found during the scanning process are displayed as alerts within the 
 
 
 \subsection{Secret Scanner}
-To prevent fraudulent use of accidentally committed secrets, GitHub scans repositories and archived repositories for known secrets. Secret Scanner is provided in two forms:  \cite{GithubSecretScanning}: 
+To prevent fraudulent use of accidentally committed secrets, GitHub scans repositories and archived repositories for known secrets \cite{GithubSecretScanning}. Secret Scanner is provided in two forms:  
 
 \begin{itemize}
-    \item [-] \textbf{Secret Scanning alerts for partner}\\
-    When a repository is made public or changes have been pushed to a public repository on GitHub, the code is automatically scanned for any secrets that match the patterns of GitHub's partners. Additionally, the Secret Scanner also scans for credentials in the public package registry, like the npm registry\footnote{Available at: https://www.npmjs.com/}. When the scanner detects a secret, the associated service provider will be notified. The provider will validate the secret and decide what the course of action will be, which for example can be revoking the secret or creating an issue. The specific action will depend on the level of risk involved. 
+    \item [-] \textbf{Secret Scanning alerts for partners}\\
+    When a repository is made public, or changes have been pushed to a public repository on GitHub, the code is automatically scanned for any secrets that match the patterns of GitHub's partners. The Secret Scanner also scans for credentials in the public package registry, like the npm registry\footnote{Available at: https://www.npmjs.com/}. GitHub notifies the associated service provider when the scanner detects a secret. The provider will validate the secret and decide what the course of action will be, for example, revoking the secret or creating an issue. The specific action will depend on the level of risk involved. 
     
     \item [-] \textbf{Secret Scanning alerts for users}\\
-    Secret Scanning alerts for users are available for all public repositories and is free. By enabling secret scanning for a repository, the scanner will look for patterns in the code that could match secrets by different service providers. Once the scan is complete GitHub sends an email alert to the enterprise and the owners of the organizations. However, if a secret has been compromised, GitHub generates an alert for secret scanning. 
+    Secret Scanning alerts for users are free for all public repositories. By enabling secret scanning for a repository, the scanner will look for patterns in the code that could match secrets by different service providers. Once the scan is complete, GitHub sends an email alert to the enterprise and the owners of the organizations. However, if a secret has been compromised, GitHub generates an alert for secret scanning. 
     
 \end{itemize}
-
-%THIS IS FROM CHAPTER 3 BUT NEEDS TO BE MERGED WITH THIS SECTION:\\
-%GitHub has a Secret Scanning Partner Program \cite{partnerprogram} that allows service providers to collaborate with GitHub to secure their secret token formats. This program uses secret scanning technology, which examines code repositories hosted on GitHub for any unintentional commits of the service provider's secret format. If a potential secret is discovered, it can be routed to the service provider's verify endpoint for additional investigation and management. The benefit of this program is the ability for organizations and products to give their users a better and more complete security solution for their GitHub code repositories. 
-
-%The secret scanner also alerts normal GitHub users. These scans use their service providers to scan for content that matches the partners' secret patterns \cite{GitHubSecretScannerUserAlert}.
 
 \subsubsection{Secret Scanner: advantages and disadvantages}
 \begin{table}[H]
@@ -140,7 +135,7 @@ To prevent fraudulent use of accidentally committed secrets, GitHub scans reposi
 &
    \begin{itemize}
 \item [-] \textbf{False positives:} Secret Scanning cannot always determine if the secret is legitimate or not, which occasionally can occur in false positives
-\item [-] \textbf{Limited Coverage:} It can be limited an not always detect all secrets
+\item [-] \textbf{Limited Coverage:} It can be limited and does not always detect all secrets created manually, such as personal passwords. 
     \end{itemize}
     \\
     \hline
@@ -149,36 +144,47 @@ To prevent fraudulent use of accidentally committed secrets, GitHub scans reposi
     \label{tab: Secret_Scanner}
     \end{table}
     
-
+\newpage
 \subsection{Branch Protection}
 \label{branchprotection}
-Branch protection is a feature of GitHub, that enforces different rules and requirements for specific branches in the repository. The purpose of branch protection is to maintain the security of the code, this is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main branch. Figure \ref{fig: Pipeline with implemented branch protection rules} demonstrates that enabling of branch protection is done before code is pushed to GitHub, in order for the source code to enter a secure repository. Below are the different branch protection features that can be enabled in GitHub. \cite{ProtectedBranches}
+Branch protection is a feature of GitHub that enforces different rules and requirements for specific branches in the repository \cite{ProtectedBranches}. The purpose of branch protection is to maintain the code's security, which is done by ensuring that all changes done to the branch have gone through the proper steps before being merged into the main branch. Figure \ref{fig: Pipeline with implemented branch protection rules} demonstrates that branch protection is enabled before code is pushed to GitHub in order for the source code to enter a secure repository. Below are the different branch protection features that can be enabled in GitHub. 
 
 \subsubsection{Require a pull request before merging}
-Administrators of the repository can add rules to the repository which restrict pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow users with written permissions to do the approving as well as users considered to be code owners. 
+Administrators of the repository can add rules to the repository which restrict pull requests to have a specific number of people approving the changes before merging to a protected branch. Administrators can allow code owners and users with written permissions to approve.
 \\~\\
-It is under this type of protection that the "Four Eyes Principle" is applied. Since this type of protection require that at least two people approve the merge, this includes the person itself doing the changes. This principle can be considered a controlling mechanism that improves the quality of the outcome, minimize risk errors, and prevents malicious actions by a single individual. 
+Under this type of protection, the "Four Eyes Principle" is applied. Since this type of protection requires that at least two people approve the merge, this includes the person doing the changes. This principle can be considered a controlling mechanism that improves the quality of the outcome, minimize risk errors, and prevents malicious actions by a single individual. 
 
 \subsubsection{Require status checks before merging}
-Maintaining high code quality is important when multiple users collaborate within a shared repository. 
-By enabling \say{require status checks to pass before merging} feature, repository administrators can establish specific criteria that must be met before code is merged, such as requiring code approval from at least one team member.
+Maintaining high code quality is essential when multiple users collaborate within a shared repository. By enabling the \say{require status checks to pass before merging} feature, repository administrators can establish specific criteria that must be met before code is merged, such as requiring code approval from at least one team member.
 
 \subsubsection{Require conversation resolution before merging}
-When working together on the same repository it is important to have clear communication and collaboration. A way to secure this is to enable \say{require conversation resolution before merging}. This allows all discussions regarding for example issues or pull requests that need to be properly resolved before any merging happens. 
+When working together on the same repository, it is essential to have clear communication and collaboration. A way to secure this is to enable \say{require conversation resolution before merging}. Enabling this rule allows all discussions regarding, for example, issues or pull requests that need to be properly resolved before any merging happens. 
 
 \subsubsection{Require signed commits}
-Enabling require \say{signed commits} can be considered a security measure that ensures that changes in the code have not been tampered with. 
-To be able to have secured signed commits, all commits pushed to the repository must be signed with a \acrlong{gpg} (\acrshort{gpg}) key or an \acrshort{ssh} key. 
+Enabling require \say{signed commits} can be considered a security measure that ensures that changes in the code have not been tampered with. To be able to have secured signed commits, all commits pushed to the repository must be signed with a \acrlong{gpg} (\acrshort{gpg}) key or an \acrshort{ssh} key. 
 
 
 \subsubsection{Require deployments to succeed before merging}
-\say{Require deployments to succeed before merging}enables users to enforce passing of various required checks, such as pre-merge checks or automated tests, before allowing a pull request to be merged into the main branch.
+\say{Require deployments to succeed before merging} enables users to enforce the passing of various required checks, such as pre-merge checks or automated tests, before allowing a pull request to be merged into the main branch.
 
 \subsubsection{Lock branch}
-Lock branch as the name implies allows the users to lock a branch in a repository, which will prevent changes from being made to the branch. This can be useful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. 
+As the name implies, the lock branch allows users to lock a branch in a repository, preventing changes from being made to the branch. This rule can be helpful if there are situations where the branch needs to be protected from unauthorized changes or to be deleted. 
 
 \subsubsection{Do not allow bypassing the above settings}
-This feature stops users from bypassing required checks and restrictions in a repository. For example, if an administrator sets a rule that all pull requests must pass reviews and checks before merging, the feature prompts users to comply before making changes to the branch.
+This feature stops users from bypassing required checks and restrictions in a repository. For example, if an administrator enables a rule that all pull requests must pass reviews and checks before merging, the feature prompts users to comply before making changes to the branch.
+
+\subsubsection{Restrict who can push to matching branches}
+This branch protection can be enabled for public repositories owned by a GitHub Free organization and organizations using GitHub Team or GitHub Enterprise Cloud. When enabled, only specific users or teams with specific permissions are allowed to push any changes to the protected branch. 
+\newpage
+\subsubsection{Allow force pushes}
+As default, GitHub prevents force pushes on all protected branches. However, \say{force pushes} can be enabled and gives two options:
+\begin{itemize}
+    \item [-] Allow anyone with at least writing permission, including admins, to force a push to the branch.
+    \item [-] Restrict force pushing to specific individuals or teams. 
+\end{itemize}
+Force pushes allow users to overwrite the branch's commit history with their local commit history. 
+\subsubsection{Allow deletions}
+By default, GitHub restricts a user from deleting a protected branch. However, when \say{allow deletions} is enabled on a branch, anyone with only write permissions or more to the repository can delete the specific branch. 
 
 \subsection{Branch protection: advantages and disadvantages}
 \begin{table}[H]
@@ -188,19 +194,19 @@ This feature stops users from bypassing required checks and restrictions in a re
 \textbf{Advantages} & \textbf{Disadvantages} \\
 \hline
 \begin{itemize}
-\item [-] \textbf{Code changes:} It prevents unauthorized code changes, which ensures that only authorized users can make changes to a particular branch.
-\item [-]\textbf{Code quality:} It can help enforce code review and approval of code which specifies the quality of the code. 
-\item [-] \textbf{Collaboration:} By restricting certain actions within different branches, it allows users to work on different aspects of the project without it compromising others work towards the same goal.  
+\item [-] \textbf{Code changes:} It prevents unauthorized code changes, ensuring only authorized users can make changes to a particular branch.
+\item [-]\textbf{Code quality:} It can help enforce code review and approval of code, specifying the code's quality. 
+\item [-] \textbf{Collaboration:} By restricting certain actions within different branches, users can work on different aspects of the project without compromising others' work towards the same goal.  
 \end{itemize}
 &
    \begin{itemize}
-\item [-] \textbf{Create bottlenecks:} If there are only few individuals that are authorized to do changes, it can create bottlenecks and delays in approving different issues. 
-\item [-] \textbf{Workflow:} Branch protections can quickly ruin workflows if something always needs to be approved before one can move on. 
+\item [-] \textbf{Create bottlenecks:} If only a few individuals are authorized to make changes, it can create bottlenecks and delays in approving different issues. 
+\item [-] \textbf{Workflow:} Branch protections can quickly ruin workflows if something always needs approval before moving on. 
     \end{itemize}
     \\
     \hline
     \end{tabular}
-    \caption{Advantages and disadvantages of GitHub´s Branch Protection}
+    \caption{Advantages and disadvantages of GitHub's Branch Protection}
     \label{tab: Branch_protection}
     \end{table}
     
@@ -208,12 +214,12 @@ This feature stops users from bypassing required checks and restrictions in a re
 
 \section{Amazon Web Services Tools}
 
-The following are the \acrshort{aws} tools that can be utilized in the creation and deployment of a web application. There is a range of different tools available, but only the selected tools listed below will be utilized in the deployment process detailed in Chapter \ref{Deployment}.
+The following are the \acrshort{aws} tools that can be utilized in creating and deploying a web application. A range of different tools are available, but only the selected tools listed below will be utilized in the deployment process detailed in Chapter \ref{Deployment}.
 
 \subsection{AWS CodePipeline}
 \acrshort{aws} CodePipeline is a \say{\textit{...fully managed continuous delivery service that helps you automate your release \gls{pipeline}. It allows users to build, test, and deploy code into a test production environment...}} \cite{AWSCodePipeline}.
 \\~\\
-CodePipeline automates the entire \gls{pipeline}, including the build, test, and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects the changes and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
+CodePipeline automates the entire \gls{pipeline}, including the build, test, and deploy phases, and triggers these processes whenever changes are detected in the repository. When a developer pushes changes to the repository, CodePipeline automatically detects them and initiates the process by building them. If any tests are configured, CodePipeline also runs these tests.\cite{AWSCodePipeline1}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{Images/CodePipeline.png}
@@ -224,10 +230,10 @@ CodePipeline automates the entire \gls{pipeline}, including the build, test, and
 \subsection{AWS CodeBuild }
 \acrshort{aws} CodeBuild can be described as a \say{\textit{...fully managed continuous integration service that compiles source code, runs tests, and produces ready-to-deploy software packages.}} \cite{AWSCodeBuild}.
 \\~\\
-AWS CodeBuild downloads the source code provided to it into a build environment and then uses a \gls{buildspec} which defines how the built project should be executed. \cite{AWSCodeBuild1}
+AWS CodeBuild downloads the source code provided to it into a build environment and then uses a \gls{buildspec}, which defines how the built project should be executed. \cite{AWSCodeBuild1}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Images/CodeBuild.png}
+    \includegraphics[scale=0.3]{Images/Codebuild.png}
     \caption{AWS CodeBuild process} Adapted from: \cite{AWSCodeBuild}
     \label{fig: AWS CodeBuild Process}
 \end{figure}
@@ -236,7 +242,7 @@ AWS CodeBuild downloads the source code provided to it into a build environment 
 \acrshort{aws} CodeDeploy is explained as \say{\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lambda and more...}} \cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
 \\~\\
-CodeDeploy can deploy code that runs on a server and is stored in for example GitHub repositories or in a \acrshort{aws} S3 Bucket. In order to use CodeDeploy, developers are not required to make any adjustments to their existing code. \cite{CodeDeploy1}
+CodeDeploy can deploy code that runs on a server and is stored in, for example, GitHub repositories or in a \acrshort{aws} S3 Bucket. In order to use CodeDeploy, developers are not required to make any adjustments to their existing code. \cite{CodeDeploy1}
 
 \begin{figure}[H]
     \centering
@@ -247,7 +253,7 @@ CodeDeploy can deploy code that runs on a server and is stored in for example Gi
 
 
 \subsection{Amazon S3 buckets}
-Amazon S3 buckets are simple, cloud-based storage resources. S3 buckets are designed to provide users with scalable, durable, and highly available storage which can be used to store different types of data. Such data can be documents, \gls{artifact}s, source code, and so on. An S3 bucket can be considered a container that stores different objects. \cite{S3Bucket}
-
+Amazon S3 buckets are simple, cloud-based storage resources \cite{S3Bucket}. S3 buckets are designed to provide users with scalable, durable, and highly available storage, which can be used to store different types of data. Such data can be documents, \gls{artifact}s, source code, and so on. An S3 bucket can be considered a container that stores different objects. 
+\newpage
 \subsection{Amazon EC2}
-\acrlong{ec2} (\acrshort{ec2}) offers a \gls{compute platform}, with virtual computing environments, also known as instances. \acrshort{ec2} offers a wide range of instance types to meet different computing needs. These instances come with preconfigured templates called \acrlong{amis} (\acrshort{amis}) that contain the necessary software and operating system to run the server. Users can choose from various configurations of CPU, memory, storage, and networking capacity for their instances, known as instance types. \cite{awsec2}
+\acrlong{ec2} (\acrshort{ec2}) offers a \gls{compute platform}, with virtual computing environments, also known as instances \cite{awsec2}. \acrshort{ec2} offers various instance types to meet computing needs. The instance type determines the instances' CPU, memory, storage, and networking capacity. The instances are launched from \acrlong{amis} (\acrshort{amis}). \acrshort{amis} are templates that contain the necessary software configurations and operating system to run the server \cite{amis}.

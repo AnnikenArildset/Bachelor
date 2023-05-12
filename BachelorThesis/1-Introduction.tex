@@ -1,30 +1,30 @@
 \chapter{Introduction}
 
 \section{Background} %Hvorfor vi fikk oppgaven 
-\acrlong{nbim}, from now on referred to as \acrshort{nbim}, is a division within the central bank responsible for overseeing the Government Pension Fund of Norway, which has a worth of 14,000 billion Norwegian kroner \cite{nbimwebsite}. Due to its large value, the fund is a major target for potential malicious actors. It faces an average of three severe cyber attacks daily, totalling around 100,000 attacks each year. Out of these, more than 1,000 are considered significant threats \cite{nbimattacks}. Therefore, it is crucial for \acrshort{nbim}, as well as other organizations, to ensure the security of their systems and applications before deploying them into their cloud services. 
-
-\acrlong{sdlc} (\acrshort{sdlc}), describes how software applications are built - from planning through implementation and running in production. It also includes ensuring security at the different stages of software development. In order to accommodate frequent deployments to production, it is important to automate the security testing by building it into the deployment pipeline. Security testing can further benefit from shift-left, where testing is done as early as possible in the pipeline. Implementing a strong and secure software development life cycle is essential to prevent attacks from hackers and other malicious actors on your application. Securing the \acrshort{sdlc} is a large and actively developed area with a lot of interest from the industry. Demonstrating the integration and practical application of various tools and methods can be beneficial for both \acrshort{nbim} and other organizations.
+\acrlong{nbim}, from now on referred to as \acrshort{nbim}, is a division within the central bank responsible for overseeing the Government Pension Fund of Norway, which has a worth of 14,000 billion Norwegian kroner \cite{nbimwebsite}. Due to its significant value, the fund is a major target for potential malicious actors. It faces an average of three severe cyber attacks daily, totalling around 100,000 attacks each year. Out of these, more than 1,000 are considered significant threats \cite{nbimattacks}. Therefore, it is crucial for \acrshort{nbim}, as well as other organizations, to ensure the security of their systems and applications before deploying them into their cloud services. 
+\\~\\
+\acrlong{sdlc} (\acrshort{sdlc}) describes how software applications are built - from planning through implementation and running in production. It also includes ensuring security at the different stages of software development. In order to accommodate frequent deployments to production, it is essential to automate the security testing by building it into the deployment pipeline. Security testing can further benefit from shift-left, where testing is done as early as possible in the pipeline. Implementing a strong and secure software development life cycle is essential to prevent attacks from hackers and other malicious actors on the application. Securing the \acrshort{sdlc} is a large and actively developed area with much industry interest. Demonstrating the integration and practical application of various tools and methods can benefit both \acrshort{nbim} and other organizations.
 
 \subsection{Problem Area}
-The technology industry is in constant development. With this development comes a rapidly expanding threat landscape. The way developers approach IT security needs to accompany this rapid development to secure systems and applications from malicious actors. Securing the \acrlong{sdlc} has become a common topic in the tech industry, and there are a lot of resources available to help organizations implement best practices and effective security measures. Finding the appropriate resources can take time, and automating the complete distribution process, along with automated testing using multiple tools, can be a time-consuming process. NBIM is looking for proof of concepts on how to build a secure pipeline using best practices, as well as implement multiple security tools which can scan for security misconfigurations and vulnerabilities at key stages of the pipeline. 
+The technology industry is in constant development. With this development comes a rapidly expanding threat landscape. How developers approach IT and security must accompany this rapid development to secure systems and applications from malicious actors. Securing the \acrlong{sdlc} has become a common topic in the tech industry, and many resources are available to help organizations implement best practices and adequate security measures. However, finding the appropriate resources can take time, and automating the complete distribution process and automated testing using multiple tools can be time-consuming. Therefore, NBIM is looking for proof of concepts for building a secure pipeline using best practices and implementing multiple security tools to scan for security misconfigurations and vulnerabilities at crucial pipeline stages. 
 
  
 \section{Scope Limitations}
-The thesis cover all phases of the \acrlong{sdlc} and gives an overview of each of the phases and the importance of securing them. However, due to the scope, only the last four phases will be the main priority for testing purposes and building a secure pipeline from GitHub to AWS.
+The thesis covers all phases of the \acrlong{sdlc} and gives an overview of each phase and the importance of securing them. However, due to the scope, only the last four phases will be the main priority for testing purposes and building a secure pipeline from GitHub to AWS.
 \\
 The group has also decided not to focus on \gls{shift-left} testing within the life cycle, as the focus is on the later phases. 
 \\
-As a part of the thesis, the group utilized AWS as it was required to use. However, considering the vastness of the AWS platform, the group chose not to extensively explore the tools available within AWS. Instead, the group opted to use the tools that were necessary at that time and were relatively simple to implement, rather than putting too much focus into looking at the different tools one potentially can use to build the pipeline.
+As a part of the thesis, the group utilized AWS as it was required to use. However, considering the vastness of the AWS platform, the group chose not to explore the tools available within AWS extensively. Instead, the group opted to use the tools necessary at that time and were relatively simple to implement rather than focusing too much on the tools one could use to build the pipeline.
 
 \section{Target Group}
-The thesis has multiple target groups. The primary target group is NBIM, the stakeholder for this thesis, for whom the group will produce a comprehensive report on the task assigned to them. This report has the potential to benefit other organizations, and therefore, another target group is any organization that utilizes the SDLC and aims to improve its security.
-\newpage
+The thesis has multiple target groups. The primary target group is NBIM, the stakeholder for this thesis, for whom the group will produce a comprehensive report on the task assigned to them. However, this report has the potential to benefit other organizations, and therefore, another target group is any organization that utilizes the SDLC and aims to improve its security.
+
 \section{Goals}
 \subsection{Performance goals}
 \begin{itemize}
     \item[-] P1: Collaborate effectively with team members to ensure the timely completion of tasks. 
     
-    \item[-] P2: Successfully integrate security tools (e.g., SAST, DAST, SCA) into the SDLC pipeline. 
+    \item[-] P2: Successfully integrating security tools (e.g., SAST, DAST, SCA) into the SDLC pipeline. 
     
     \item[-] P3: Implement an automated pipeline using Terraform to build, test, and deploy applications.
 \end{itemize}
@@ -34,48 +34,46 @@ The thesis has multiple target groups. The primary target group is NBIM, the sta
     
     \item[-] R1: Develop a secure and automated pipeline for the SDLC process using Terraform. 
     
-    \item[-] R2: Produce a report summarizing the results of the project and recommendations for improving the SDLC pipeline security.
+    \item[-] R2: Produce a report summarizing the project results and recommendations for improving the SDLC pipeline security.
     
-   % \item R3: The stakeholder start using the setup that the group has come up with. 
-   % \item R4: Give the stakeholder an overview of tools that can be used for security checks, which can make the process more automated and efficient. 
+   % \item R3: The stakeholder start using the setup the group has created. 
+   % \item R4: Give the stakeholder an overview of tools that can be used for security checks, making the process more automated and efficient. 
 \end{itemize}
 
 
-\section{The Group’s Academic Background}
-The project group is currently in the third and final year of a Bachelor's degree program in Digital Infrastructure and Cyber Security at NTNU, campus Gjøvik. Throughout the studies, the group has covered a diverse range of courses such as risk management, ethical hacking, cybersecurity and teamwork. These subjects have equipped the group with relevant knowledge for their thesis work.
+\section{The Group's Academic Background}
+The project group is in the third and final year of a Bachelor's degree program in Digital Infrastructure and Cyber Security at NTNU, campus Gjøvik. Throughout the studies, the group has covered various courses such as risk management, ethical hacking, cybersecurity and teamwork. These subjects have equipped the group with relevant knowledge for their thesis work.
 
 \subsection{Knowledge that had to be acquired}
 \label{section: Knowledge that had to be acquired}
-The group had to acquire various new aspects of software development for the thesis, as it was not extensively covered in their studies. This included topics like \acrshort{sdlc}, \acrlong{sast}, \acrlong{dast} and \acrlong{sca}, and more. Due to the inclusion of the practical parts in the thesis, like testing insecure code, the group had to learn about building a pipeline and integrating various security tools to ensure a secure development. As a significant part of the main scope focused on tools integrated in GitHub and Amazon Web Services, the group had to acquaint themselves with these tools, and the various features of GitHub. Despite the group's previous experience with GitHub from previous courses, there were still numerous features that were unfamiliar. In contrast, AWS was entirely unfamiliar and the group had no prior knowledge about it. However, the group had used similar cloud services like Microsoft Azure in previous courses.
+The group had to acquire various new aspects of software development for the thesis, as it was not covered extensively in their studies. These aspects include topics like \acrshort{sdlc}, \acrlong{sast}, \acrlong{dast} and \acrlong{sca}, and more. Due to the inclusion of the practical parts in the thesis, like testing insecure code, the group had to learn about building a pipeline and integrating various security tools to ensure a secure development. As a significant part of the main scope focused on tools integrated into GitHub and Amazon Web Services, the group had to acquaint themselves with these tools and the various features of GitHub. Despite the group's experience with GitHub from previous courses, numerous features were still unfamiliar. In contrast, AWS was unfamiliar, and the group had no prior knowledge. However, the group had used similar cloud services like Microsoft Azure in previous courses.
 \\~\\
-In addition, the group had to familiarize themselves with Terraform, which was utilized to establish the automated pipeline. The decision to use Terraform instead of working solely in the GUI was based on several reasons to use infrastructure-as-code over manual configuration. For instance, automation could enhance efficiency and decrease errors in the development process.
+In addition, the group had to familiarize themselves with Terraform and use it to establish the automated pipeline. Using Terraform instead of working solely in the GUI was based on several reasons to use infrastructure-as-code over manual configuration. For instance, automation could enhance efficiency and decrease errors in the development process.
 
 \subsubsection{Why this task was chosen}
-The group decided to choose this task because of the shared interest in the \acrlong{sdlc}. \acrshort{sdlc} is complex and contains multiple stages and ensuring its security can be considered quite important in today's digital landscape. By looking at tools integrated in Github and AWS the group wanted to gain a deeper understanding of how these tools could be used to identify and mitigate potential security risks at the different stages of the \acrshort{sdlc}.
-
+The group chose this task because of the shared interest in the \acrlong{sdlc}. \acrshort{sdlc} is complex and contains multiple stages, and ensuring its security can be considered important in today's digital landscape. By looking at tools integrated into Github and AWS, the group aimed to understand better how to use these tools to identify and mitigate potential security risks at the different stages of the \acrshort{sdlc}.
 \newpage
 \section{Framework}
 
 \subsection{Timeframe}
-The deadline for completing the task runs from the 11th of January 2023 to the 22nd of May 2023. It was agreed early on that the first draft would be submitted to the supervisor 3rd of April to allow the supervisor enough time to read through the thesis and give feedback. The final draft was decided to be submitted to the supervisor on the 2nd of May, which would give a month between the first draft and the final draft to work. Finally, the completed thesis was expected to be ready by the 15th of May, which would give some time before the deadline to do the last changes if needed. 
-
+The task completion deadline runs from the 11th of January, 2023, to the 22nd of May, 2023. It was agreed early on that the first draft would be submitted to the supervisor 3rd of April to allow the supervisor enough time to read through the thesis and give feedback. Then, the group decided to submit the final draft to the supervisor on the 2nd of May, which would give a month between the first draft and the final draft to work. Finally, the group decided that the completed thesis would be ready by the 15th of May, giving them time before the deadline to make any necessary last-minute changes.
 
 
 \subsection{Other}
-The group faced limitations in terms of accessing the stakeholders system and defining the scope. The stakeholder expressed a preference for a general report that was not tailored to their specific systems. Since the group was not granted access to the stakeholder´s systems or development environment, the group had a significant amount of freedom in determining the scope and specific limitations of the thesis. 
+The group needed help accessing the stakeholders' system and defining the scope. As the stakeholder preferred a general report that was not tailored to their specific systems, the group had a significant amount of freedom in determining the scope and specific limitations of the thesis since they were not granted access to the stakeholder's systems or development environment.
 
 \section{Methodology}
 The group adopted a DevSecOps approach as a working method during the project, which includes incorporating security into the DevOps process at all stages of the \acrshort{sdlc}. Despite focusing solely on the last four phases of the \acrshort{sdlc}, the team maintained a DevSecOps mindset, viewing security as an essential component of the entire process rather than a separate phase. 
 
 \newpage
 \section{Research methods}
-The group used different methods to gain knowledge that was needed to fulfill the requirements that were given. 
+The group used different methods to gain knowledge that was needed to fulfil the requirements that were given. 
 Listen below are some of the research methods that have been used to gain knowledge about the topic. 
 \subsection{Interviews/meetings}
-At the beginning of the project, the group had interviews with different lecturers at NTNU Gjøvik for gathering information about the related topics. By exploring the perspectives of experts within software security, the group gained knowledge about the topic from another perspective than the ones given during the literature studies. Questions that the group had were written down in advance so that the group could ask about different topics that were unclear from the research that was done in advance.   
+At the beginning of the project, the group had interviews with different lecturers at NTNU Gjøvik to gather information about related topics. By exploring the perspectives of experts within software security, the group gained knowledge about the topic from another perspective than the ones given during the literature studies. Furthermore, questions that the group had were written down in advance so that the group could ask about different topics that were unclear from the research that was done in advance.   
 
 \subsection{Literature study}
-The literature study was done by researching online for relevant information about the topics. The group also used ChatGPT as a guide. It was used to give relevant web pages for each of the topics. The literature study helped the group with adding suitable material for the theory chapter. It also helped the group with gaining more knowledge on the topics since this was something that was not familiar to the group. 
+The literature study was done by researching online for relevant information about the topics. The group also used ChatGPT as a guide. It was used to give relevant web pages for each of the topics. The literature study helped the group add suitable material for the theory chapter. It also helped the group gain more knowledge on the topics since this needed to be more familiar to the group. 
 
 \section{Relevant Hyperlinks}
 As part of the thesis project, the group created a GitHub repository that contains all the code utilized for testing the efficiency of vulnerability scanning tools and configuring an automated pipeline for deployment. 
@@ -83,16 +81,16 @@ As part of the thesis project, the group created a GitHub repository that contai
 \href{https://github.com/orgs/DCSG2900-Bachelor-thesis/repositories}{\textbf{https://github.com/orgs/DCSG2900-Bachelor-thesis/repositories}}
 
 \section{Thesis structure}
-When reading this thesis, some things can be useful to note. There are clickable links that make the navigation to chapters, sections, acronyms, figures, tables, and sources go as seamlessly as possible. The language used throughout the thesis is English, the same goes for all meeting notes and other relevant appendixes. 
+When reading this thesis, some things can be helpful to note. First, there are clickable links that make the navigation to chapters, sections, acronyms, figures, tables, and sources go as seamlessly as possible. The language used throughout the thesis is English. The same goes for all meeting notes and other relevant appendixes. 
 
-%It is also worth mentioning that the chapters are divided into chapters, subsections, and subsubsections where chapters are the highest level, while subsubsections are the lowest. 
+%It is also worth mentioning that the chapters are divided into chapters, subsections, and subsubsections, where chapters are the highest level while subsubsections are the lowest. 
 
 \subsection{Chapters}
 \begin{itemize}
     \item \textbf{Chapter 1 - (Introduction)}: An introduction to the thesis.
     \item \textbf{Chapter 2 - (Theory)}: Contains different theories that the group considers important 
     to have some knowledge about to understand the thesis as a whole.
-    \item \textbf{Chapter 3 - (Pipeline security)}: Contains an overview of what to implement to secure files being sent through the pipeline, as well as what to include to secure the pipeline itself. 
+    \item \textbf{Chapter 3 - (Pipeline security)}: Contains an overview of what to implement to secure files being sent through the pipeline and what to include to secure the pipeline itself. 
     \item \textbf{Chapter 4 - (Analysis of the pipeline security tools)}: Contains an overview of the different tools the group has implemented into their pipeline, with an analysis of these tools, where pros and cons are looked at. 
     \item \textbf{Chapter 5 - (Deployment)}: Contains the steps done for implementing chosen security tools. 
     \item \textbf{Chapter 6 - (Discussion)}: Contains an in-depth discussion on everything the group has discussed. 

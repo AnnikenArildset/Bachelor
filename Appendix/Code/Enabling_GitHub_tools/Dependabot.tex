@@ -1,0 +1,15 @@
+\newpage
+\label{EnableDependabot}
+
+
+
+\begin{lstlisting}[language=bash, caption=Enable Dependabot, captionpos=b, frame=single]
+
+#!/bin/bash
+
+#This command authenticates the user.
+gh auth login
+
+#This command enables dependabot in GitHub
+gh api -X PUT /repos/ceelinab/juice-shop/vulnerability-alerts
+\end{lstlisting}

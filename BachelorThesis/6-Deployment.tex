@@ -1,9 +1,9 @@
 \chapter{Deployment}
 \label{Deployment}
 \section{Introduction}
-In the following chapter, there is a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and goes on with pushing the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at \url{https://www.terraform.io/}}, which is a \gls{infrastructure as code} tool. The group has found this repository to be a valuable resource \cite{aws-cicd-pipeline} and used Terraform AWS Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} for information on how to set up the different steps using Terraform. 
+The following chapter has a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and pushes the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at \url{https://www.terraform.io/}}, which is a \gls{infrastructure as code} tool. The group has used Terraform AWS Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} for information on how to set up the different steps using Terraform. 
 \\~\\
-Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, showing its structure and how it is connected. The model is being built as the different steps in the pipeline are being presented.
+Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, showing its structure and connection. The model is being built as the different steps in the pipeline are being presented.
 \vspace{2mm}
 \begin{figure}[H]
     \centering
@@ -13,15 +13,14 @@ Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, sh
 \end{figure}
 
 \section{Code used in the pipeline}
-For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find these vulnerabilities and exploit them and increase the understanding of web application security \cite{owaspJuiceShop}.
-The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular for \gls{front-end} \cite{owaspJuiceShopCode}.
-The code contains different vulnerabilities, including \gls{SQL-injection}s, \gls{Cross-site scripting}, and many others. According to its website \cite{owaspJuiceShop}, it is registered 101 vulnerabilities in the code.
+For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find and exploit these vulnerabilities and increase their understanding of web application security \cite{owaspJuiceShop}.
+The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular, which is a TypeScript-based application framework for \gls{front-end} \cite{owaspJuiceShopCode}. The code contains different vulnerabilities, including \gls{SQL-injection}s, \gls{Cross-site scripting}, and many others. According to its website \cite{owaspJuiceShop}, it is registered 101 vulnerabilities in the code.
 
-Overall, \acrshort{owasp} Juice Shop encourages users to improve their skills and it allows for customization and adaption for specific needs from the users.
+Overall, \acrshort{owasp} Juice Shop encourages users to improve their skills and allows customization and adaptation for specific user needs.
 
- 
+ \newpage
 \section{Pushing to GitHub}
-When the source code is ready to be pushed to GitHub, security measures must be in place. One of the previously mentioned measurements is branch protection. Branch protection rules are easy to enable in GitHub. It is done for each repository. GitHub has different branch protection rules that can be enabled, which are explained in Section \ref{branchprotection}. This can either be done in \gls{GUI} or automated using Terraform, which is shown in Appendix \ref{branchprotectionrules}. 
+Security measures must be in place when the source code is ready to be pushed to GitHub. One of the previously mentioned measurements is branch protection. Branch protection rules are easy to enable in GitHub. It is done for each repository. GitHub has different branch protection rules that can be enabled, which are explained in Section \ref{branchprotection}. Enabling the rules can be done in \gls{GUI} or automated using Terraform, as shown in Appendix \ref{branchprotectionrules}. 
 \\~\\
 Further, the commit signature has to be configured. For signing commits in GitHub, either \acrshort{ssh} and \acrshort{gpg} can be used. These need to be generated and connected to the user's GitHub account.
 GitHub provides documentation\footnote{Instructions on making GPG or SSH keys available at \url{https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}} on how to create GPG and SSH keys, as well as how to connect these keys to a GitHub account.
@@ -53,9 +52,9 @@ GitHub provides documentation\footnote{Instructions on making GPG or SSH keys av
 
 
 \section{Managing security in GitHub}
-When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Instructions on how to enable CodeQL available at \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
+When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Instructions on enabling CodeQL available at \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
 \\~\\
-Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. To customize the trigger for the analysis, the pull request and push events are added to the workflow file, causing the analysis to run automatically whenever a pull request or push is made to the specified branch. The branch specified in this case is the main branch. \cite{CodeQLCustom} 
+Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. Adding the pull request and push events to the workflow file customizes the trigger for the analysis, causing the analysis to run automatically whenever a pull request or push is made to the specified branch \cite{CodeQLCustom}. The branch specified in this case is the main branch. 
 \\
 \begin{lstlisting}[language=terraform, caption=Custom trigger for CodeQL alerts, captionpos=b, frame=single]
 on:
@@ -65,9 +64,9 @@ on:
     branches: [main]
 \end{lstlisting}
 
-To see how to enable CodeQL from \acrshort{cli}, see Appendix \ref{EnableCodeQL}.
+To enable CodeQL from \acrshort{cli}, see Appendix \ref{EnableCodeQL}.
 \\~\\
- Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret scanner\footnote{Instructions on how to enable Secret scanner available at \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
+Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret scanner\footnote{Instructions on how to enable Secret scanner available at \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -93,15 +92,14 @@ Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts f
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/secretscanneralert.png}
-    \caption{Alert from secret scanner} Adapted from: \cite{GitHubVideo}
+    \caption{Alert from secret scanner} \cite{GitHubVideo}
     \label{fig: Alert from secret scanner}
 \end{figure}
 
 The GitHub Secret scanner did not detect any secrets in the Juice-Shop repository. Therefore, Figure \ref{fig: Alert from secret scanner} is taken from GitHub's demonstration of the secret scanner \cite{GitHubVideo}. The alert warns the user about an API key that matches the pattern of their partner Twilio. 
 
 \section{Retrieving the source code in AWS}
-When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. In order for this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. This can be done using \acrshort{aws} CodeStar Connections\footnote{A tool that enables CodePipeline to connect to third-party repositories \cite{CodeStarConnections}.}. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository.
-This can either be done on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
+When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. For this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. The connection can be made using \acrshort{aws} CodeStar Connections\footnote{A tool that enables CodePipeline to connect to third-party repositories \cite{CodeStarConnections}.}. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository. A connection can be created on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
 \\
 \begin{lstlisting}[language=terraform, caption=Create a connection between AWS and GitHub, captionpos=b, frame=single]
 resource"aws_codestarconnections_connection""code-connection"{
@@ -110,7 +108,7 @@ resource"aws_codestarconnections_connection""code-connection"{
 }
 \end{lstlisting}
 
-After successfully creating the connection resource in \acrshort{aws} with Terraform, it is necessary to perform a manual verification process in \acrshort{aws}. This step is crucial because it is not possible to pass secrets through \acrshort{aws} to GitHub login, as the connection opens a third-party login page that \acrshort{aws} does not control. Therefore, it is essential to log in to the system with the associated GitHub account credentials.
+After successfully creating the connection resource in \acrshort{aws} with Terraform, it is necessary to perform a manual verification process in \acrshort{aws}. This step is crucial because it is impossible to pass secrets through \acrshort{aws} to GitHub login, as the connection opens a third-party login page that \acrshort{aws} does not control. Therefore, logging in to the system with the associated GitHub account credentials is essential.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -121,7 +119,7 @@ After successfully creating the connection resource in \acrshort{aws} with Terra
 \end{figure}
 
 \section{Storing artifacts}
-To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional variables. One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this as a means to differentiate between buckets owned by different users. Either the name can be configured like in the code below, or the name variable can be excluded and \acrshort{aws} will configure the name themselves.
+To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional variables. One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this to differentiate between buckets owned by different users. The name can be configured like in the code below, or the name variable can be excluded, and \acrshort{aws} will configure the name themselves.
 
 \begin{lstlisting}[language=terraform, caption=Create an S3 Bucket, captionpos=b, frame=single]
 resource "aws_s3_bucket" "codepipeline_artifact" {
@@ -129,9 +127,9 @@ resource "aws_s3_bucket" "codepipeline_artifact" {
 }
 \end{lstlisting}
 
-For each stage to be able to access the S3 bucket and retrieve the last stage's \gls{artifact}s, it has to be given access to the bucket. These access rights have to be individually given to each stage in the pipeline. In the following code CodePipeline is given access to the bucket, hence the "s3:*".
-
-\begin{lstlisting}[language=terraform, caption=Set permissions CodePipeline, captionpos=b, frame=single]
+Granting access to the bucket is necessary for each stage in the pipeline to retrieve the previous stage's artifacts from the S3 bucket. Therefore, access rights need to be granted separately for each stage in the pipeline. Code \ref{lst:grantaccess} grants the CodePipeline access to all S3 rules, like creating or deleting a bucket, and access to the bucket itself. 
+\\
+\begin{lstlisting}[language=terraform, caption=Set permissions CodePipeline, captionpos=b, frame=single, label=lst:grantaccess]
 statement {
     sid       = ""
     actions   = ["s3:*", "codebuild:*", ]
@@ -152,7 +150,7 @@ statement {
 \end{figure}
 
 \section{Build stage}
-In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website \cite{CodeBuildProcess}. In order for the CodeBuild to run, there needs to be specified which operating system, what image, compute type and compute environment that is used. In this example, the environment type is set to be \acrshort{aws}'s own Linux container. The compute type refers to the amount of memory, CPUs, and disk space needed, which in this case is set to be the smallest amount. The combination of these variables is what is called a \say{build environment}.
+In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website \cite{CodeBuildProcess}. For the CodeBuild to run, the operating system, image, compute type and compute environment must be specified. In this example, the environment type is set to be \acrshort{aws}'s own Linux container. The compute type refers to the amount of memory, CPUs, and disk space needed, which in this case is set to be the smallest. The combination of these variables is called a \say{build environment}.
 
 \begin{lstlisting}[language=terraform, caption=Create build environment, captionpos=b, frame=single]
 environment {
@@ -163,7 +161,7 @@ environment {
 }
 \end{lstlisting}
 
-Further, CodeBuild downloads the source code from the S3 bucket, where it was put from the previous stage. Together with the source code, there needs to be specified a \gls{buildspec} file to run the build.
+Further, CodeBuild downloads the source code from the S3 bucket, which was put from the previous stage. With the source code, a \gls{buildspec} file needs to be specified to run the build.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -176,7 +174,7 @@ Further, CodeBuild downloads the source code from the S3 bucket, where it was pu
 \section{Deployment to testing}
 \label{Deployment to testing}
 \subsection{Setting up CodeDeploy}
-To set up CodeDeploy, the user needs to set up an application and a deployment group. The deployment group contains settings and configurations used during the deployment. In Code \ref{lst:deployment group}, the settings specifies a preset configuration. Such configuration is a set of rules and conditions, like the compute platform and conditions for failure \cite{CodeDeployConfig}. The deployment group also specifies which preconfigured instance to use for the deployment\footnote{Setting up an instance is available at \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}}. 
+To set up CodeDeploy, the user must set up an application and a deployment group. The deployment group contains settings and configurations used during the deployment. In Code \ref{lst:deployment group}, the settings specify a preset configuration. Such configuration is a set of rules and conditions, like the compute platform and conditions for failure \cite{CodeDeployConfig}. The deployment group also specifies which preconfigured instance to use for the deployment\footnote{Setting up an instance is available at \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}}. 
 \\
 \begin{lstlisting}[language=terraform, caption=Create the deployment group, captionpos=b, frame=single, label= {lst:deployment group}]
 resource "aws_codedeploy_deployment_group" "deploy_group" {
@@ -194,7 +192,7 @@ resource "aws_codedeploy_deployment_group" "deploy_group" {
 }
 \end{lstlisting}
 
-As seen in Code \ref{lst:deployment group}, the deployment group specifies the application. The application is \say{a name or container used by CodeDeploy to ensure the correct revision, deployment configuration, and deployment group are referenced during a deployment} \cite{CodeDeployApplication}. Therefore, to configure the application, there is only a need to provide a name for it, as shown in Code \ref{lst:codedeploy application}.
+As seen in Code \ref{lst:deployment group}, the deployment group specifies the application. The application is \say{a name or container used by CodeDeploy to ensure the correct revision, deployment configuration, and deployment group are referenced during a deployment} \cite{CodeDeployApplication}. Therefore, to configure the application, it is only necessary to provide a name for it, as shown in Code \ref{lst:codedeploy application}.
 \\
 \begin{lstlisting}[language=terraform, caption=Create an application for the deployment, captionpos=b, frame=single, label= lst:codedeploy application]
 resource "aws_codedeploy_app" "codedeploy" {
@@ -206,7 +204,7 @@ The deployment itself deploys the given revision, which typically consists of th
 
 \subsection{Setting up for testing}
 
-This stage utilizes two \acrshort{ec2} instances: one for \acrshort{owasp} \acrshort{zap} and the other for the application itself. Setting the scan and the application on separate instances makes it easier to manage them individually. This setup also allows for easier reuse of code when deploying the application into production, as well as easier integration of both instances with other programs or changes. However, both instances utilize the same S3 bucket, but the files are separated into two different directories so they do not interfere with each other.
+This stage utilizes two \acrshort{ec2} instances: one for \acrshort{owasp} \acrshort{zap} and the other for the application itself. Setting the scan and the application on separate instances makes it easier to manage them individually. This setup also allows for easier code reuse when deploying the application into production and easier integration of both instances with other programs or changes. However, both instances utilize the same S3 bucket, but the files are separated into two different directories so they do not interfere with each other.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -216,7 +214,7 @@ This stage utilizes two \acrshort{ec2} instances: one for \acrshort{owasp} \acrs
     \label{fig: Deployment to testing}
 \end{figure}
 
-For \acrshort{owasp} \acrshort{zap} to be able to scan the application, the instances need to communicate. To enable communication between the \acrshort{ec2} instances within the \acrlong{vpc} (\acrshort{vpc}), individual network interfaces have been allocated to each instance with a single IP address. This method guarantees that both instances can always find each other because the IP address will always be the same for both instances.
+For \acrshort{owasp} \acrshort{zap} to be able to scan the application, the instances need to communicate. To enable communication between the \acrshort{ec2} instances within the \acrlong{vpc} (\acrshort{vpc}), individual network interfaces have been allocated to each instance with a single IP address. This method guarantees that both instances can find each other because the IP address will always be the same.
 \\
 \begin{lstlisting}[language=terraform, caption=Allocate IP adresses, captionpos=b, frame=single]
 resource "aws_network_interface" "interface_network1" {
@@ -230,7 +228,7 @@ resource "aws_network_interface" "interface_network2" {
 }
 \end{lstlisting}
 
-The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by \acrshort{owasp} \acrshort{zap}. The container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://www.zaproxy.org/docs/docker/}}. Although these tests are typically customized to suit the specific requirements of an application, for this demo, the predefined tests are satisfactory. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Figure \ref{fig: OWASP Zap baseline scan}.
+The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by \acrshort{owasp} \acrshort{zap}. In addition, the container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://www.zaproxy.org/docs/docker/}}. Although these tests are typically customized to suit an application's specific requirements, the predefined tests are satisfactory for this demo. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Figure \ref{fig: OWASP Zap baseline scan}.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -242,7 +240,7 @@ The security tests are conducted by setting up a docker container on the \acrsho
 
 
 \section{Deployment to production}
-In the production stage, CodePipeline utilizes CodeDeploy, as described in Section \ref{Deployment to testing}. Before the code gets moved to production, it needs to be accepted by manual approval by a user in \acrshort{aws}. The purpose of this step is to allow for a review of the results from the automated security tests, to ensure that no faulty code is deployed. When new code or changes have gone through testing, a notification will occur in the \acrshort{sns} topic\footnote{\acrlong{sns} (\acrshort{sns}) provides message delivery to a topic. A topic is the communication channel the users can subscribe to \cite{SNStopic}.} that is created. Someone then has to manually accept the code waiting to be moved to production.
+In the production stage, CodePipeline utilizes CodeDeploy, as described in Section \ref{Deployment to testing}. Before the code gets moved to production, it must be accepted by manual approval by a user in \acrshort{aws}. The purpose of this step is to allow for a review of the results from the automated security tests, to ensure that no faulty code is deployed. When new code or changes have gone through testing, a notification will occur in the \acrshort{sns} topic\footnote{\acrlong{sns} (\acrshort{sns}) provides message delivery to a topic. A topic is the communication channel the users can subscribe to \cite{SNStopic}.} that is created. Someone then has to accept the code waiting to be moved to production.
 
 \vspace{2mm}
 \begin{figure}[H]

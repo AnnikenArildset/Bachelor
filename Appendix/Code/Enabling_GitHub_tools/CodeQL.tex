@@ -1,6 +1,6 @@
 \newpage
 \label{EnableCodeQL}
-\begin{lstlisting}[language = bash, caption=Enable CodeQL]
+\begin{lstlisting}[language=bash, caption=Enable CodeQL, captionpos=b, frame=single]
 
 #!/bin/bash
 
@@ -8,10 +8,11 @@
 gh auth login
 
 #This command enables CodeQL in GitHub. 
-gh api -X PATCH /repos/ceelinab/juice-shop/code-scanning/default-setup
+gh api -X PATCH /repos/ceelinab/juice-shop/code-scanning
+/default-setup
 -f state=configured
 
-#This command allow the user to monitor the actions happening in the repository. 
+#Monitor the changes
 gh api /repos/ceelinab/juice-shop/actions/runs/4869392483 
 --jq '.status,.conclusion'
 
@@ -19,23 +20,4 @@ gh api /repos/ceelinab/juice-shop/actions/runs/4869392483
 gh api /repos/ceelinab/juice-shop/code-scanning/default-setup
 
 \end{lstlisting}
-\newpage
-\section{Comments to the script}
-The script below is designed to work for the group, but will not necessary work for others that does not have access to the repository used in this case. 
-However, the syntax is the same, so below will one find the syntax for the different commands. It is also important to mention that the "run-id" is the id that is received  from when you run the second command below. 
-
-\begin{tcolorbox}
-\begin{verbatim}
- gh auth login
-
-gh api -X PATCH /repos/[org-name]/[repo-name]/code-scanning/
-default-setup -f state=configured
-
-gh api /repos/[org-name]/[repo-name]/actions/runs/run_id 
---jq '.status,.conclusion'
-
-gh api /repos/[org-name]/[repo-name]/code-scanning/default-setup
-
- 
-\end{verbatim}
-\end{tcolorbox}
+\
