@@ -1,3 +1,7 @@
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \chapter{Analysis of security tools for the pipeline}
 \label{chap:Tools}
 \section{Introduction}
@@ -16,12 +20,15 @@ The following advantages and disadvantages combine the personal experiences and 
             \hline
             \begin{itemize}
                 \item [-]\textbf{Open source:} It is open source, which allows users to access it without paying for it. 
+                \vspace{5pt}
                 \item [-]\textbf{Configuration:}Easy to configure with \acrshort{aws}
+                \vspace{5pt}
                 \item [-]\textbf{Many available:}There are multiple application security testing approaches available that can help discover potential vulnerabilities
             \end{itemize}
             &
             \begin{itemize}
                 \item [-] \textbf{Documentation:}The documentation could be improved and is, for some, difficult to understand
+                \vspace{5pt}
                 \item [-]\textbf{Compare:} Compared to other tools, the automated scanning features are restricted
             \end{itemize}
             \\
@@ -55,12 +62,15 @@ These advantages and disadvantages combine the personal experiences and informat
 \hline
 \begin{itemize}
 \item [-]\textbf{Automated:} It Automates dependency updates, saving time and reducing manual errors 
+\vspace{5pt}
 \item [-] \textbf{Support:} It supports a wide range of languages and package managers 
+\vspace{5pt}
 \item [-]\textbf{Change-logs:} It Provides detailed change-logs and release notes 
 \end{itemize}
 &
 \begin{itemize}
-\item [-] \textbf{Merge conflict:} Can create merge conflicts with other changes 
+\item [-] \textbf{Merge conflict:} Can create merge conflicts with other changes
+\vspace{5pt}
 \item [-] \textbf{False-positives:} The automatic scan of Dependabot may generate many false positives, which can be time-consuming to rectify. Getting false positives requires users to manually review each issue to determine whether a change is necessary. 
 
 \end{itemize}
@@ -92,13 +102,16 @@ Any issues found during the scanning process are displayed as alerts within the 
 \hline
 \begin{itemize}
 \item [-] \textbf{Create triggers:} Teams can decide when to trigger the scanning. This is usually when an event occurs, such as pull requests
+\vspace{5pt}
 \item [-]\textbf{Suitable for projects:} The scan can be configured so that it tailors the different needs
+\vspace{5pt}
 \item [-] \textbf{Auto-build:} When code scanning runs, it automatically uploads the vulnerabilities it found to the repository's security tab
 \end{itemize}
 &
    \begin{itemize}
 \item [-]\textbf{Precision:} The precision can depend on the code. If the code requires a specific type of customization, then the precision of the default setup for CodeQL will not necessarily be that suitable. 
-\item [-] \textbf{Language support:}Only supports a smaller set of languages 
+\vspace{5pt}
+\item [-] \textbf{Language support:} Only supports a smaller set of languages 
 \end{itemize}
 \\
 \hline
@@ -129,12 +142,15 @@ To prevent fraudulent use of accidentally committed secrets, GitHub scans reposi
 \hline
 \begin{itemize}
 \item [-] \textbf{Free:} GitHub has given public access to this feature 
+\vspace{5pt}
 \item [-]\textbf{Convenience:} As projects become more complex and it becomes harder to keep track of all the secrets stored in the repository, Secret Scanner will help detect these faster 
+\vspace{5pt}
 \item [-] \textbf{Secure:} Secrets can be easily missed when writing large amounts of code. Enabling Secret Scanning can potentially increase the security 
 \end{itemize}
 &
    \begin{itemize}
 \item [-] \textbf{False positives:} Secret Scanning cannot always determine if the secret is legitimate or not, which occasionally can occur in false positives
+\vspace{5pt}
 \item [-] \textbf{Limited Coverage:} It can be limited and does not always detect all secrets created manually, such as personal passwords. 
     \end{itemize}
     \\
@@ -195,12 +211,15 @@ By default, GitHub restricts a user from deleting a protected branch. However, w
 \hline
 \begin{itemize}
 \item [-] \textbf{Code changes:} It prevents unauthorized code changes, ensuring only authorized users can make changes to a particular branch.
+\vspace{5pt}
 \item [-]\textbf{Code quality:} It can help enforce code review and approval of code, specifying the code's quality. 
+\vspace{5pt}
 \item [-] \textbf{Collaboration:} By restricting certain actions within different branches, users can work on different aspects of the project without compromising others' work towards the same goal.  
 \end{itemize}
 &
    \begin{itemize}
 \item [-] \textbf{Create bottlenecks:} If only a few individuals are authorized to make changes, it can create bottlenecks and delays in approving different issues. 
+\vspace{5pt}
 \item [-] \textbf{Workflow:} Branch protections can quickly ruin workflows if something always needs approval before moving on. 
     \end{itemize}
     \\
@@ -230,7 +249,7 @@ CodePipeline automates the entire \gls{pipeline}, including the build, test, and
 \subsection{AWS CodeBuild }
 \acrshort{aws} CodeBuild can be described as a \say{\textit{...fully managed continuous integration service that compiles source code, runs tests, and produces ready-to-deploy software packages.}} \cite{AWSCodeBuild}.
 \\~\\
-AWS CodeBuild downloads the source code provided to it into a build environment and then uses a \gls{buildspec}, which defines how the built project should be executed. \cite{AWSCodeBuild1}
+\acrshort{aws} CodeBuild downloads the source code provided to it into a build environment and then uses a \gls{buildspec}, which defines how the built project should be executed. \cite{AWSCodeBuild1}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3]{Images/Codebuild.png}
@@ -239,7 +258,7 @@ AWS CodeBuild downloads the source code provided to it into a build environment 
 \end{figure}
 
 \subsection{AWS CodeDeploy}
-\acrshort{aws} CodeDeploy is explained as \say{\textit{...a fully managed deployment service that automates software deployments to various compute services, such as Amazon Elastic Compute Cloud (EC2), AWS Lambda and more...}} \cite{AWSCodeDeploy}.
+\acrshort{aws} CodeDeploy is explained as \say{\textit{...a fully managed deployment service that automates software deployments to various compute services, such as \acrlong{ec2} (EC2), AWS Lambda and more...}} \cite{AWSCodeDeploy}.
 \acrshort{aws} CodeDeploy helps developers avoid downtime during deployment. It also handles the updating phase of the applications. 
 \\~\\
 CodeDeploy can deploy code that runs on a server and is stored in, for example, GitHub repositories or in a \acrshort{aws} S3 Bucket. In order to use CodeDeploy, developers are not required to make any adjustments to their existing code. \cite{CodeDeploy1}
@@ -254,6 +273,6 @@ CodeDeploy can deploy code that runs on a server and is stored in, for example, 
 
 \subsection{Amazon S3 buckets}
 Amazon S3 buckets are simple, cloud-based storage resources \cite{S3Bucket}. S3 buckets are designed to provide users with scalable, durable, and highly available storage, which can be used to store different types of data. Such data can be documents, \gls{artifact}s, source code, and so on. An S3 bucket can be considered a container that stores different objects. 
-\newpage
+
 \subsection{Amazon EC2}
 \acrlong{ec2} (\acrshort{ec2}) offers a \gls{compute platform}, with virtual computing environments, also known as instances \cite{awsec2}. \acrshort{ec2} offers various instance types to meet computing needs. The instance type determines the instances' CPU, memory, storage, and networking capacity. The instances are launched from \acrlong{amis} (\acrshort{amis}). \acrshort{amis} are templates that contain the necessary software configurations and operating system to run the server \cite{amis}.

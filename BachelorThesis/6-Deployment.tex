@@ -1,9 +1,14 @@
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \chapter{Deployment}
 \label{Deployment}
 \section{Introduction}
 The following chapter has a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and pushes the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at \url{https://www.terraform.io/}}, which is a \gls{infrastructure as code} tool. The group has used Terraform AWS Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} for information on how to set up the different steps using Terraform. 
 \\~\\
 Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, showing its structure and connection. The model is being built as the different steps in the pipeline are being presented.
+
 \vspace{2mm}
 \begin{figure}[H]
     \centering
@@ -25,6 +30,7 @@ Security measures must be in place when the source code is ready to be pushed to
 Further, the commit signature has to be configured. For signing commits in GitHub, either \acrshort{ssh} and \acrshort{gpg} can be used. These need to be generated and connected to the user's GitHub account.
 GitHub provides documentation\footnote{Instructions on making GPG or SSH keys available at \url{https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}} on how to create GPG and SSH keys, as well as how to connect these keys to a GitHub account.
 
+\vspace{2mm}
 \begin{figure}[H]
   \centering
   \begin{subfigure}[H]{0.4\textwidth}
@@ -55,7 +61,8 @@ GitHub provides documentation\footnote{Instructions on making GPG or SSH keys av
 When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Instructions on enabling CodeQL available at \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
 \\~\\
 Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. Adding the pull request and push events to the workflow file customizes the trigger for the analysis, causing the analysis to run automatically whenever a pull request or push is made to the specified branch \cite{CodeQLCustom}. The branch specified in this case is the main branch. 
-\\
+
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Custom trigger for CodeQL alerts, captionpos=b, frame=single]
 on:
   push:
@@ -100,7 +107,8 @@ The GitHub Secret scanner did not detect any secrets in the Juice-Shop repositor
 
 \section{Retrieving the source code in AWS}
 When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. For this to be done, a connection between the \acrshort{aws} and GitHub account needs to be made. The connection can be made using \acrshort{aws} CodeStar Connections\footnote{A tool that enables CodePipeline to connect to third-party repositories \cite{CodeStarConnections}.}. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the pipeline in response to any changes made to the GitHub repository. A connection can be created on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
-\\
+
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create a connection between AWS and GitHub, captionpos=b, frame=single]
 resource"aws_codestarconnections_connection""code-connection"{
   name          = "code-connection"
@@ -121,6 +129,7 @@ After successfully creating the connection resource in \acrshort{aws} with Terra
 \section{Storing artifacts}
 To store \gls{artifact}s generated during different stages of the pipeline, an S3 bucket is created. The bucket is created as a resource with optional variables. One crucial aspect to consider is the need for unique bucket names within the server area, as \acrshort{aws} uses this to differentiate between buckets owned by different users. The name can be configured like in the code below, or the name variable can be excluded, and \acrshort{aws} will configure the name themselves.
 
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create an S3 Bucket, captionpos=b, frame=single]
 resource "aws_s3_bucket" "codepipeline_artifact" {
   bucket = "artifact-bucket-unique-name"
@@ -128,15 +137,19 @@ resource "aws_s3_bucket" "codepipeline_artifact" {
 \end{lstlisting}
 
 Granting access to the bucket is necessary for each stage in the pipeline to retrieve the previous stage's artifacts from the S3 bucket. Therefore, access rights need to be granted separately for each stage in the pipeline. Code \ref{lst:grantaccess} grants the CodePipeline access to all S3 rules, like creating or deleting a bucket, and access to the bucket itself. 
-\\
+
+\vspace{4mm}
 \begin{lstlisting}[language=terraform, caption=Set permissions CodePipeline, captionpos=b, frame=single, label=lst:grantaccess]
 statement {
     sid       = ""
-    actions   = ["s3:*", "codebuild:*", ]
+    actions   = [
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:GetBucketLocation", 
+      ]
     resources = [
-        "${aws_s3_bucket.codepipeline_artifact.arn}/*",
-        aws_codebuild_project.build.arn
-        ]
+    "${aws_s3_bucket.codepipeline_artifact.arn}/*"
+    ]
     effect    = "Allow"
 }
 \end{lstlisting}
@@ -152,6 +165,7 @@ statement {
 \section{Build stage}
 In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website \cite{CodeBuildProcess}. For the CodeBuild to run, the operating system, image, compute type and compute environment must be specified. In this example, the environment type is set to be \acrshort{aws}'s own Linux container. The compute type refers to the amount of memory, CPUs, and disk space needed, which in this case is set to be the smallest. The combination of these variables is called a \say{build environment}.
 
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create build environment, captionpos=b, frame=single]
 environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
@@ -175,7 +189,8 @@ Further, CodeBuild downloads the source code from the S3 bucket, which was put f
 \label{Deployment to testing}
 \subsection{Setting up CodeDeploy}
 To set up CodeDeploy, the user must set up an application and a deployment group. The deployment group contains settings and configurations used during the deployment. In Code \ref{lst:deployment group}, the settings specify a preset configuration. Such configuration is a set of rules and conditions, like the compute platform and conditions for failure \cite{CodeDeployConfig}. The deployment group also specifies which preconfigured instance to use for the deployment\footnote{Setting up an instance is available at \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}}. 
-\\
+
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create the deployment group, captionpos=b, frame=single, label= {lst:deployment group}]
 resource "aws_codedeploy_deployment_group" "deploy_group" {
   deployment_group_name  = var.deploy_group_name
@@ -193,7 +208,8 @@ resource "aws_codedeploy_deployment_group" "deploy_group" {
 \end{lstlisting}
 
 As seen in Code \ref{lst:deployment group}, the deployment group specifies the application. The application is \say{a name or container used by CodeDeploy to ensure the correct revision, deployment configuration, and deployment group are referenced during a deployment} \cite{CodeDeployApplication}. Therefore, to configure the application, it is only necessary to provide a name for it, as shown in Code \ref{lst:codedeploy application}.
-\\
+
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create an application for the deployment, captionpos=b, frame=single, label= lst:codedeploy application]
 resource "aws_codedeploy_app" "codedeploy" {
   name = var.codedeploy_app_name
@@ -215,16 +231,16 @@ This stage utilizes two \acrshort{ec2} instances: one for \acrshort{owasp} \acrs
 \end{figure}
 
 For \acrshort{owasp} \acrshort{zap} to be able to scan the application, the instances need to communicate. To enable communication between the \acrshort{ec2} instances within the \acrlong{vpc} (\acrshort{vpc}), individual network interfaces have been allocated to each instance with a single IP address. This method guarantees that both instances can find each other because the IP address will always be the same.
-\\
+
+\vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Allocate IP adresses, captionpos=b, frame=single]
 resource "aws_network_interface" "interface_network1" {
   subnet_id   = aws_subnet.my_subnet.id
   private_ips = ["172.16.10.100"]
 }
-
 resource "aws_network_interface" "interface_network2" {
   subnet_id   = aws_subnet.my_subnet.id
-  private_ips = ["172.16.10.101"]
+  private_ips = ["172.16.10.101"] 
 }
 \end{lstlisting}
 

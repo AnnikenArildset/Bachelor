@@ -1,3 +1,7 @@
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \chapter{Discussion}
 \section{Introduction}
 In this chapter, the group explains why they made certain choices during the pipeline construction, discusses any changes they made to the project, and identifies any limitations they faced.
@@ -23,10 +27,10 @@ Another implemented branch rule requires signed commits. Signed commits require 
 After evaluating multiple tools for securing the pipeline, the group has given perspectives and recommendations regarding the various scans. Although the group decided to use integrated tools within GitHub for performing \acrshort{sast} and \acrshort{sca} testing, as well as a third-party tool for \acrshort{dast} testing, the decision was primarily based on their suitability for the given task and Erik Hjelmås' recommendation (see the meeting in Appendix \ref{møteErik}). It is crucial to note that this does not necessarily imply that others should adopt the same tools. While conducting such tests is crucial in application development, selecting tools for carrying out these tests should be based on specific requirements. Therefore, exploring the various tools available for different tests and assessing whether they meet one's specific needs is essential. The tools selected by the group are examples of what can be used. 
 
 \subsection{Why OWASP ZAP was chosen}
-In the course of researching security tools, an evaluation was made of the three tool types: \acrshort{sast},  \acrshort{dast}, and \acrshort{sca}. As neither GitHub nor AWS provides a DAST tool, a third-party tool had to be used. Among these, the \acrshort{owasp} \acrshort{zap} appeared as the most widely used web application scanner globally. This tool is convenient due to its user-friendly interface and straightforward setup process, suitable for individuals of all skill levels. Furthermore, it is open-source and available to all users without additional costs. Its integration into \acrshort{aws} pipelines was found to be a simple and uncomplicated process.
+In the course of researching security tools, an evaluation was made of the three tool types: \acrshort{sast},  \acrshort{dast}, and \acrshort{sca}. As neither GitHub nor \acrshort{aws} provides a DAST tool, a third-party tool had to be used. Among these, the \acrshort{owasp} \acrshort{zap} appeared as the most widely used web application scanner globally. This tool is convenient due to its user-friendly interface and straightforward setup process, suitable for individuals of all skill levels. Furthermore, it is open-source and available to all users without additional costs. Its integration into \acrshort{aws} pipelines was found to be a simple and uncomplicated process.
 
 \subsection{Why tools integrated into GitHub was chosen}
-Initially, the thesis aimed to investigate third-party tools, like Snyk and Mend, which could be integrated into GitHub and run scans on the code pushed to the repository. Then, however, it was decided to look into the in-built tools within GitHub and AWS that perform \acrshort{sast}, \acrshort{dast}, and \acrshort{sca} tests. The goal was to explore the potential benefits of using pre-integrated tools to create a secure pipeline and give priority to overall functionality rather than choosing individual tools.
+Initially, the thesis aimed to investigate third-party tools, like Snyk and Mend, which could be integrated into GitHub and run scans on the code pushed to the repository. Then, however, it was decided to look into the in-built tools within GitHub and \acrshort{aws} that perform \acrshort{sast}, \acrshort{dast}, and \acrshort{sca} tests. The goal was to explore the potential benefits of using pre-integrated tools to create a secure pipeline and give priority to overall functionality rather than choosing individual tools.
 
 \subsection{The group's experience with CodeQL}
 The group used CodeQL as their \acrshort{sast} tool, which, as mentioned above, is an integrated tool in GitHub and is set as default when enabling Code Scanning. As a result, the group found it uncomplicated to set up and customize it for personal use. For example, the tool was configured to be triggered only when a push to the main branch was done, which was easily achievable. 
@@ -110,13 +114,13 @@ This practice includes doing frequent vulnerability scans, threat assessments, a
 
 Both the SLSA and SSDF frameworks may give helpful recommendations to developers trying to improve the security of their products. However, while SLSA has the potential to encourage good code heritage and increase security in more significant open-source projects with larger user bases, its complexity may not be justified in smaller projects. SSDF, on the other hand, provides a flexible way to apply security measures, making it a helpful guide for deciding which measures to deploy. Furthermore, the SSDF may be used by developers to assess the security level of their project without needing an extra step in the development process. Ultimately, the project's unique demands and scope will determine the decision between the two frameworks.
 
-\section{Revising the Thesis Angle}
+\section{Revising the thesis angle}
 When writing the project plan, the group initially planned to write the thesis where various security testing tools would be tested and analyzed and later demonstrate how the different tools could be used together. The main focus was on the tools and testing as many tools as possible. The group found it challenging to create a unique thesis due to previous theses with similar topics. 
 \\
-After a meeting with the group's professor Erik Hjelmås  (\ref{møteErik}), discussing this issue, the group found an alternative approach for the thesis based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and AWS, and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life and what kind of research was needed today.  
+After a meeting with the group's professor Erik Hjelmås  (\ref{møteErik}), discussing this issue, the group found an alternative approach for the thesis based on the discussion with Erik and a report from Usenix \cite{usenixreport} shown to the group. The new approach involved incorporating more practical work with infrastructure-as-code and focusing on utilizing tools already integrated into GitHub and \acrshort{aws}, and implementing best practice security measures. This approach of the thesis seemed to be more aimed at professional life and what kind of research was needed today.  
 
 
-\section{Expectations Compared to Reality}
+\section{Expectations compared to reality}
 \subsection{Practical work}
 As mentioned in the section \ref{section: Knowledge that had to be acquired}, the group needed to learn more about  \gls{infrastructure as code}, especially not Terraform. During this process, the group faced more issues than anticipated while building the pipeline with Terraform and \acrshort{aws}. The group had some experience with Microsoft Azure from previous courses and perhaps thought that \acrshort{aws} was more similar to Azure than it is. Additionally, \acrshort{aws} provides a wide range of services that targets the same or similar issues. The process of selecting these services and integrating them has posed a more significant challenge than initially anticipated. 
 
@@ -124,9 +128,9 @@ As mentioned in the section \ref{section: Knowledge that had to be acquired}, th
 The group struggled to find proper academic research for their thesis. Therefore, the majority of their resources came from websites or blog posts. To establish the credibility of these sources, the group either confirmed the author's or company's credibility or cross-referenced the information with additional sources to confirm its accuracy. These precautions were taken to assure the accuracy and validity of the data in the thesis.
 
 
-\section{Critique of the Thesis}
+\section{Critique of the thesis}
 
-\subsection{Not using Framework from the beginning}
+\subsection{Not using framework from the beginning}
 The group did not look deeper into following a framework as the scope contained no specifications. However, when the group discovered different frameworks, the group decided that it was too late to integrate them into the work. Doing so would have required a significant amount of work, and since the group was too far into the thesis, it was decided not to look into it—many requirements for the different frameworks needed to be achieved before the thesis was started. Furthermore, many tasks must be completed if the group were to integrate the framework later in the thesis, which would have added more complexity. 
 
 \subsection{Defining the scope}

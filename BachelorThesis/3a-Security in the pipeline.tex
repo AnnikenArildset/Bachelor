@@ -51,8 +51,10 @@ In software best practices, it is recommended to run multiple tests and scans to
 \subsection{Manual security testing}
 
 %alt kan automatiseres men kan være lurt å ha manuel testing og
+Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected \cite{dastpentesting}. For this reason, the company should engage a red team, a group of experts capable of performing penetration testing. A penetration test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. In addition, a penetration test can verify the results of a  \acrshort{dast} scan by assessing whether a vulnerability can be exploited and the extent of the damage it could cause. 
 
-Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected \cite{dastpentesting}. For this reason, the company should engage a red team, a group of experts capable of performing penetration testing. A penetration test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. In addition, a penetration test can verify the results of a  \acrshort{dast} scan by assessing whether a vulnerability can be exploited and the extent of the damage it could cause.
+-utføres ikke så ofte
+-code review
 \\~\\
 Figure \ref{fig: Pipeline with implemented DAST scan and pentesting} shows that the \acrshort{dast} scan and penetration test are positioned later in the pipeline because they require a running application to be executed \cite{dastplacment}. These tests cannot be performed earlier but must be conducted before the application is deployed.
 \vspace{2mm}
