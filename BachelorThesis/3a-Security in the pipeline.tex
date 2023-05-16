@@ -30,6 +30,7 @@ The \acrshort{sca}  is used in conjunction with the \acrshort{sast} tool in Figu
 \end{figure}
 
 \subsection{Secret scanning}
+\label{Secret scanning}
 To prevent or identify accidental exposure of \say{secrets}, like access tokens, SSH keys, or other credentials, secret scanning should be executed on the repository where the source code is stored \cite{GithubSecretScanning}. Such secrets can give unwanted access to, for example, accounts, software, or cloud providers. With access to secrets like cloud credentials, a threat actor could, among other harmful attacks, scale up the use of various costly resources, costing a company much more than what they have budgeted for \cite{GitGuardianexploitexample}. According to GitGuardian's early report on secret leaks \cite{GitGuardiansecretsprawl}, they detected 10 million secrets leaked in 2022, which is an increase of 67\% from 2021. According to the report, 1 out of every 10 GitHub authors has accidentally shared a secret in their repository, highlighting a growing problem with leaked confidential information. Developers can use secret scanning tools to search for vulnerabilities and receive alerts regarding potential security risks. 
 \\~\\
 In Figure \ref{fig: Pipeline with implemented secret scan}, it is recommended to perform secret scanning together with \acrshort{sast} and \acrshort{sca} for the same reason, explained in sections \ref{Code Scanning} and \ref{Scan Dependencies and Open Source Libraries}.
