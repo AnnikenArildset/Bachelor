@@ -9,7 +9,8 @@
 The following chapter presents tools that can be utilized as the security tools implemented in the \gls{pipeline} presented in Chapter \ref{Pipeline security}. Additionally, advantages and disadvantages are presented.  
 
 \section{OWASP ZAP}
-\acrshort{owasp} \acrlong{zap} (\acrshort{owasp} \acrshort{zap})\footnote{Available at \url{https://www.zaproxy.org/}} is an open-source web application security scanner \cite{owaspZAP}. It is free and maintained by volunteers worldwide under the \acrlong{owasp}. \acrshort{zap} is a \acrshort{dast} tool and is designed to test web application security. The tool offers functionality for many people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker\footnote{Available at: https://www.docker.com/}, which means that users are not limited to a specific operating system when using the tool.
+\acrshort{owasp} \acrlong{zap} (\acrshort{owasp} \acrshort{zap})\footnote{Available at:
+\url{https://www.zaproxy.org/}} is an open-source web application security scanner \cite{owaspZAP}. It is free and maintained by volunteers worldwide under the \acrlong{owasp}. \acrshort{zap} is a \acrshort{dast} tool and is designed to test web application security. The tool offers functionality for many people - from developers to experienced testers. It is available in versions that are compatible with major operating systems, as well as Docker\footnote{Available at: https://www.docker.com/}, which means that users are not limited to a specific operating system when using the tool.
 
 \subsection{OWASP ZAP: advantages and disadvantages}
 The following advantages and disadvantages combine the personal experiences and information found during research \cite{prosconsZAP}.
@@ -87,7 +88,7 @@ GitHub has an in-built code scanning tool called CodeQL that allows the users to
 \\~\\
 CodeQL can be scheduled to run on chosen days or occurrences of events. For example, rather than scanning each branch individually, it is possible to set up a trigger that will initiate the code scan only when the code is pushed to the main branch or when a pull request is made. Limiting the triggers helps to reduce the amount of time and resources required to perform the scans. Also, it minimizes the risk of vulnerabilities or errors being introduced into the production environment.
 \\~\\
-Any issues found during the scanning process are displayed as alerts within the repository, allowing developers to divide the different issues easily between team members \cite{GithubCodeScanning}. Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using webhooks and the code scanning API. 
+Any issues found during the scanning process are displayed as alerts within the repository, allowing developers to divide the different issues easily between team members \cite{GithubCodeScanning}. Once a user fixes the code that triggered the alert, it is automatically closed. Additionally, users can monitor the results of code scanning across their repositories or organization using webhooks and the code scanning \acrshort{api}. 
 
 
 \subsubsection{CodeQL: advantages and disadvantages}

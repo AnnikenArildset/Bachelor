@@ -2,29 +2,28 @@
 \thispagestyle{empty}
 \mbox{}
 
-\chapter{Building end-to-end pipeline}
+\chapter{Building a secure end-to-end pipeline}
 \label{Deployment}
 \section{Introduction}
-The following chapter has a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and pushes the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at \url{https://www.terraform.io/}}, which is an \gls{iac} tool. The group has used Terraform \acrshort{aws} Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} for information on how to set up the different steps using Terraform. 
+The following chapter has a walk-through on one of many ways to set up a secure pipeline. The pipeline starts with a source code, which will be explained further, and pushes the code to GitHub and further to \acrshort{aws}. Within these steps are the security measures and scans discussed previously. Some of these steps are automated using Terraform\footnote{Available at: \url{https://www.terraform.io/}}, which is an \gls{iac} tool using HashiCorp Configuration Language as the programming language \cite{hcl}. Terraform \acrshort{aws} Documentation\footnote{Available at: \url{https://registry.terraform.io/providers/hashicorp/aws/latest}} has been used to set up the different steps.
 \\~\\
-Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, showing its structure and connection. The model is built as the different steps in the pipeline are presented.
+Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, showing its structure and connection. The model is built as the different steps in the \gls{pipeline} are presented.
 
 \vspace{2mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{Images/aws-piplin-7.png}
-    \caption{Pipeline in AWS}
+    \caption{Pipeline in \acrshort{aws}}
     \label{fig: Pipeline in AWS}
 \end{figure}
 
 \section{Code used in the pipeline}
-For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web applications security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find and exploit these vulnerabilities and increase their understanding of web application security \cite{owaspJuiceShop}. The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular, which is a TypeScript-based application framework for \gls{front-end} \cite{owaspJuiceShopCode}. The code contains different vulnerabilities, including \gls{SQL-injection}s, \gls{Cross-site scripting}. According to its website, it is registered 101 vulnerabilities in the code.
+For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at: \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web application security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find and exploit these vulnerabilities and increase their understanding of web application security \cite{owaspJuiceShop}. The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular. Angular is a TypeScript-based application framework for \gls{front-end} \cite{owaspJuiceShopCode}. The code contains different vulnerabilities, including \gls{SQL-injection}s, and \gls{Cross-site scripting}. According to its website, it is registered 101 vulnerabilities in the code.
 
 \section{Pushing to GitHub}
 Security measures must be in place when the source code is ready to be pushed to GitHub. One of the previously mentioned measurements is branch protection. Branch protection rules are easy to enable in GitHub. It is done for each repository. GitHub has different branch protection rules that can be enabled, which are explained in Section \ref{branchprotection}. Enabling the rules can be done in \gls{GUI} or automated using Terraform, as shown in Appendix \ref{branchprotectionrules}. 
 \\~\\
-Further, the commit signature has to be configured. For signing commits in GitHub, either \acrshort{ssh} and \acrshort{gpg} can be used. These need to be generated and connected to the user's GitHub account.
-GitHub provides documentation\footnote{Instructions on making \acrshort{gpg} or \acrshort{ssh} keys available at \url{https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}} on how to create \acrshort{gpg} and \acrshort{ssh} keys, as well as how to connect these keys to a GitHub account.
+Further, the commit signature has to be configured. For signing commits in GitHub, either \acrshort{ssh} or \acrshort{gpg} can be used. These need to be generated and connected to the user's GitHub account. GitHub provides documentation\footnote{Instructions on making \acrshort{gpg} or \acrshort{ssh} keys available at \url{https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits}} on how to create \acrshort{gpg} and \acrshort{ssh} keys, as well as how to connect these keys to a GitHub account.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -55,7 +54,7 @@ GitHub provides documentation\footnote{Instructions on making \acrshort{gpg} or 
 \section{Managing security in GitHub}
 When the source code is securely pushed to its belonging branch and is being merged into the main branch, CodeQL needs to scan the code for vulnerabilities. This is done by setting up CodeQL\footnote{Instructions on enabling CodeQL available at \url{https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-for-a-repository}} and customizing the trigger for the code scan. 
 \\~\\
-Setting up CodeQL is done by adding the CodeQL YAML file to the workflow, which contains the configuration settings for running the analysis. Adding the pull request and push events to the workflow file customizes the trigger for the analysis, causing the analysis to run automatically whenever a pull request or push is made to the specified branch \cite{CodeQLCustom}. The branch specified in this case is the main branch. 
+Setting up CodeQL is done by adding the CodeQL \acrshort{yaml} file to the workflow, which contains the configuration settings for running the analysis. Adding the pull request and push events to the workflow file customizes the trigger for the analysis, causing the analysis to run automatically whenever a pull request or push is made to the specified branch \cite{CodeQLCustom}. The branch specified in this case is the main branch. 
 
 \vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Custom trigger for CodeQL alerts, captionpos=b, frame=single]
@@ -68,7 +67,7 @@ on:
 
 To enable CodeQL from \acrshort{cli}, see Appendix \ref{EnableCodeQL}.
 \\~\\
-Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret Scanner\footnote{Instructions on how to enable Secret Scanner available at \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities.
+Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at: \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret Scanner\footnote{Instructions on how to enable Secret Scanner available at: \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. After being enabled, all these tools automatically scan the code for vulnerabilities and secrets.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -88,7 +87,7 @@ An example of code scanning alerts using CodeQL is the critical alert shown in F
     \label{fig: Critical alert from Dependabot}
 \end{figure}
 
-Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts from Dependabot in the Juice-Shop repository. It shows a vulnerability in the dependency version used, following a suggestion on a patched version. Dependabot, similarly to CodeQL, refers to \acrshort{cwe} weaknesses. Additionally, it refers to a \acrshort{cve} ID. 
+Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts from Dependabot in the Juice-Shop repository. It shows a vulnerability in the dependency version used, following a suggestion on a patched version. Dependabot, similarly to CodeQL, refers to \acrshort{cwe} weaknesses. Additionally, it refers to a \acrshort{cve} ID, which is explained further in Section \ref{Common Vulnerabilities and Exposures}.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -98,10 +97,10 @@ Figure \ref{fig: Critical alert from Dependabot} is one of the critical alerts f
     \label{fig: Alert from secret scanner}
 \end{figure}
 
-The GitHub Secret Scanner did not detect any secrets in the Juice-Shop repository. Therefore, Figure \ref{fig: Alert from secret scanner} is taken from GitHub's demonstration of the secret scanner \cite{GitHubVideo}. The alert warns the user about an API key that matches the pattern of their partner Twilio. 
+The GitHub Secret Scanner did not detect any secrets in the Juice-Shop repository. Therefore, Figure \ref{fig: Alert from secret scanner} is taken from GitHub's demonstration of the secret scanner \cite{GitHubVideo}. The alert warns the user about an \acrshort{api} key that matches the pattern of their partner Twilio. 
 
 \section{Retrieving the source code in AWS}
-When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. For this to be done, a connection between the \acrshort{aws} and the GitHub account needs to be made. The connection can be made using \acrshort{aws} CodeStar Connections\footnote{A tool that enables CodePipeline to connect to third-party repositories \cite{CodeStarConnections}.}. By creating this connection as a resource, it can be used by \acrshort{aws} CodePipeline to automatically trigger the \gls{pipeline} in response to any changes made to the GitHub repository. A connection can be created on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
+When the source code is pushed to the main branch in the GitHub repository, the source code can be built in \acrshort{aws}. For this to be done, a connection between the \acrshort{aws} and the GitHub account needs to be made. The connection can be made using \acrshort{aws} CodeStar Connections\footnote{A tool that enables CodePipeline to connect to third-party repositories \cite{CodeStarConnections}.}. The connection is used by \acrshort{aws} CodePipeline to automatically trigger the \gls{pipeline} in response to any changes made to the GitHub repository. A connection can be created on the \acrshort{aws} website or by using Terraform to create a connection resource with GitHub as the provider.
 
 \vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Create a connection between AWS and GitHub, captionpos=b, frame=single]
@@ -111,7 +110,7 @@ resource"aws_codestarconnections_connection""code-connection"{
 }
 \end{lstlisting}
 
-After successfully creating the connection resource in \acrshort{aws} with Terraform, it is necessary to perform a manual verification process in \acrshort{aws}. This step is crucial because it is impossible to pass secrets through \acrshort{aws} to GitHub login, as the connection opens a third-party login page that \acrshort{aws} does not control. Therefore, logging in to the system with the associated GitHub account credentials is essential.
+After successfully creating the connection resource, it is necessary to perform a manual verification process in \acrshort{aws}. This step is crucial because it is impossible to pass secrets through \acrshort{aws} to GitHub login, as the connection opens a third-party login page that \acrshort{aws} does not control.
 
 \vspace{2mm}
 \begin{figure}[H]

@@ -142,6 +142,8 @@ According to IBM's report, in 2022, the cost of a data breach was estimated to b
 \section{Vulnerability risk rating}
 Discovered vulnerabilities can be rated by standardized systems like \acrshort{cvss}, \acrshort{cve}, \acrshort{cwe}, and \acrshort{owasp} Risk Rating Methodology. These databases are frequently used in application security testing, particularly in \acrshort{sca} scans, to uncover code patterns that may indicate a common vulnerability within the code. While they may also be utilized in \acrshort{dast} and \acrshort{sast} scans, they are most commonly used in \acrshort{sca} scans. 
 
+
+
 \subsection{Common Vulnerability Scoring System (CVSS)}
 \acrlong{cvss}, known as \acrshort{cvss}, is \textit{"a Security Content Automation Protocol (SCAP) specification for communicating the characteristics of vulnerabilities and measuring their relative severity"}\cite{nistCVSS}. The system gives vulnerabilities a numeric score based on their severity. The scores can be translated into low, medium, high, and critical to assist organizations in evaluating and ranking their vulnerabilities. \acrshort{cvss} is currently at version 3.1 \cite{CVSS}.
 
@@ -154,11 +156,12 @@ Discovered vulnerabilities can be rated by standardized systems like \acrshort{c
 
 \subsection{Common Vulnerabilities and Exposures (CVE)}
 \label{Common Vulnerabilities and Exposures}
-\acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The \acrshort{cve} program aims to determine, describe, and categorize cybersecurity vulnerabilities made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} (\acrshort{nvd})\footnote{Available at: https://nvd.nist.gov}, which is a list of vulnerabilities maintained by the United States government.
+\acrlong{cve}\footnote{Available at: \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cyber security vulnerabilities"}\cite{CVE}. The \acrshort{cve} program aims to determine, describe, and categorize cybersecurity vulnerabilities made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} (\acrshort{nvd})\footnote{Available at: https://nvd.nist.gov}, which is a list of vulnerabilities maintained by the United States government.
 
 \subsection{Common Weakness Enumeration (CWE)}
 \label{cwe}
-\acrlong{cwe}\footnote{Available at \url{https://cwe.mitre.org/}}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It serves as a consistent benchmark for security solutions that address vulnerabilities and as a baseline for identifying, mitigating, and preventing weaknesses. \acrshort{cwe} 's goal is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
+\acrlong{cwe}\footnote{Available at:
+\url{https://cwe.mitre.org/}}, known as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It serves as a consistent benchmark for security solutions that address vulnerabilities and as a baseline for identifying, mitigating, and preventing weaknesses. \acrshort{cwe} 's goal is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
 
 \subsection{OWASP Risk Rating Methodology}
 \acrshort{owasp} Risk Rating Methodology contains a formula that calculates a risk score for each vulnerability based on likelihood and impact \cite{owasprisk}. Multiple factors make up both likelihood and impact. 
@@ -187,7 +190,7 @@ Combining the likelihood and impact ratings produces an overall risk severity le
 \end{figure}
 
 \section{Amazon Web Services}
-\acrlong{aws}\footnote{Available at \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform offered by Amazon \cite{aws}. It provides a variety of services ranging from \acrlong{iaas} (\acrshort{iaas}) to \acrlong{paas} (\acrshort{paas}), enabling customers to operate their applications and store their data in the cloud. With their pay-as-you-go cloud computing model, customers can scale their resources up and down without investing in physical infrastructure.
+\acrlong{aws}\footnote{Available at: \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform offered by Amazon \cite{aws}. It provides a variety of services ranging from \acrlong{iaas} (\acrshort{iaas}) to \acrlong{paas} (\acrshort{paas}), enabling customers to operate their applications and store their data in the cloud. With their pay-as-you-go cloud computing model, customers can scale their resources up and down without investing in physical infrastructure.
 
 \section{GitHub}
-GitHub\footnote{Available at \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects \cite{github}. The developers can manage their projects in repositories and track bugs and issues. It offers collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system utilized to manage and monitor file versioning. GitHub employs this technology as the basis for its service. The version control allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.
+GitHub\footnote{Available at: \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects \cite{github}. The developers can manage their projects in repositories and track bugs and issues. It offers collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system utilized to manage and monitor file versioning. GitHub employs this technology as the basis for its service. The version control allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.
