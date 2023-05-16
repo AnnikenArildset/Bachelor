@@ -1,8 +1,7 @@
 \makeglossaries
 
 
-\newacronym{nor}{NOR}{Norway}
-\newacronym{ntnu}{NTNU}{Norwegian University of Science and Technology}
+
 \newacronym{nbim}{NBIM}{Norwegian Bank Investment Management}
 \newacronym{sdlc}{SDLC}{Software Development Life Cycle}
 \newacronym{aws}{AWS}{Amazon Web Services}
@@ -34,9 +33,10 @@
 \newacronym{owasp}{OWASP}{Open Worldwide Application Security Project}
 \newacronym{zap}{ZAP}{Zed Attack Proxy}
 \newacronym{ssh}{SSH}{Secure Shell}
-\newacronym{iac}{IAC}{infrastructure as code}
+%\newacronym{iac}{IAC}{infrastructure as code}
 \newacronym{ast}{AST}{Application Security Testing}
 \newacronym{s3}{S3}{S3 Bucket}
+\newacronym{devsecops}{DevSecOps}{Development, Security, and Operations}
 
 
 \newglossaryentry{buildspec}
@@ -50,6 +50,7 @@
 \newglossaryentry{GUI}
 {
     name=GUI,
+    text=gui, 
     description={Stands for: Graphical User Interface and it is
 a graphics-based operating system interface that uses icons, menus and a mouse (to click on the icon or pull down the menus) to manage interaction with the system}
 }
@@ -122,7 +123,7 @@ a graphics-based operating system interface that uses icons, menus and a mouse (
     description = {The environment where software is executed. This could be either the operating system or physical hardware}
 }
 
-\newglossaryentry{infrastructure as code}{
+\newglossaryentry{iac}{
     name = Infrastructure as Code,
     text = infrastructure as code,
     description = {Infrastructure as Code (IaC) is the process of automating the supply of IT infrastructure through the use of a high-level coding language}
@@ -156,6 +157,13 @@ a graphics-based operating system interface that uses icons, menus and a mouse (
 \newglossaryentry{idempotent}{
     name = Idempotent,
     text = idempotent,
-    description = {Idempotence, in programming and mathematics, is a property of some operations such that no matter how many times you execute them, you achieve the same result.}
+    description = {Idempotence, in programming and mathematics, is a property of some operations such that no matter how many times you execute them, you achieve the same result}
 }
 
+
+
+\newglossaryentry{denial-of-service}{
+    name = Denial-of-service attack,
+    text = denial-of-service ,
+    description = {describes the ultimate goal of a class of cyber attacks designed to render a service inaccessible. The DoS attacks that most people have heard about are those launched against high profile websites, since these are frequently reported by the media.}
+}

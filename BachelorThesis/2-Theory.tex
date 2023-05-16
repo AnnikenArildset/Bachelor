@@ -8,39 +8,39 @@
 This chapter provides an explanation of different types of concepts that is essential to understand before reading the rest of the thesis. It covers various forms of software testing, multiple techniques of security testing, and other relevant information deemed necessary to understand the thesis.
 
 \section{Software Development Life Cycle}
-\acrlong{sdlc} can be defined as \textit{"structured process that enables the production of high-quality, low-cost software, in shortest possible production time. The goal of the \acrshort{sdlc} is to produce superior software that meets and exceeds all customer expectations and demands"}\cite{sdlc1}. SDLC consists of several phases providing a software development testing and deployment framework. It is also worth noting that the \acrlong{sdlc} is an iterative process \cite{sdlcinterative}. Each life cycle phase can undergo multiple iterations and be repeated, with each iteration building upon the previous one. This iterative approach facilitates continuous improvement and refinement of the software product, resulting in a final product that meets or exceeds customer needs and expectations. By leveraging this iterative approach, software development teams can ensure that their software is of the highest quality while still being completed within a reasonable time frame and cost. Below are the five phases that fulfill the \acrshort{sdlc}. 
+\acrlong{sdlc} can be defined as \textit{"structured process that enables the production of high-quality, low-cost software, in shortest possible production time. The goal of the \acrshort{sdlc} is to produce superior software that meets and exceeds all customer expectations and demands"}\cite{sdlc1}. \acrshort{sdlc} consists of several phases providing a software development testing and deployment framework. The \acrlong{sdlc} is an iterative process, where each life cycle phase can undergo multiple iterations and be repeated, with each iteration building upon the previous one \cite{sdlcinterative}. This iterative approach facilitates continuous improvement and refinement of the software product, resulting in a final product that meets or exceeds customer needs and expectations. By leveraging this iterative approach, software development teams can ensure that their software is of the highest quality while still being completed within a reasonable time frame and cost. Below are the five phases that fulfill the \acrshort{sdlc}. 
 
 \subsection{Planning} 
-Planning is the first phase of the \acrshort{sdlc} \cite{planningphase}. During this phase, the team determines the project's goals and objectives. The team should discuss resources, costs, and time and create a timeline for the work during this phase. Additionally, the team should develop a project plan where they identify, prioritize, and assign tasks and resources necessary to construct the structure. This stage is repeated when changes or new features are presented. In a \acrshort{cicd} pipeline, the team receives feedback and includes it in a new planning phase.
+Planning is the first phase of the \acrshort{sdlc} \cite{planningphase}. During this phase, the team determines the project's goals and objectives. The team should discuss resources, costs, and time and create a timeline for the work during this phase. Additionally, the team should develop a project plan where they identify, prioritize, and assign tasks and resources necessary to construct the structure. This stage is repeated when changes or new features are presented \cite{PlanningPhaseRepeat}. In a \acrshort{cicd} \gls{pipeline}, the team receives feedback and includes it in a new planning phase.
 
 \subsection{Implementation}
-In the implementation phase, the actual development of the software takes place \cite{ImplementationSDLC}. The software design is translated into code using programming languages during implementation. Once the team completes and reviews the code, they initiate the build process and conduct several security scans. The implementation phase is considered important since this is the phase that involves the actual development of the software and the preparation of the software for deployment into the environment.  
+In the implementation phase, the actual development of the software takes place \cite{ImplementationSDLC}. The software design is translated into code using programming languages. Once the team completes and reviews the code, they initiate the build process and conduct several security scans. The implementation phase is considered important since this is the phase that involves the actual development of the software and the preparation of the software for deployment into the environment.  
  
 \subsection{Testing}
-In the testing phase, the development team verifies that the software fulfils functional, performance, and quality criteria established in earlier stages of the \acrshort{sdlc} \cite{TestingSDLC}. The software is subjected to both manual user testing and automated testing to detect and correct possible defects. In the testing phase, the development team ensures that the software meets the user's requirements.
+In the testing phase, the development team verifies that the software fulfils functional, performance, security, and quality criteria established in earlier stages of the \acrshort{sdlc} \cite{TestingSDLC}. The software is subjected to both manual user testing and automated testing to detect and correct possible defects. In the testing phase, the development team ensures that the software meets the user's requirements.
  
 \subsection{Deployment}
-In the deployment phase, releasing the software into the environment can be considered the main priority \cite{DeploymentSDLC}. In this phase, the deployment team works with the development team and other stakeholders to plan the release of the software in order to ensure a seamless process. The plan also includes creating the deployment timeline, selecting a method for the deployment, and defining the software's environment. Initially, the deployment process of an application may take a considerable amount of time. However, once the application has been deployed for the first time, subsequent updates can be deployed much faster because the same setup is reused, significantly reducing deployment time. 
+In the deployment phase, releasing the software into the environment can be considered the main priority \cite{DeploymentSDLC}. In this phase, the deployment team works with the development team and the stakeholder to plan the release of the software in order to ensure a seamless process. The plan also includes creating the deployment timeline, selecting a method for the deployment, and defining the software's environment. Initially, the deployment process of an application may take a considerable amount of time. However, once the application has been deployed for the first time, subsequent updates can be deployed much faster because the same setup is reused, significantly reducing deployment time. 
 
 \subsection{Maintenance} 
-In the maintenance phase, the software is monitored to ensure it functions according to its intended design \cite{MaintenanceSDLC}. The team does any refactoring and upgrades it is if needed. Software monitoring can be done differently depending on how the maintenance phase has been set up. However, the most common way of monitoring is usually through real-time reporting or ad-hoc reporting systems, which are automatically generated within the software created and then sent to the company that created it. 
+In the maintenance phase, the software is monitored to ensure it functions according to its intended design \cite{MaintenanceSDLC}. The team does any refactoring and upgrades if it is needed. Software monitoring can be done differently depending on how the maintenance phase has been set up. However, the most common way of monitoring is usually through real-time reporting or ad-hoc reporting systems
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/devsec.png}
-    \caption{DevSecOps Life Cycle}
+    \caption{\acrshort{devsecops} Life Cycle}
     \label{fig: DevSecOps Life Cycle}\cite{devsecopsbilde}
 \end{figure}
 
 
 \section{Functional testing vs. security testing}
 \label{Functional Testing vs Security Testing}
-Software testing is an extensive area, and each test varies according to its purpose or process - but the primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions \cite{difftesting}. Functional testing emphasizes the software's behavior and that the software is working as expected. The functional test cases are based on the software requirements specified by the stakeholder. Several functional testing methodologies, such as unit and integration testing, can be conducted. 
+Software testing is an extensive area, and each test varies according to its purpose or process. The primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions \cite{difftesting}. Functional testing emphasizes the software's behavior and that the software is working as expected. The functional test cases are based on the software requirements specified by the stakeholder. Several functional testing methodologies, such as unit and integration testing, can be conducted. 
 \\~\\
 Unit testing involves testing small code components, known as units, to determine if the units behave as expected\cite{unitvsintergration}. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The unit testing aims to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. On the other hand, integration testing evaluates how the previously tested components perform when integrated into a more extensive system and communicate across various components.
 \\~\\
-On the other hand, security testing wants to break the software to uncover vulnerabilities and verify its security features \cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. During the testing, the testers perform the test from the attacker's point of view. These tests can be done manually or by software tools called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing, black box testing, and grey box testing are some examples of security testing methods. This topic is described more in section \ref{boxtesting}. 
+Security testing wants to break the software to uncover vulnerabilities and verify its security features \cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. The tests are performed from the attacker's point of view. These tests can be done manually or by software tools called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing, black box testing, and grey box testing are some examples of security testing methods. This topic is described more in section \ref{boxtesting}. 
 
 \section{Application security testing}
 Application Security Testing can be described as a \textit{\say{process of making applications more resistant to security threats by identifying security weaknesses and vulnerabilities in source code}} \cite{AST}.
@@ -55,7 +55,7 @@ The various testing tools utilize a type of testing technique called \say{box te
 Black box testing is a testing technique that primarily focuses on the functionality and behavior of an application without any knowledge of its internal structure and processes  \cite{blackbox}. Therefore, the tester can treat the application as a black box, where only the inputs and outputs are visible, and the internal workings remain unknown. The technique makes it a practical approach to test the functionality of an application, as the tester verifies whether the input produces the expected output without any knowledge of the underlying code or design. As a result, black box testing is often used as a form of functionality testing \cite{BlackBoxTestingFunctional}. If the software produces the expected output for the given input, the tester considers it to have passed the black box test.
 
 \subsubsection{White box testing}
-White box testing focuses on the application from within. During such tests, the tester will examine the source code and infrastructure \cite{whitebox}. The testing covers paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to know programming and IT. The tester performs security testing, like testing for memory leaks, and functional testing, like unit tests. However, white box testing can be pretty complex, and when running such tests on a large amount of code, it can take days or even weeks to test. 
+White box testing focuses on the application from within. During such tests, the tester will examine the source code and infrastructure \cite{whitebox}. The testing covers paths, statements, and branches, among other things. A white box tester looks for security holes by testing the code and therefore requires to know programming and IT. The tester performs security testing, like testing for memory leaks, and functional testing, like unit tests. White box testing can be pretty complex, and when running such tests on a large amount of code, it can take days or even weeks to test. 
 
 \subsubsection{Grey box testing}
 Grey box testing is a method that limits the user's knowledge of the different components being tested \cite{GreyBox}. It combines white box testing and black box testing, where the user can access internal code or design without enough access to run a full white box test. The test practices are done at the same level as black box testing. 
@@ -69,13 +69,13 @@ One of the advantages of \acrshort{sast} is that it gives detailed information a
 \\~\\
 There are, however, some limitations to \acrshort{sast} tools. For example, it can only detect vulnerabilities in the source code, meaning it cannot detect vulnerabilities that result from the interaction between different components of an application.
 \\~\\
-\acrshort{sast} scans should be implemented as early in the \acrshort{sdlc} as possible to prevent vulnerabilities from being present throughout the pipeline \cite{SASTplacement}. Figure \ref{fig: DevSecOps Life Cycle} suggests the \acrshort{sast} scan should be done before building the code in the implementation phase. It is also possible to run this test during the testing phase, as shown in Figure \ref{fig: Where SAST can be performed in SDLC}.
+\acrshort{sast} scans should be implemented as early in the \acrshort{sdlc} as possible to prevent vulnerabilities from being present throughout the \gls{pipeline} \cite{SASTplacement}. Figure \ref{fig: DevSecOps Life Cycle} suggests that the \acrshort{sast} scan should be done before building the code in the implementation phase. It is also possible to run this test during the testing phase, as shown in Figure \ref{fig: Where SAST can be performed in SDLC}.
 
 \vspace{2mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/sast.png}
-    \caption{SAST tools are introduced early in the SDLC and can help identify vulnerabilities during the implementation and testing phases}
+    \caption{Where \acrshort{sast} can be performed in \acrshort{sdlc}}
     \label{fig: Where SAST can be performed in SDLC}
 \end{figure}
 
@@ -88,13 +88,13 @@ An advantage with \acrshort{dast} is that it can identify security issues that a
 \\~\\
 However, there are some limitations with \acrshort{dast} as well. One is that it can only detect vulnerabilities present in the deployed version of the application and cannot give an in-depth description of vulnerabilities in the source code. Additionally, \acrshort{dast} can generate several false positives, increasing the testing time and effort required to analyze and verify the results. 
 \\~\\
-In Figure \ref{fig: Where DAST can be performed in SDLC}, \acrshort{dast} is suggested to perform in the testing and maintenance phase since the scan is done on a running application and is, therefore, past the implementation stage. The test should be done before deployment to prevent a vulnerable application from going public. Scans should also be done after it is deployed, in the maintenance phase, since vulnerabilities may occur after deployment and must be identified to prevent potential problems. 
+In Figure \ref{fig: Where DAST can be performed in SDLC}, \acrshort{dast} is suggested to perform in the testing and maintenance phase since the scan is done on a running application and is, therefore, past the implementation stage. The test should be done before deployment to prevent a vulnerable application from going public. Scans should also be done after it is deployed \cite{dastplacment}, in the maintenance phase, since vulnerabilities may occur after deployment and must be identified to prevent potential problems.
 
 \vspace{2mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/dast.png}
-    \caption{Where DAST can be performed in SDLC} 
+    \caption{Where \acrshort{dast} can be performed in \acrshort{sdlc}} 
     \label{fig: Where DAST can be performed in SDLC}
 \end{figure}
 
@@ -113,52 +113,52 @@ However, \acrshort{sca} may give some false positives that can occur because the
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/sca.png}
-    \caption{Where SCA can be performed in SDLC} 
+    \caption{Where \acrshort{sca} can be performed in \acrshort{sdlc}} 
     \label{fig: Where SCA can be performed in SDLC}
 \end{figure}
 
 \newpage
 \subsection{Comparison of SAST, DAST, and SCA}
-Upon reviewing the different security application tests, similarities between \acrshort{sast}, \acrshort{dast}, and \acrshort{sca} were discovered. Table \ref{fig: Comparison of SCA, DAST, and SASt} below shows some commonalities and differences, which indicates that a combination of the different testing mechanisms can enhance the testing process of the application. 
+Upon reviewing the different security application tests, similarities between \acrshort{sast}, \acrshort{dast}, and \acrshort{sca} were discovered. Table \ref{fig: Comparison of SCA, DAST, and SASt} shows commonalities and differences, which indicates that a combination of the different testing mechanisms can enhance the testing process of the application. 
 
 \vspace{2mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\columnwidth]{Images/application-security-testing.png}\\
     \textbf{Note:} The distinction between the exclamation marks and the checkmarks lies in the meaning of them. The exclamation marks indicate that the criteria are considered negative, while the checkmarks signify that the criteria are positive.
-    \caption{Comparison of SCA, DAST, and SAST}Adapted from: \cite{Comparison}
+    \caption{Comparison of \acrshort{sca}, \acrshort{dast}, and \acrshort{sast} }Adapted from: \cite{Comparison}
     \label{fig: Comparison of SCA, DAST, and SASt}
 \end{figure}
 \newpage
 \section{The significance of software security testing}
 Security testing plays a critical role in the \acrlong{sdlc}, as it is employed to identify potential security vulnerabilities in the system and prevent real-world attacks \cite{whysectest}. It is a process where the system's security is evaluated, and its possible security weaknesses and vulnerability risks are identified. 
 \\~\\
-According to IBM's report, in 2022, the cost of a data breach was estimated to be USD 4.35 million \cite{databreach}. Investing in cybersecurity measures can save money for a company in the event of a cyber attack. The report states that companies that have implemented zero trust security measures saved about USD 1 million in breach costs on average compared to those that have not. To repair a vulnerability in the design phase costs an average of USD 500 \cite{fixvulnerability}. Starting software testing early in the SDLC reduces costs and saves time. As mentioned in section \ref{Functional Testing vs Security Testing}, various types of testing should be executed on an application, including testing of both the written code and the libraries that are integrated and being used.
+According to IBM's report, in 2022, the cost of a data breach was estimated to be USD 4.35 million \cite{databreach}. Investing in cyber security measures can save money for a company in the event of a cyber attack. The report states that companies that have implemented zero trust security measures saved about USD 1 million in breach costs on average compared to those that have not. To repair a vulnerability in the planning phase costs an average of USD 500 \cite{fixvulnerability}. Starting software testing early in the SDLC reduces costs and saves time. As mentioned in section \ref{Functional Testing vs Security Testing}, various types of testing should be executed on an application, including testing of both the written code and the libraries that are integrated and being used.
 
 \section{OWASP Top 10}
 \acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and for developers to raise their knowledge of potential security threats. The document contains a prioritized and exemplified list with recommendations for fixing ten critical security flaws commonly seen in web applications. The function of this document is to educate readers on the most common security risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these threats in their applications. 
 
 
 \section{Vulnerability risk rating}
-Discovered vulnerabilities can be rated by standardized systems like CVSS, CVE, CWE, and OWASP Risk Rating Methodology. These databases are frequently used in application security testing, particularly in SCA scans, to uncover code patterns that may indicate a common vulnerability within the code. While they may also be utilized in DAST and SAST scans, they are most commonly used in SCA scans. 
+Discovered vulnerabilities can be rated by standardized systems like \acrshort{cvss}, \acrshort{cve}, \acrshort{cwe}, and \acrshort{owasp} Risk Rating Methodology. These databases are frequently used in application security testing, particularly in \acrshort{sca} scans, to uncover code patterns that may indicate a common vulnerability within the code. While they may also be utilized in \acrshort{dast} and \acrshort{sast} scans, they are most commonly used in \acrshort{sca} scans. 
 
 \subsection{Common Vulnerability Scoring System (CVSS)}
-\acrlong{cvss}, known as \acrshort{cvss}, is \textit{"a Security Content Automation Protocol (SCAP) specification for communicating the characteristics of vulnerabilities and measuring their relative severity"}\cite{nistCVSS}. The system gives vulnerabilities a numeric score based on their severity. The scores can be translated into low, medium, high, and critical to assist organizations in evaluating and ranking their vulnerabilities. CVSS is currently at version 3.1. \cite{CVSS}
+\acrlong{cvss}, known as \acrshort{cvss}, is \textit{"a Security Content Automation Protocol (SCAP) specification for communicating the characteristics of vulnerabilities and measuring their relative severity"}\cite{nistCVSS}. The system gives vulnerabilities a numeric score based on their severity. The scores can be translated into low, medium, high, and critical to assist organizations in evaluating and ranking their vulnerabilities. \acrshort{cvss} is currently at version 3.1 \cite{CVSS}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3]{Images/CVSS.png}
-    \caption{CVSS v3 Ratings} Adapted from:\cite{cvssrating}
+    \caption{\acrshort{cvss} v3 Ratings} Adapted from: \cite{cvssrating}
     \label{fig:CVSS v3 Ratings}
 \end{figure}
 
 \subsection{Common Vulnerabilities and Exposures (CVE)}
 \label{Common Vulnerabilities and Exposures}
-\acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The CVE program aims to determine, describe, and categorize cybersecurity vulnerabilities made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} (\acrshort{nvd})\footnote{Available at: https://nvd.nist.gov}, which is a list of vulnerabilities maintained by the United States government.
+\acrlong{cve}\footnote{Available at \url{https://www.cve.org/}}, known as \acrshort{cve}, is, according to their website,\textit{"a list of records each containing an identification number, a description, and at least one public reference for publicly known cybersecurity vulnerabilities"}\cite{CVE}. The \acrshort{cve} program aims to determine, describe, and categorize cybersecurity vulnerabilities made public. All discovered vulnerabilities will be put into records and sent to \acrlong{nvd} (\acrshort{nvd})\footnote{Available at: https://nvd.nist.gov}, which is a list of vulnerabilities maintained by the United States government.
 
 \subsection{Common Weakness Enumeration (CWE)}
 \label{cwe}
-\acrlong{cwe}\footnote{Available at \url{https://cwe.mitre.org/}}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It serves as a consistent benchmark for security solutions that address vulnerabilities and as a baseline for identifying, mitigating, and preventing weaknesses. CWE's goal is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
+\acrlong{cwe}\footnote{Available at \url{https://cwe.mitre.org/}}, know as \acrshort{cwe}, is \textit{"a community-developed list of common software and hardware weakness types that have security ramifications"}\cite{CWE}. It serves as a consistent benchmark for security solutions that address vulnerabilities and as a baseline for identifying, mitigating, and preventing weaknesses. \acrshort{cwe} 's goal is to provide instructions for those who have control over and maintain source code to stop the vulnerabilities at the source. 
 
 \subsection{OWASP Risk Rating Methodology}
 \acrshort{owasp} Risk Rating Methodology contains a formula that calculates a risk score for each vulnerability based on likelihood and impact \cite{owasprisk}. Multiple factors make up both likelihood and impact. 
@@ -167,7 +167,7 @@ Factors composing the estimation of likelihood are separated into different grou
 \\~\\
 Factors composing the estimation of impact are divided into technical and business impacts. The technical impact is broken down into confidentiality, integrity, availability, and accountability. Further, the business impact is divided into financial damage, reputation damage, non-compliance, and privacy violation. All of the factors will receive an impact rating from 0-9. 
 \\~\\
-Combining the likelihood and impact factors estimates produces an overall risk severity level, which can be classified as low, medium, or high (as shown in figure \ref{fig: Impact levels}) to determine its severity. These levels can be further combined to determine the final severity of the risk, as illustrated in figure \ref{fig: OWASP Severity Scale}.
+Combining the likelihood and impact ratings produces an overall risk severity level, which can be classified as low, medium, or high, as shown in figure \ref{fig: Impact levels}, to determine its severity. These levels can be further combined to determine the final severity of the risk, as illustrated in figure \ref{fig: OWASP Severity Scale}.
 
 
 \vspace{2mm}
@@ -187,7 +187,7 @@ Combining the likelihood and impact factors estimates produces an overall risk s
 \end{figure}
 
 \section{Amazon Web Services}
-\acrlong{aws}\footnote{Available at \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform offered by Amazon. It provides a variety of services ranging from \acrlong{iaas} (\acrshort{iaas}) to \acrlong{paas} (\acrshort{paas}), enabling customers to operate their applications and store their data in the cloud. With their pay-as-you-go cloud computing model, customers can scale their resources up and down without investing in physical infrastructure.\cite{aws}  
+\acrlong{aws}\footnote{Available at \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform offered by Amazon \cite{aws}. It provides a variety of services ranging from \acrlong{iaas} (\acrshort{iaas}) to \acrlong{paas} (\acrshort{paas}), enabling customers to operate their applications and store their data in the cloud. With their pay-as-you-go cloud computing model, customers can scale their resources up and down without investing in physical infrastructure.
 
 \section{GitHub}
-GitHub\footnote{Available at \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects. The developers can manage their projects in repositories and track bugs and issues. It offers collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system utilized to manage and monitor file versioning. GitHub employs this technology as the basis for its service. The version control allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.\cite{github}
+GitHub\footnote{Available at \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects \cite{github}. The developers can manage their projects in repositories and track bugs and issues. It offers collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system utilized to manage and monitor file versioning. GitHub employs this technology as the basis for its service. The version control allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.
