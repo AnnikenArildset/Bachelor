@@ -1,9 +1,11 @@
 \newpage
 \section{Frameworks}
+\label{frameworks}
 \subsection{Introduction}
 A framework is \textit{\say{a supporting structure around which something can be built}} \cite{FrameworkDefinition}, and can be used in connection with securing the \acrshort{sdlc}. Frameworks outlined in this chapter are not intended to be rigid regulations but rather valuable recommendations for software developers to enhance security measures. By implementing these suggestions, developers can confidently improve the security of their software.
 
 \subsection{Supply-chain Levels for Software Artifacts}
+\label{Supply-chainLevelsforSoftwareArtifacts}
 \acrlong{slsa} (\acrshort{slsa})\footnote{Available at: \url{https://slsa.dev/}} is a framework for securing the software supply chain created by Google in collaboration with OpenSSF\footnote{Available at: \url{https://openssf.org/}} \cite{SLSAgeneral}. The framework is made into a common vocabulary checklist for developers to evaluate the security of the software they are creating. \acrshort{slsa} is organized into tracks and levels. The levels refer to the increasing security guarantee of the supply chain, the highest level being level 3. The levels are split further into tracks. Tracks are certain aspects of the supply chain, for example, the Build track, which currently is \acrshort{slsa}s only track. 
 
 \vspace{2mm}
@@ -19,7 +21,8 @@ To achieve \acrshort{slsa} Build Level 1, the developers must use a consistent b
 \\~\\
 In order to reach \acrshort{slsa} Level 2, all Level 1 requirements must be in place. Further, the build has to be run on a platform that signs the \gls{provenance}. Finally, this \gls{provenance}'s authenticity must also be verified.
 \\~\\
-Similarly to Level 2, all previous level requirements must be achieved to get to \acrshort{slsa} Level 3. In addition, the build platform has to have controls to secure the secrets used for signing \gls{provenance} and prevent runs from the same project from impacting each other. 
+Similarly to Level 2, all previous level requirements must be achieved to get to \acrshort{slsa} Level 3. In addition, the build platform needs to be able to secure the secrets used for signing \gls{provenance} and prevent any interference between runs from the same project.  
+
 
 \subsection{Secure Software Development Framework}
 \label{ssdf}

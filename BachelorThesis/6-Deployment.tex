@@ -238,15 +238,29 @@ resource "aws_network_interface" "interface_network2" {
 }
 \end{lstlisting}
 
-The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by the \acrshort{dast} tool. In addition, the container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://hub.docker.com/r/owasp/zap2docker-stable/}}. Although these tests are typically customized to suit an application's specific requirements, the predefined tests are satisfactory for this demonstration. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Figure \ref{fig: OWASP Zap baseline scan}.
+The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by the \acrshort{dast} tool. In addition, the container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://hub.docker.com/r/owasp/zap2docker-stable/}}. Although these tests are typically customized to suit an application's specific requirements, the predefined tests are satisfactory for this demonstration. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Code \ref{owasp-zap-output}.
 
 \vspace{2mm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{Images/owasp-zap-scan.png}
-    \caption{OWASP ZAP baseline scan}
-    \label{fig: OWASP Zap baseline scan}
-\end{figure}
+\begin{lstlisting}[caption=The output of an OWASP ZAP baseline scan, captionpos=b, frame=single, label={owasp-zap-output}]
+WARN-NEW: Timestamp Disclosure - Unix [10096] x 1
+        http://172.16.10.100:3000/main.js (200 OK)
+WARN-NEW: Cross-Domain Misconfiguration [10098] x 11
+        http://172.16.10.100:3000/ (200 OK)
+        http://172.16.10.100:3000/assets/public/favicon_js.ico (200 OK)
+        http://172.16.10.100:3000/ftp (200 OK)
+        http://172.16.10.100:3000/ftp/acquisitions.md (200 OK)
+        http://172.16.10.100:3000/main.js (200 OK)
+WARN-NEW: Modern Web Application [10109] x 13
+        http://172.16.10.100:3000/ (200 OK)
+        http://172.16.10.100:3000/home/build/routes/fileServer.js:16:13 (200 OK)
+        http://172.16.10.100:3000/home/build/routes/fileServer.js:32:18 (200 OK)
+        http://172.16.10.100:3000/home/build/routes/runtime.js (200 OK)
+        http://172.16.10.100:3000/home/node_modules/express/lib/router/index.js:280:10 (200 OK)
+WARN-NEW: Dangerous JS Functions [10110] x 2
+        http://172.16.10.100:3000/main.js (200 OK)
+        http://172.16.10.100:3000/vendor.js (200 OK)
+FAIL-NEW: 0     FAIL-INPROG: 0  WARN-NEW: 9     WARN-INPROG: 0  INFO: 0 IGNORE: 0       PASS: 51
+\end{lstlisting}
 
 
 \section{Deployment to production}

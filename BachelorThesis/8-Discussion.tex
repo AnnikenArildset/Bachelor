@@ -6,8 +6,8 @@
 \section{Introduction}
 This chapter details the reasons behind the group's decision-making process during the pipeline construction. It also covers any modifications made to the project and highlights any limitations encountered.
 
-\section{The groups use of the SDLC} %Bytte navn perhaps? 
-During the thesis project, the group developed a report and code. While it is not technically software, the process shares similarities with software development, as a result, they decided to explore the use of the \acrshort{sdlc} in their work. 
+\section{Implementation of the SDLC}
+Throughout the thesis, the group created a report and code, and while doing so, they chose to explore the implementation of the \acrshort{sdlc} approach.
 \\~\\
 During the planning phase, the group focused on gathering requirements for the thesis and developing a project plan. Initially, the group created a plan for using third-party tools for the scans and set an estimate of the costs. However, the plan of using third-party tools was later discarded, except for the \acrshort{dast} tool. The project plan included a Gantt chart outlining the expected task timeframe. Additionally, the group utilized Jira\footnote{Available at \url{https://www.atlassian.com/software/jira}} to create a Kanban board for task assignments. The group created several models to prepare for pipeline implementation that detailed its structure, including security scans. The group also became familiar with the software and tools that would be utilized for the pipeline.
 \\~\\
@@ -63,43 +63,34 @@ Despite the numerous benefits of automating the development processes, the imple
 A goal should be to create an \gls{idempotent} process that assures the pipeline's output is consistent every time it is built \cite{idempotent}. Adopting idempotence as a practice in DevOps is an approach during application development that ensures a high-quality experience for both users and software teams. Idempotence eliminates the requirement for post-deployment cleanup, lowering the likelihood of errors. 
 
 \section{The Use of Security Framework}
-%add intro
+This section concerns incorporating the two frameworks mentioned in Section \ref{frameworks} into the thesis, even though it was not initially considered. By examining the principles and requirements of these frameworks, valuable perspectives and insights can be discovered. In addition, by comparing the work with frameworks, one can identify areas where improvement is possible and any missing components.
+
 \subsection{SLSA}
-%Consistency is crucial when building the code, as mentioned in \acrshort{slsa} level 1. Therefore, it is mandatory to have a method of instructing others on building the code so that the outcome is consistent every time. The most common way of achieving this, and the method our group has chosen, is through a README.md file in the code repository. 
-%The second point the group had to deal with was to have a build platform that could automatically create \gls{provenance}. This is where the problem with the \acrshort{slsa} framework and \acrshort{iac} code arises. Many programming languages have a requirement to build them before running them. However, in the case of \acrshort{iac} languages, it is unnecessary to build them beforehand. 
-%Failing to achieve point two makes it challenging to proceed to point three in \acrshort{slsa} level 1. Without generating a provision, we have no content to share publicly with other users. It is worth noting that this obstacle also applies to levels 2 and 3, as completing level 1 is a prerequisite for advancing to these levels.
+The group tried to implement the \acrshort{slsa} framework in the practical part of this project to enhance the integrity of the code we developed. This led the group to attempt to work through the different levels and requirements mentioned in the section \ref{Supply-chainLevelsforSoftwareArtifacts}.
 
-The group achieved salsa level 1, point 1. They addressed this by creating instructions in the README.md file on how to build and execute the code in their GitHub project\footnote{Available at: \url{https://github.com/DCSG2900-Bachelor-thesis/CodePipline/blob/main/README.md}}. 
+\textbf{\acrshort{slsa} Level 1, requirement 1:}
+\textit{\say{Software producer follows
+a consistent build process
+so that others can form
+expectations about what a
+“correct” build looks like.}} \cite{SLSAlevels}
 \\~\\
-The group encountered difficulties when trying to fulfil requirement two for level 1. Finding a suitable solution proved challenging. As highlighted in Kelsey Hightower's talk in Strange Loop 2022 \cite{The-Secure-Software-Supply-Chain} this is the primary issue with the Salsa framework, a sentiment shared by the group. Consequently, the figure below depicts only level 0 and level 1.
-
-
-%\vspace{2mm}
-%\begin{figure}[H]
- %   \centering
-  %  \includegraphics[width=0.1\columnwidth]{Images/tick-icon.png}
-%\end{figure} 
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{4cm}|}
-\hline
-Requirements & Level 0 & Level 1 \\
-\hline
-No requirements &  
-\raisebox{-\totalheight}{\includegraphics[width=0.1\columnwidth]{Images/tick-icon.png}} &  \\
-\hline
-Software producer follows a consistent build process so that others can form expectations about what a “correct” build looks like. &  & \raisebox{-\totalheight}{\includegraphics[width=0.1\columnwidth]{Images/tick-icon.png}} \\
-\hline
-Build platform automatically generates provenance describing how the artifact was built, including: what entity built the package, what build process they used, and what the top-level input to the build were. &  & \\
-\hline
-Software producer distributes provenance to consumers, preferably using a convention determined by the package ecosystem. & &  \\
-\hline
-\end{tabular}
-\end{table}
+This requirement was achieved by creating instructions in the README.md file describing how to build and execute the code in the GitHub project\footnote{Available at: \url{https://github.com/DCSG2900-Bachelor-thesis/CodePipline/blob/main/README.md}}. 
+\\~\\
+\textbf{\acrshort{slsa} Level 1, requirement 2:}
+\textit{\say{Build platform automatically generates provenance describing how the artifact was built, including: what entity built the package, what build process they used, and what the top-level input to the build were.}} \cite{SLSAlevels}
+\\~\\
+This requirement was not achieved because the group encountered difficulties when trying to find a suitable solution to generate \gls{provenance}. A sentiment shared by Kelsey Hightower in his talk at Strange Loop 2022 \cite{The-Secure-Software-Supply-Chain} highlighting the primary issue with the \acrshort{slsa} framework's high complexity. This complexity was also encountered by the group while searching for a solution.
+\\~\\
+\textbf{\acrshort{slsa} Level 1, requirement 3:}
+\textit{\say{Software producer distributes provenance to consumers, preferably using a convention determined by the package ecosystem.}} \cite{SLSAlevels}
+\\~\\
+Due to the identical issue encountered in Requirement 2, the group was unable to accomplish Requirement 3.
+\\~\\
+To conclude, the group could not find a suitable solution for generating \gls{provenance}. As a result, they were unable to advance to the next level, since all the requirements from the previous level must be fulfilled.
 
 \subsection{SSDF}
-While numerous models exist for the \acrlong{sdlc}, only a few prioritize security. As a result, it is necessary to integrate security into the \acrshort{sdlc} models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the \acrshort{sdlc}. 
+While numerous models, such as waterfall, spiral, and agile, exist for the \acrlong{sdlc}, only a few prioritize security, therefore, is it necessary to integrate security into the \acrshort{sdlc} models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the \acrshort{sdlc}. 
 \\~\\
 In \acrshort{ssdf} documentation, elaborated in section \ref{ssdf}, includes various practices covering different security aspects that can be implemented into the development process. While the \acrshort{ssdf} is a suitable framework for secure software development, the group did not explicitly consider it while developing and designing the \gls{pipeline} in the thesis. However, the group believes that the practical work in the thesis aligns with many of the practices and principles of the \acrshort{ssdf}. The group reviewed some examples of the practices they believed to be suitable and their implementation methods. The group has decided to review the practices category-wise, with each practice being assigned to a specific category. 
 \\~\\
@@ -143,7 +134,7 @@ The group struggled to find proper academic research for their thesis. Therefore
 
 \section{Critique of the thesis}
 
-\subsection{Not using framework from the beginning}
+\subsection{Not using frameworks from the beginning}
 The group did not look deeper into following a framework as the scope contained no specifications. However, when the group discovered different frameworks, the group decided that it was too late to integrate them into the work. Doing so would have required a significant amount of work, and since the group was too far into the thesis, it was decided not to look into it—many requirements for the different frameworks needed to be achieved before the thesis was started. Furthermore, many tasks must be completed if the group were to integrate the framework later in the thesis, which would have added more complexity. 
 
 \subsection{Defining the scope}

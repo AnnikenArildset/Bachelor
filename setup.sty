@@ -187,6 +187,14 @@
     morecomment=[l][\color{magenta}]{\#}
 }
 
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
 \usepackage{tcolorbox}
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -201,7 +209,7 @@
 \usepackage{fancyhdr}
 \usepackage{lipsum} 
 \usepackage{setspace} 
-
+\usepackage{pdfpages}
 
 \def\ps@ntnuheadings{%
     \let\@evenfoot\@empty
@@ -221,3 +229,5 @@
 \usepackage{lipsum}
 \setlength{\spaceskip}{0.5em plus 0.2em minus 0.2em}
 \setlength{\xspaceskip}{0.3em plus 0.1em minus 0.1em}
+
+\usepackage{verbatim}

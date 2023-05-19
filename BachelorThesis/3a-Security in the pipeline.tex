@@ -3,7 +3,7 @@ Security in the pipeline ensures the code's utmost safety from various security 
 
 \subsection{Code scanning}
 \label{Code Scanning}
-According to Microsoft's best practices for secure \acrshort{sdlc} \cite{microsoftSDLCpractices}, a \acrshort{sast} tool should be included in the \gls{pipeline}. A \acrshort{sast} tool can be, for example, code scanning. Code scanning is a security measure that analyses code with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. In Figure \ref{fig: Pipeline with implemented SAST scan}, the \acrshort{sast} scan is set to be in GitHub \cite{sastplasment}. By doing this scan there, it is done at the earliest stage possible, before the code is moved forward in the pipeline, eliminating vulnerabilities as soon as possible.
+According to Microsoft's best practices for secure \acrshort{sdlc} \cite{microsoftSDLCpractices}, a \acrshort{sast} tool should be included in the \gls{pipeline}. A \acrshort{sast} tool can be, for example, code scanning. Code scanning is a security measure that analyses code with the help of a tool to find security vulnerabilities and coding errors. Code scanning serves as a preventive measure against developers introducing new issues. In Figure \ref{fig: Pipeline with implemented SAST scan}, the \acrshort{sast} scan is set to be in GitHub \cite{sast}. By doing this scan there, it is done at the earliest stage possible, before the code is moved forward in the pipeline, eliminating vulnerabilities as soon as possible.
 
  \vspace{2mm}
 \begin{figure}[H]
@@ -49,7 +49,7 @@ In software best practices, it is recommended to run multiple tests and scans to
 
 
 \subsection{Manual security testing}
-Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected \cite{dastpentesting}. For this reason, the company should engage a red team, a group of experts capable of performing penetration testing. A penetration test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. In addition, a penetration test can verify the results of a  \acrshort{dast} scan by assessing whether a vulnerability can be exploited and the extent of the damage it could cause. 
+Even though \acrshort{dast} can be used to identify potential vulnerabilities, certain types of threats may go undetected \cite{dastpentesting}. For this reason, the company should engage a red team, a group of experts capable of performing penetration testing (pentesting). A penetration test will provide a more realistic test, as it simulates a real-world attack, detects more complex vulnerabilities, and provide a more comprehensive view of an application's security posture. In addition, a penetration test can verify the results of a  \acrshort{dast} scan by assessing whether a vulnerability can be exploited and the extent of the damage it could cause. 
 \\~\\
 Figure \ref{fig: Pipeline with implemented DAST scan and pentesting} shows that the \acrshort{dast} scan and penetration test are positioned later in the \gls{pipeline} because they require a running application to be executed \cite{dastplacment}. These tests cannot be performed earlier but must be conducted before the application is deployed.
 \vspace{2mm}
