@@ -56,7 +56,9 @@ The group selected \acrshort{owasp} \acrshort{zap} as their \acrshort{dast} tool
 Once \acrshort{owasp} \acrshort{zap} was successfully installed and configured with basic settings, the group faced challenges in comprehending the output results and extracting the output from the docker container.
 
 \section{Automation}
-Automation is using \gls{iac} to perform tasks instead of doing them manually \cite{automationredhat}. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs by replacing the manual work of IT professionals with automated processes. Automation can also speed up development by automating repetitive tasks like testing, building, and deploying code, allowing developers to work on more complex jobs \cite{automation}. In addition, it can improve security by reducing the risk of human errors or by automating security testing that can help speed up the detection, verification, and escalation of security issues without requiring manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{iac} is mostly based on the abovementioned benefits. Furthermore, the group attempted to automate as many processes as possible to remove the need for manual involvement during deployment and testing. 
+Automation is using \gls{iac} to perform tasks instead of doing them manually \cite{automationredhat}. Implementing automation in the organization's systems can eliminate the need for many developers to manage all the different infrastructure elements the organization may have. Furthermore, there are numerous advantages to replacing manual work with automation. It can reduce costs by replacing the manual work of IT professionals with automated processes.
+\newpage
+Automation can also speed up development by automating repetitive tasks like testing, building, and deploying code, allowing developers to work on more complex jobs \cite{automation}. In addition, it can improve security by reducing the risk of human errors or by automating security testing that can help speed up the detection, verification, and escalation of security issues without requiring manual involvement. The group's decision to use Terraform and construct a pipeline with \gls{iac} is mostly based on the abovementioned benefits. Furthermore, the group attempted to automate as many processes as possible to remove the need for manual involvement during deployment and testing. 
 \\~\\
 Despite the numerous benefits of automating the development processes, the implementation can be time-consuming and require a complex setup. However, once completed, the setup would be significantly less complicated and require less time. One significant benefit of automating the development process is the ability to reuse the automated configuration across several projects \cite{reusepipeline}. Automating the process once may be reused in various settings, allowing numerous projects to benefit from the same improved \gls{pipeline}. 
 \\~\\
@@ -88,7 +90,7 @@ This requirement was not achieved because the group encountered difficulties whe
 Due to the identical issue encountered in Requirement 2, the group was unable to accomplish Requirement 3.
 \\~\\
 To conclude, the group could not find a suitable solution for generating \gls{provenance}. As a result, they were unable to advance to the next level, since all the requirements from the previous level must be fulfilled.
-
+ 
 \subsection{SSDF}
 While numerous models, such as waterfall, spiral, and agile, exist for the \acrlong{sdlc}, only a few prioritize security, therefore, is it necessary to integrate security into the \acrshort{sdlc} models. Utilizing a security-focused framework, such as the \acrshort{ssdf}, as a reference can serve as a starting point for enhancing the security of the \acrshort{sdlc}. 
 \\~\\
@@ -109,7 +111,7 @@ This practice focuses on maintaining the integrity and availability of code, as 
 Code to Identify Vulnerabilities and Verify Compliance with Security Requirements (PW.7): \textit{\say{Help identify vulnerabilities so that they can be corrected before the software is released to prevent exploitation. Using automated methods lowers the effort and resources needed to detect vulnerabilities. Human-readable code includes source code, scripts, and any other form of code that an organization deems human-readable.}}\cite{ssdf}
 \\~\\
 This practice covers code security and provides guidelines for evaluating the source code used or written. The evaluation can be done through manual code review or automated tools. The goal is to identify and correct vulnerabilities before releasing the software to prevent exploitation. The group has incorporated various automated security scans throughout the pipeline, such as \acrshort{sca}, \acrshort{sast}, and \acrshort{dast}. 
-\\~\\
+\newpage
 \textbf{Respond to Vulnerabilities (RV):}
 Identify and Confirm Vulnerabilities on an Ongoing Basis (RV.1): \textit{\say{Help ensure that vulnerabilities are identified more quickly so that they can be remediated more quickly in accordance with risk, reducing the window of opportunity for attackers.}}\cite{ssdf}
 \\~\\
@@ -118,6 +120,8 @@ This practice includes doing frequent vulnerability scans, threat assessments, a
 \subsection{Usefulness of the framework}
 
 Both the \acrshort{slsa} and \acrshort{ssdf} frameworks may give helpful recommendations to developers trying to improve the security of their products. However, while \acrshort{slsa} has the potential to encourage good code heritage and increase security in more significant open-source projects with larger user bases, its complexity may not be justified in smaller projects. \acrshort{ssdf}, on the other hand, provides a flexible way to apply security measures, making it a helpful guide for deciding which measures to deploy. Furthermore, the \acrshort{ssdf} may be used by developers to assess the security level of their project without needing an extra step in the development process. Ultimately, the project's unique demands and scope will determine the decision on which framework to use, or whether to use a framework at all.
+\\~\\
+In retrospect, as the group reflects on the project, they acknowledge that it would have been beneficial to implement the \acrshort{ssdf} from the beginning of the project. The group finds it well-suited for smaller projects with a precise scope, providing clear guidelines and making it easier to follow a structured approach. In addition, incorporating the \acrshort{ssdf} framework from the start would have facilitated smoother project execution and ensured that the group had specific guidelines tailored to their needs, allowing for a more efficient and focused development process.
 
 \section{Revising the thesis angle}
 When writing the project plan, the group initially planned on writing a thesis based on testing security tools and comparing the results. The main focus would be on the tools and testing as many as possible. The group found it challenging to create a unique thesis due to previous theses with similar topics. 

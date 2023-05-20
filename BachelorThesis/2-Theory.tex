@@ -18,7 +18,7 @@ In the implementation phase, the actual development of the software takes place 
  
 \subsection{Testing}
 In the testing phase, the development team verifies that the software fulfils functional, performance, security, and quality criteria established in earlier stages of the \acrshort{sdlc} \cite{TestingSDLC}. The software undergoes both manual user testing and automated testing to detect and correct possible defects. During testing, the development team confirms that the software fits the user's requirements.
- 
+ \newpage
 \subsection{Deployment}
 In the deployment phase, releasing the software into the environment can be considered the main priority \cite{DeploymentSDLC}. During this phase, the deployment team works with the development team and stakeholders to arrange the software's release to guarantee a seamless process. The plan also includes creating the deployment timeline, selecting a method for the deployment, and defining the software's environment. Initially, the deployment procedure of an application may take a long time. However, after the application has been deployed for the first time, future changes may be delivered more quickly since the same configuration is reused, resulting in significantly reduced deployment time. 
 
@@ -33,7 +33,7 @@ In the maintenance phase, the software is monitored to ensure it functions accor
     \label{fig: DevSecOps Life Cycle}\cite{devsecopsbilde}
 \end{figure}
 
-
+\newpage
 \section{Functional testing vs. security testing}
 \label{Functional Testing vs Security Testing}
 Software testing is an extensive area, and each test varies according to its purpose or process. The primary goal of software testing is to verify the quality of software systems through planned and structured testing under controlled conditions \cite{difftesting}. Functional testing emphasizes the software's behavior and that the software is working as expected. The functional test cases are based on the software requirements specified by the stakeholder. Several functional testing methodologies, such as unit and integration testing, can be conducted. 
@@ -41,7 +41,7 @@ Software testing is an extensive area, and each test varies according to its pur
 Unit testing involves testing small code components, known as units, to determine if the units behave as expected\cite{unitvsintergration}. These tests are typically executed early in the \acrshort{sdlc} to identify bugs early on and save time in the rest of the process. The unit testing aims to run tests on all possible components in an isolated test environment to confirm if the code operates as anticipated. On the other hand, integration testing evaluates how the previously tested components perform when integrated into a more extensive system and communicate across various components.
 \\~\\
 Security testing wants to break the software to uncover vulnerabilities and verify its security features \cite{whysectest}. The testing aims to identify all possible weaknesses that attackers might exploit. The tests are performed from the attacker's point of view. These tests can be done manually or by software tools called automated security testing tools. The goal of evaluating security functionalities is to verify if protective measures like authentication are functioning as expected. Security testing will also try to simulate attacks on the software and determine its capability to defend against them. White box testing, black box testing, and grey box testing are some examples of security testing methods. This topic is described more in section \ref{boxtesting}. 
-
+\newpage
 \section{Application security testing}
 Application Security Testing can be described as a \textit{\say{process of making applications more resistant to security threats by identifying security weaknesses and vulnerabilities in source code}} \cite{AST}.
 
@@ -68,7 +68,7 @@ Grey box testing is a method that limits the user's knowledge of the different c
 One of the advantages of \acrshort{sast} is that it gives detailed information about the source of the vulnerability, which gives the developer a better understanding of how to fix the issue. 
 \\~\\
 There are, however, some limitations to \acrshort{sast} tools. For example, it can only detect vulnerabilities in the source code, meaning it cannot detect vulnerabilities that result from the interaction between different components of an application. In addition, \acrshort{sast} tools often generate numerous false positives since they analyze source code without considering the entire code context \cite{SastFalsePositives}.
-\\~\\
+\newpage
 \acrshort{sast} scans should be implemented as early in the \acrshort{sdlc} as possible to prevent vulnerabilities from being present throughout the \gls{pipeline} \cite{SASTplacement}. Figure \ref{fig: DevSecOps Life Cycle} suggests that the \acrshort{sast} scan should be done before building the code in the implementation phase. It is also possible to run this test during the testing phase, as shown in Figure \ref{fig: Where SAST can be performed in SDLC}.
 
 \vspace{2mm}
@@ -85,7 +85,7 @@ There are, however, some limitations to \acrshort{sast} tools. For example, it c
 \acrshort{dast} simulates real-world attacks, which is done by sending malicious requests and inputs to the application it is testing and then monitoring the responses. In the end, the tool generates a report that includes the identified vulnerabilities, including a more in-depth description and remediation on how to fix the issue. 
 \\~\\
 An advantage with \acrshort{dast} is that it can identify security issues that are not detectable through \acrshort{sast}. These security issues can, for example, be interactions between different components. Another advantage is that with \acrshort{dast}, it can identify different vulnerabilities that get triggered, for example, when the application is under heavy load or when specific inputs are received.
-\\~\\
+\newpage
 However, there are some limitations with \acrshort{dast} as well. One is that it can only detect vulnerabilities present in the deployed version of the application and cannot give an in-depth description of vulnerabilities in the source code. Additionally, \acrshort{dast} may generate false positive. Though the tools generates less false positives compared to \acrshort{sast}, eliminating these alerts require more advanced analysis and verification technologies \cite{DastFalsePositives}.
 \\~\\
 In Figure \ref{fig: Where DAST can be performed in SDLC}, \acrshort{dast} is suggested to perform in the testing and maintenance phase since the scan is done on a running application and is, therefore, past the implementation stage. The test should be done before deployment to prevent a vulnerable application from going public. Scans should also be done after it is deployed \cite{dastplacment}, in the maintenance phase, since vulnerabilities may occur after deployment and must be identified to prevent potential problems.
@@ -106,7 +106,7 @@ In Figure \ref{fig: Where DAST can be performed in SDLC}, \acrshort{dast} is sug
 An advantage with \acrshort{sca} is that it can quickly identify risks that may be introduced from third-party components. It is relatively common that modern applications rely on many different dependencies, making \acrshort{sca} useful. It can provide a comprehensive view of the security risks associated with an application and help developers make informed decisions about the security of the developed applications. 
 \\~\\
 However, \acrshort{sca} may give some false positives that can occur because the developer has an extensive library in the code. In addition, it can trigger because of a dependency that is never used and is, therefore, impossible to exploit.
-\\~\\
+
 \acrshort{sca} scans are done at an early stage in modern software development \cite{sca}. Shown in Figure \ref{fig: DevSecOps Life Cycle} it is performed in the build stage. Therefore, Figure \ref{fig: Where SCA can be performed in SDLC} suggests \acrshort{sca} scans to be performed in the implementation phase. The scan is also suggested in the testing and maintenance phases. The testing phase is an alternative or an addition to the implementation phase. The maintenance phase should include checks, as dependencies may become vulnerable after deployment.
 
 \vspace{2mm}
@@ -124,7 +124,7 @@ Upon reviewing the different security application tests, similarities between \a
 \vspace{2mm}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\columnwidth]{Images/application-security-testing.png}\\
+    \includegraphics[width=0.8\columnwidth]{Images/Blank diagram - Page 1.png}\\
     \textbf{Note:} The distinction between the exclamation marks and the checkmarks lies in the meaning of them. The exclamation marks indicate that the criteria are considered negative, while the checkmarks signify that the criteria are positive.
     \caption{Comparison of \acrshort{sca}, \acrshort{dast}, and \acrshort{sast} }Adapted from: \cite{Comparison}
     \label{fig: Comparison of SCA, DAST, and SASt}
@@ -138,7 +138,7 @@ According to IBM's report, in 2022, the cost of a data breach was estimated to b
 \section{OWASP Top 10}
 \acrlong{owasp} (\acrshort{owasp}) serves as a standard reference document for web application security and for developers to raise their knowledge of potential security threats. The document contains a prioritized and exemplified list with recommendations for fixing ten critical security flaws commonly seen in web applications. The function of this document is to educate readers on the most common security risks that may occur. Developers and security professionals may use this knowledge and implement it into their security policies, reducing the frequency of these threats in their applications. 
 
-
+\newpage
 \section{Vulnerability risk rating}
 Discovered vulnerabilities can be rated by standardized systems like \acrshort{cvss}, \acrshort{cve}, \acrshort{cwe}, and \acrshort{owasp} Risk Rating Methodology. These databases are frequently used in application security testing, particularly in \acrshort{sca} scans, to uncover code patterns that may indicate a common vulnerability within the code. While they may also be utilized in \acrshort{dast} and \acrshort{sast} scans, they are most commonly used in \acrshort{sca} scans. 
 
@@ -191,6 +191,6 @@ Combining the likelihood and impact ratings produces an overall risk severity le
 
 \section{Amazon Web Services}
 \acrlong{aws}\footnote{Available at: \url{https://aws.amazon.com/}}, known as \acrshort{aws}, is a cloud computing platform offered by Amazon \cite{aws}. It offers a range of services from \acrlong{iaas} (\acrshort{iaas}) to \acrlong{paas} (\acrshort{paas}), which allows users to run their applications and keep their data in the cloud. By utilising the pay-as-you-go cloud computing model, customers can easily adjust their resources without investing in physical infrastructure.
-
+\newpage
 \section{GitHub}
 GitHub\footnote{Available at: \url{https://github.com/}} is a web-based software development platform where developers can collaborate and store open and closed-source projects \cite{github}. The developers can manage their projects in repositories and track bugs and issues. It offers collaboration tools, including pull requests, code reviews, and project management functionalities. Git is a version control system utilized to manage and monitor file versioning. GitHub employs this technology as the basis for its service. The version control allows developers to work on code simultaneously, track changes, and merge contributions from multiple contributors.

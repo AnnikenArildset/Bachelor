@@ -19,7 +19,7 @@ Figure \ref{fig: Pipeline in AWS} illustrates the pipeline in \acrshort{aws}, sh
 
 \section{Code used in the pipeline}
 For testing, the group decided on using \acrshort{owasp} Juice Shop\footnote{Code available at: \url{https://github.com/juice-shop/juice-shop}}, which is a deliberately vulnerable web application that is designed to help developers and others learn about web application security concepts. The code is designed to simulate a real-world application by having common vulnerabilities within the code. The intention is to encourage users to find and exploit these vulnerabilities and increase users' understanding of web application security \cite{owaspJuiceShop}. The code in the \acrshort{owasp} Juice Shop is open source code on GitHub and is written in TypeScript, which uses a Node.js server and Angular. Angular is a TypeScript-based application framework for \gls{front-end} \cite{owaspJuiceShopCode}. The code contains different vulnerabilities, including \gls{SQL-injection}s, and \gls{Cross-site scripting}. According to its website, it has registered 101 vulnerabilities in the code.
-
+\newpage
 \section{Pushing to GitHub}
 Security measures must be in place when the source code is ready to be pushed to GitHub. One of the previously mentioned measurements is branch protection. Branch protection rules are easy to enable in GitHub. Enabling the rules are done for each repository. GitHub has different branch protection rules that can be enabled, which are explained in Section \ref{branchprotection}. Enabling the rules can be done in \gls{GUI} or automated using Terraform, as shown in in the GitHub repository \footnote{Code for enabling branch protection rules available at: \url{https://github.com/DCSG2900-Bachelor-thesis/Enable_Branch_Protection.git}}. 
 \\~\\
@@ -66,9 +66,9 @@ on:
     branches: [main]
 \end{lstlisting}
 
-An example on how to enable CodeQL from the \acrshort{cli} is shown in the GitHub repository FOOTNOTE.
+An example on how to enable CodeQL from the \acrshort{cli} is shown in the GitHub repository \footnote{Instructions on how to enable CodeQL from cli: \url{https://github.com/DCSG2900-Bachelor-thesis/Enable_CodeQL}}.
 \\~\\
-Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at: \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret Scanner\footnote{Instructions on how to enable Secret Scanner available at: \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. Alternatively, Dependabot can be enabled from the \acrshort{cli} FOOTNOTE. After being enabled, all these tools automatically scan the code for vulnerabilities and secrets.
+Other security tools in GitHub are Dependabot\footnote{Instructions on how to enable Dependabot available at: \url{https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates}} and Secret Scanner\footnote{Instructions on how to enable Secret Scanner available at: \url{https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories}}. These are also enabled in the security settings. Alternatively, Dependabot can be enabled from the \acrshort{cli} \footnote{Instructions on how to enable dependabot from cli: \url{https://github.com/DCSG2900-Bachelor-thesis/Enable_dependabot}}. After being enabled, all these tools automatically scan the code for vulnerabilities and secrets.
 
 \vspace{2mm}
 \begin{figure}[H]
@@ -110,7 +110,7 @@ resource"aws_codestarconnections_connection""code-connection"{
   provider_type = "GitHub" 
 }
 \end{lstlisting}
-
+\newpage
 After successfully creating the connection resource, it is necessary to perform a manual verification process in \acrshort{aws}. This step is crucial because it is impossible to pass secrets through \acrshort{aws} to GitHub login, as the connection opens a third-party login page that \acrshort{aws} does not control.
 
 \vspace{2mm}
@@ -132,7 +132,7 @@ resource "aws_s3_bucket" "codepipeline_artifact" {
 \end{lstlisting}
 
 Granting access to the bucket is necessary for each stage in the \gls{pipeline} to retrieve the previous stage's artifacts from the S3 bucket. Therefore, access rights need to be granted separately for each stage in the pipeline. Code \ref{lst:grantaccess} grants the CodePipeline access to S3 rules, like access to the bucket itself. 
-
+\newpage
 \vspace{4mm}
 \begin{lstlisting}[language=terraform, caption=Permissions to CodePipeline, captionpos=b, frame=single, label=lst:grantaccess]
 statement {
@@ -157,7 +157,9 @@ statement {
 \end{figure}
 
 \section{Build stage}
-In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website \cite{CodeBuildProcess}. For the CodeBuild to run, the operating system, image, compute type and compute environment must be specified. In this example, the environment type is set to be \acrshort{aws}'s own Linux container. The compute type refers to the amount of memory, CPUs, and disk space needed, which in Code \ref{lst:CodeBuildEnvironment} is set to be the least amount of hardware resources. The combination of these variables is called a \say{build environment}.
+In the build stage, CodePipeline uses CodeBuild to compile the source code into a working website \cite{CodeBuildProcess}. For the CodeBuild to run, the operating system, image, compute type and compute environment must be specified. In this example, the environment type is set to be \acrshort{aws}'s own Linux container.
+\newpage
+The compute type refers to the amount of memory, CPUs, and disk space needed, which in Code \ref{lst:CodeBuildEnvironment} is set to be the least amount of hardware resources. The combination of these variables is called a \say{build environment}.
 
 \vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Creation of a build environment, captionpos=b, frame=single, label=lst:CodeBuildEnvironment]
@@ -178,11 +180,11 @@ Further, CodeBuild downloads the source code from the S3 bucket, which was added
     \caption{CodePipeline using CodeBuild}
     \label{fig: CodePipeline using CodeBuild}
 \end{figure}
-
+\newpage
 \section{Deployment to testing}
 \label{Deployment to testing}
 \subsection{Setting up CodeDeploy}
-In order to configure CodeDeploy, the user must create an application and a deployment group. The deployment group contains settings and configurations used during the deployment. In Code \ref{lst:deployment group}, the settings specify a preset configuration. Such configuration is a set of rules and conditions, like the compute platform and conditions for failure \cite{CodeDeployConfig}. The deployment group also specifies which preconfigured instance to use for the deployment\footnote{Setting up an instance is available at \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}}. 
+In order to configure CodeDeploy, the user must create an application and a deployment group. The deployment group contains settings and configurations used during the deployment. In Code \ref{lst:deployment group}, the settings specify a preset configuration. Such configuration is a set of rules and conditions, like the \gls{compute platform} and conditions for failure \cite{CodeDeployConfig}. The deployment group also specifies which preconfigured instance to use for the deployment\footnote{Setting up an instance is available at \url{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html}}. 
 
 \vspace{2mm}
 \begin{lstlisting}[language=terraform, caption=Creation of the deployment group, captionpos=b, frame=single, label= {lst:deployment group}]
@@ -200,7 +202,7 @@ resource "aws_codedeploy_deployment_group" "deploy_group" {
   }
 }
 \end{lstlisting}
-
+\newpage
 As seen in Code \ref{lst:deployment group}, the deployment group specifies the application. The application is \textit{\say{a name or container used by CodeDeploy to ensure the correct revision, deployment configuration, and deployment group are referenced during a deployment}} \cite{CodeDeployApplication}. Therefore, to configure the application, it is only necessary to provide a name for it, as shown in Code \ref{lst:codedeploy application}.
 
 \vspace{2mm}
@@ -223,7 +225,7 @@ This stage utilizes two \acrshort{ec2} instances: one for \acrshort{owasp} \acrs
     \caption{Deployment to testing}
     \label{fig: Deployment to testing}
 \end{figure}
-
+\newpage
 For \acrshort{owasp} \acrshort{zap} to be able to scan the application, the instances need to communicate. To enable communication between the \acrshort{ec2} instances within the \acrlong{vpc} (\acrshort{vpc}), individual network interfaces have been allocated to each instance with a single IP address. This method guarantees that both instances can find each other because the IP address will always be the same.
 
 \vspace{2mm}
@@ -238,8 +240,8 @@ resource "aws_network_interface" "interface_network2" {
 }
 \end{lstlisting}
 
-The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by the \acrshort{dast} tool. In addition, the container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://hub.docker.com/r/owasp/zap2docker-stable/}}. Although these tests are typically customized to suit an application's specific requirements, the predefined tests are satisfactory for this demonstration. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Code \ref{owasp-zap-output}.
-
+The security tests are conducted by setting up a docker container on the \acrshort{ec2} instance created for \acrshort{owasp} \acrshort{zap}, which runs one of the automated standard tests predefined by the \acrshort{dast} tool. In addition, the container uses the \say{weekly stable image} of \acrshort{owasp} \acrshort{zap}\footnote{Available at \url{https://hub.docker.com/r/owasp/zap2docker-stable/}}. Although these tests are typically customized to suit an application's specific requirements, the predefined tests are satisfactory for this demonstration. Once the container is launched, the scan is directed towards the other instance in the \acrshort{vpc}, and the output obtained is shown in Code \ref{owasp-zap-output} (full output in Appendix \ref{zap-cli-output}). In addition \acrshort{owasp} \acrshort{zap} gives a full human-readable report in HTML format, shown in Appendix \ref{zap-scan-pdf}.
+\newpage
 \vspace{2mm}
 \begin{lstlisting}[caption=The output of an OWASP ZAP baseline scan, captionpos=b, frame=single, label={owasp-zap-output}]
 WARN-NEW: Timestamp Disclosure - Unix [10096] x 1
@@ -262,7 +264,7 @@ WARN-NEW: Dangerous JS Functions [10110] x 2
 FAIL-NEW: 0     FAIL-INPROG: 0  WARN-NEW: 9     WARN-INPROG: 0  INFO: 0 IGNORE: 0       PASS: 51
 \end{lstlisting}
 
-
+\newpage
 \section{Deployment to production}
 In the production stage, CodePipeline utilizes CodeDeploy, as described in Section \ref{Deployment to testing}. Before the code gets moved to production, it must be accepted by manual approval by a user in \acrshort{aws}. The purpose of this step is to allow for a review of the results from the automated security tests, to ensure that no faulty code is deployed. When new code or changes have gone through testing, a notification will occur in the \acrshort{sns} topic\footnote{\acrlong{sns} (\acrshort{sns}) provides message delivery to a topic. A topic is the communication channel the users can subscribe to \cite{SNStopic}.} that is created. Someone then has to approve the code waiting to be moved to production.
 
@@ -273,6 +275,7 @@ In the production stage, CodePipeline utilizes CodeDeploy, as described in Secti
     \caption{Manual approval before deploying the application}
     \label{fig: Manual approval before deploying the application}
 \end{figure}
+\newpage
 
 After the manual approval process is completed, the code will be deployed to production in a similar manner to the process described in Section \ref{Deployment to testing}. Figure \ref{fig: Finished pipeline created in AWS} illustrates the flow of the pipeline after completing all the necessary steps.\footnote{Complete code available at: \url{https://github.com/DCSG2900-Bachelor-thesis/CodePipeline}}
 
